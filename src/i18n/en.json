@@ -1,0 +1,46 @@
+{
+  "navbar": {
+    "discover": "Discover",
+    "products": "Products",
+    "menu": "Menu",
+    "closeMenu": "Close",
+    "changeLanguage": "Change language",
+    "menuSections": {
+      "knowUs": {
+        "title": "KNOW US",
+        "links": {
+          "about": "About Us",
+          "mission": "Mission",
+          "values": "Values",
+          "contact": "Contact"
+        }
+      },
+      "social": {
+        "title": "SOCIAL MEDIA",
+        "links": {
+          "twitter": "Twitter",
+          "linkedin": "LinkedIn",
+          "instagram": "Instagram",
+          "github": "GitHub"
+        }
+      },
+      "team": {
+        "title": "TEAM",
+        "links": {
+          "members": "Members",
+          "careers": "Careers",
+          "join": "Join"
+        }
+      }
+    }
+  },
+  "hero": {
+    "topTagline": "Clara, segura, sin adjetivos innecesarios.",
+    "badge": "Create, explore and expand what's possible.",
+    "title": "We build decentralized systems designed for real-world impact.",
+    "description": "Technology that empowers people, builders, and organizations to move forward with confidence.",
+    "ctaPrimary": "Explore Projects",
+    "ctaSecondary": "Contact Us"
+  }
+}
+

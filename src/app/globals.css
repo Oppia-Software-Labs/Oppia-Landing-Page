@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --white-opacity-4: rgba(255, 255, 255, 0.04);
+  --white-opacity-8: rgba(255, 255, 255, 0.08);
+  --background-dark: #1A1A1A;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-white-opacity-4: var(--white-opacity-4);
+  --color-white-opacity-8: var(--white-opacity-8);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Animaciones para el menú */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.zoom-in-95 {
+  animation: zoomIn 0.3s ease-out forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* Animación para navbar expandido - Primero width, luego height */
+@keyframes navbarExpandWidth {
+  0% {
+    width: 100%;
+    max-width: 42rem; /* max-w-2xl = 42rem */
+    border-radius: 9999px;
+  }
+  100% {
+    width: 95%;
+    max-width: 95%;
+    border-radius: 1rem;
+  }
+}
+
+/* Animación para navbar contraído - Al revés */
+@keyframes navbarCollapseWidth {
+  0% {
+    width: 95%;
+    max-width: 95%;
+    border-radius: 1rem;
+  }
+  100% {
+    width: 100%;
+    max-width: 42rem; /* max-w-2xl = 42rem */
+    border-radius: 9999px;
+  }
+}
+
+@keyframes menuSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+    max-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 2000px;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@keyframes menuSlideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 2000px;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+    max-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.navbar-expand {
+  animation: navbarExpandWidth 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  will-change: width, max-width, border-radius;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.navbar-collapse {
+  animation: navbarCollapseWidth 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0.4s;
+  will-change: width, max-width, border-radius;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Asegurar que el Top Bar no se mueva durante la animación */
+.navbar-expand > div:first-child,
+.navbar-collapse > div:first-child {
+  position: relative;
+  z-index: 10;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.menu-slide-down {
+  animation: menuSlideDown 1.1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.menu-slide-up {
+  animation: menuSlideUp 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  opacity: 1;
+  max-height: 2000px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Animaciones para el backdrop */
+@keyframes backdropFadeIn {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes backdropFadeOut {
+  0% {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  50% {
+    opacity: 0.5;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  100% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+}
+
+.backdrop-fade-in {
+  animation: backdropFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: opacity, backdrop-filter;
+}
+
+.backdrop-fade-out {
+  animation: backdropFadeOut 1.4s cubic-bezier(0.12, 1, 0.32, 1) forwards;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: opacity, backdrop-filter;
+}
+
+.hero-badge {
+  background-color: var(--background-dark);
+}
+
+.hero-secondary-button {
+  background-color: var(--white-opacity-4);
+}
+
+.hero-secondary-button:hover {
+  background-color: var(--white-opacity-8);
+}
