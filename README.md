@@ -68,6 +68,23 @@ src/
 │
 └── utils/                  # Utilities
     └── cn.ts              # Tailwind class merging utility
+
+public/                      # Static assets
+├── oppia-logos/           # Oppia brand assets
+│   ├── imagotypes/        # Full logo with text
+│   │   ├── Oppia-Imagotype-Black.svg
+│   │   ├── Oppia-Imagotype-Full-Color.svg
+│   │   └── Oppia-Imagotype-White.svg
+│   └── isotypes/          # Icon only
+│       ├── isotype-black.svg
+│       ├── isotype-full-color.svg
+│       └── isotype-white.svg
+├── partners/              # Partner logos
+│   ├── catalitec.svg
+│   └── stellar.svg
+└── visuals/               # Decorative assets
+    ├── left-wave.svg
+    └── right-wave.svg
 ```
 
 ## 🏗️ Architectural Principles
