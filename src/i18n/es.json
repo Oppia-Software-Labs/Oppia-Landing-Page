@@ -44,6 +44,27 @@
   },
   "partners": {
     "title": "Powered by trusted brands"
+  },
+  "faq": {
+    "badge": "¿Tienes preguntas?",
+    "title": "Tenemos todas las respuestas que necesitas",
+    "description": "Encuentra respuestas a preguntas comunes sobre Oppia, nuestra misión, tecnología y cómo puedes involucrarte.",
+    "questions": {
+      "question1": "¿Qué es Oppia?",
+      "answer1": "Oppia Software Labs (OS Labs) es un estudio de innovación Web3 dedicado a construir soluciones descentralizadas y de código abierto con impacto en el mundo real. Creemos en la descentralización, la transparencia y el empoderamiento del usuario. Creamos tecnología que marca una diferencia significativa.",
+
+      "question2": "¿Cuál es la misión de Oppia?",
+      "answer2": "Aprovechar el potencial de las tecnologías blockchain y Web3 para diseñar soluciones escalables e impactantes que mejoren la forma en que las personas interactúan con los sistemas cotidianos; comenzando con el bien social y expandiéndose a DeFi y más allá.",
+
+      "question3": "¿Qué tecnologías usa Oppia?",
+      "answer3": "Hemos experimentado con múltiples tecnologías en nuestros proyectos, desde Ethereum hasta Stellar y más allá. Actualmente nos enfocamos en construir en Stellar, pero siempre estamos experimentando con nuevas tecnologías y plataformas.",
+
+      "question4": "¿De qué está más orgulloso Oppia?",
+      "answer4": "Nuestro compromiso de construir soluciones descentralizadas y de código abierto con impacto en el mundo real. Estamos orgullosos de ser parte de la comunidad Web3 y de construir tecnología que marca una diferencia significativa.",
+
+      "question5": "¿Puedo contribuir a Oppia?",
+      "answer5": "Sí, siempre estamos buscando nuevos colaboradores para ayudarnos a construir en nuestros proyectos de código abierto. Contáctanos si estás interesado en contribuir con Oppia o revisa nuestros proyectos en plataformas como Drips o GrantFox."
+    }
   }
 }
 
