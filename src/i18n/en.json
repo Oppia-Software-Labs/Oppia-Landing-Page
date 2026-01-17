@@ -47,24 +47,31 @@
   },
   "faq": {
     "badge": "Have questions?",
-    "title": "We have every answer you need",
+    "titleLine1": "We have every",
+    "titleLine2": "answer you need",
     "description": "Find answers to common questions about Oppia, our mission, technology, and how you can get involved.",
-    "questions": {
-      "question1": "What is Oppia?",
-      "answer1": "Oppia Software Labs (OS Labs) is a Web3 innovation studio dedicated to building open-source, decentralized solutions with real-world impact. We believe in decentralization, transparency, and user empowerment. We create technology that makes a meaningful difference.",
-
-      "question2": "What is the mission of Oppia?",
-      "answer2": "To harness the potential of blockchain and Web3 technologies to design scalable, impactful solutions that improve how people interact with everyday systems; starting with social good, and expanding into DeFi and beyond.",
-
-      "question3": "What techstack does Oppia use?",
-      "answer3": "We have experimented with multiple techstacks across our projects, from Ethereum to Stellar and beyond. We are currently focused on building on Stellar, but we are always experimenting with new technologies and platforms.",
-
-      "question4": "What is Oppia most proud of?",
-      "answer4": "Our commitment to building open-source, decentralized solutions with real-world impact. We are proud to be a part of the Web3 community and to be building technology that makes a meaningful difference.",
-
-      "question5": "Can I contribute to Oppia?",
-      "answer5": "Yes, we are always looking for new contributors to help us build in our open-source projects. Reach out to us if you are interested in contributing with Oppia or checkout our projects on platforms like Drips or GrantFox."
-    }
+    "faqsData": [
+      {
+        "question": "What is Oppia?",
+        "answer": "Oppia Software Labs (OS Labs) is a Web3 innovation studio dedicated to building open-source, decentralized solutions with real-world impact. We believe in decentralization, transparency, and user empowerment. We create technology that makes a meaningful difference."
+      },
+      {
+        "question": "What is the mission of Oppia?",
+        "answer": "To harness the potential of blockchain and Web3 technologies to design scalable, impactful solutions that improve how people interact with everyday systems; starting with social good, and expanding into DeFi and beyond."
+      },
+      {
+        "question": "What techstack does Oppia use?",
+        "answer": "We have experimented with multiple techstacks across our projects, from Ethereum to Stellar and beyond. We are currently focused on building on Stellar, but we are always experimenting with new technologies and platforms."
+      },
+      {
+        "question": "What is Oppia most proud of?",
+        "answer": "Our commitment to building open-source, decentralized solutions with real-world impact. We are proud to be a part of the Web3 community and to be building technology that makes a meaningful difference."
+      },
+      {
+        "question": "Can I contribute to Oppia?",
+        "answer": "Yes, we are always looking for new contributors to help us build in our open-source projects. Reach out to us if you are interested in contributing with Oppia or checkout our projects on platforms like Drips or GrantFox."
+      }
+    ]
   }
 }
 
