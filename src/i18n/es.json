@@ -44,6 +44,34 @@
   },
   "partners": {
     "title": "Powered by trusted brands"
+  },
+  "faq": {
+    "badge": "¿Tienes preguntas?",
+    "titleLine1": "Tenemos todas las",
+    "titleLine2": "respuestas que necesitas",
+    "description": "Encuentra respuestas a preguntas comunes sobre Oppia, nuestra misión, tecnología y cómo puedes involucrarte.",
+    "faqsData": [
+      {
+        "question": "¿Qué es Oppia?",
+        "answer": "Oppia Software Labs (OS Labs) es un estudio de innovación Web3 dedicado a construir soluciones descentralizadas y de código abierto con impacto en el mundo real. Creemos en la descentralización, la transparencia y el empoderamiento del usuario. Creamos tecnología que marca una diferencia significativa."
+      },
+      {
+        "question": "¿Cuál es la misión de Oppia?",
+        "answer": "Aprovechar el potencial de las tecnologías blockchain y Web3 para diseñar soluciones escalables e impactantes que mejoren la forma en que las personas interactúan con los sistemas cotidianos; comenzando con el bien social y expandiéndose a DeFi y más allá."
+      },
+      {
+        "question": "¿Qué tecnologías usa Oppia?",
+        "answer": "Hemos experimentado con múltiples tecnologías en nuestros proyectos, desde Ethereum hasta Stellar y más allá. Actualmente nos enfocamos en construir en Stellar, pero siempre estamos experimentando con nuevas tecnologías y plataformas."
+      },
+      {
+        "question": "¿De qué está más orgulloso Oppia?",
+        "answer": "Nuestro compromiso de construir soluciones descentralizadas y de código abierto con impacto en el mundo real. Estamos orgullosos de ser parte de la comunidad Web3 y de construir tecnología que marca una diferencia significativa."
+      },
+      {
+        "question": "¿Puedo contribuir a Oppia?",
+        "answer": "Sí, siempre estamos buscando nuevos colaboradores para ayudarnos a construir en nuestros proyectos de código abierto. Contáctanos si estás interesado en contribuir con Oppia o revisa nuestros proyectos en plataformas como Drips o GrantFox."
+      }
+    ]
   }
 }
 
