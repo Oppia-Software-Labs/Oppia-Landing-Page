@@ -47,11 +47,6 @@
   },
   "socialMedia": {
     "title": "Social Media",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-    "loading": "Loading posts...",
-    "error": "Unable to load posts",
-    "errorDescription": "Please try again later",
-    "noPosts": "No posts available"
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
   }
 }
-

@@ -15,9 +15,3 @@ export interface SocialMediaPost {
   };
   createdAt: string;
 }
-
-export interface SocialMediaPostResponse {
-  posts: SocialMediaPost[];
-}
-
-export type SocialMediaState = 'idle' | 'loading' | 'success' | 'error';

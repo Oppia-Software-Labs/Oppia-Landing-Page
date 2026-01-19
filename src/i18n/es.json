@@ -47,11 +47,6 @@
   },
   "socialMedia": {
     "title": "Redes Sociales",
-    "description": "Lorem Ipsum es simplemente texto de relleno de la industria de impresión y composición tipográfica. Lorem Ipsum ha sido el texto de relleno estándar de la industria",
-    "loading": "Cargando publicaciones...",
-    "error": "No se pudieron cargar las publicaciones",
-    "errorDescription": "Por favor, inténtalo más tarde",
-    "noPosts": "No hay publicaciones disponibles"
+    "description": "Lorem Ipsum es simplemente texto de relleno de la industria de impresión y composición tipográfica. Lorem Ipsum ha sido el texto de relleno estándar de la industria"
   }
 }
-
