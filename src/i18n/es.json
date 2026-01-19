@@ -45,6 +45,24 @@
   "partners": {
     "title": "Powered by trusted brands"
   },
+  "whoWeAre": {
+    "title": "Quiénes somos",
+    "description": "Un estudio de tecnología e innovación. No solo creamos productos, construimos soluciones con propósito, diseñadas para marcar la diferencia.",
+    "sections": [
+      {
+        "title": "Funcionalidad",
+        "description": "Los sistemas descentralizados solo importan cuando son utilizables, confiables y accesibles."
+      },
+      {
+        "title": "Funcionalidad",
+        "description": "Los sistemas descentralizados solo importan cuando son utilizables, confiables y accesibles."
+      },
+      {
+        "title": "Funcionalidad",
+        "description": "Los sistemas descentralizados solo importan cuando son utilizables, confiables y accesibles."
+      }
+    ]
+  },
   "faq": {
     "badge": "¿Tienes preguntas?",
     "titleLine1": "Tenemos todas las",

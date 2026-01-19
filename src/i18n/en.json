@@ -45,6 +45,24 @@
   "partners": {
     "title": "Powered by trusted brands"
   },
+  "whoWeAre": {
+    "title": "Who are we",
+    "description": "A technology & innovation studio. We don't just create products, we build solutions with purpose, engineered to make a difference.",
+    "sections": [
+      {
+        "title": "Functionality",
+        "description": "Decentralized systems only matter when they are usable, reliable, and accessible."
+      },
+      {
+        "title": "Functionality",
+        "description": "Decentralized systems only matter when they are usable, reliable, and accessible."
+      },
+      {
+        "title": "Functionality",
+        "description": "Decentralized systems only matter when they are usable, reliable, and accessible."
+      }
+    ]
+  },
   "faq": {
     "badge": "Have questions?",
     "titleLine1": "We have every",
