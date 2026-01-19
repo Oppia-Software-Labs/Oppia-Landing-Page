@@ -30,53 +30,62 @@ export function WhoWeAre() {
 
         {/* Cards Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {sections.map((section, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-xl border border-[#242424] bg-gradient-to-b from-[#008CFF] to-[#061A4B] transition-all duration-300 hover:border-gray-500"
-            >
-              {/* Background SVG */}
-              <div className="pointer-events-none absolute inset-0 opacity-50">
-                <Image
-                  src="/visuals/who-we-are/light-bg-who-we-are.svg"
-                  alt=""
-                  width={417}
-                  height={489}
-                  className="h-full w-full object-cover"
-                  aria-hidden="true"
-                  priority={false}
-                  loading="lazy"
-                />
-              </div>
+          {sections.map((section, index) => {
+            // Primera y tercera tarjeta usan fondo oscuro, la del centro usa fondo claro
+            const backgroundSvg = index === 1 
+              ? '/visuals/who-we-are/light-bg-who-we-are.svg'
+              : '/visuals/who-we-are/back-bg-who-we-are.svg';
 
-              {/* Content */}
-              <div className="relative flex flex-col items-center p-6 sm:p-8">
-                {/* Phone Drawing */}
-                <div className="mb-6 flex items-center justify-center">
+            return (
+            <div key={index} className="flex flex-col">
+              {/* Card with background and image */}
+              <div
+                className="group relative overflow-hidden rounded-xl border border-[#242424] transition-all duration-300 hover:border-gray-500 min-h-[400px] sm:min-h-[450px]"
+              >
+                {/* Background SVG */}
+                <div className="pointer-events-none absolute inset-0 opacity-50">
                   <Image
-                    src="/visuals/who-we-are/phone-drawing.svg"
+                    src={backgroundSvg}
                     alt=""
-                    width={275}
-                    height={290}
-                    className="h-auto w-full max-w-[200px] sm:max-w-[240px]"
+                    width={417}
+                    height={489}
+                    className="h-full w-full object-cover"
                     aria-hidden="true"
                     priority={false}
                     loading="lazy"
                   />
                 </div>
 
+                {/* Phone Drawing */}
+                <div className="relative flex items-center justify-center p-8 sm:p-12">
+                  <Image
+                    src="/visuals/who-we-are/phone-drawing.svg"
+                    alt=""
+                    width={275}
+                    height={290}
+                    className="h-auto w-full max-w-[280px] sm:max-w-[320px]"
+                    aria-hidden="true"
+                    priority={false}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              {/* Text content below the card */}
+              <div className="mt-4 text-center">
                 {/* Section Title */}
-                <h3 className="mb-3 text-center text-lg font-normal text-white sm:text-xl">
+                <h3 className="mb-3 text-lg font-medium text-left text-gray-300 sm:text-xl">
                   {section.title}
                 </h3>
 
                 {/* Section Description */}
-                <p className="text-center text-sm font-normal leading-relaxed text-gray-300">
+                <p className="text-sm font-normal leading-relaxed text-left text-gray-500">
                   {section.description}
                 </p>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
