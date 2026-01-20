@@ -5,6 +5,7 @@ import { useTranslations } from '@/i18n/i18n';
 import { X } from 'lucide-react'; 
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 interface FAQItem {
   question: string;
@@ -22,19 +23,17 @@ export function FAQ() {
   return (
     <section className="bg-black py-16 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
-        <div className="mb-8 text-center">
-          <div className="mb-4 inline-block rounded-full border border-gray-700 bg-[#080808] px-3 py-1.5 text-sm font-normal text-white">
-            {t('faq.badge')}
-          </div>
-          <h2 className="mb-4 text-2xl font-normal leading-tight text-white sm:text-3xl md:text-4xl">
-            <span>{t('faq.titleLine1')}</span>
-            <br />
-            <span>{t('faq.titleLine2')}</span>
-          </h2>
-          <p className="mx-auto max-w-xl text-sm font-normal leading-relaxed text-gray-300 sm:text-base">
-            {t('faq.description')}
-          </p>
-        </div>
+        <SectionHeader
+          title={
+            <>
+              <span>{t('faq.titleLine1')}</span>
+              <br />
+              <span>{t('faq.titleLine2')}</span>
+            </>
+          }
+          subtitle={t('faq.description')}
+          subtitleClassName="mx-auto max-w-xl"
+        />
 
         <div className="space-y-4">
           {faqsData.map((faq, index) => (

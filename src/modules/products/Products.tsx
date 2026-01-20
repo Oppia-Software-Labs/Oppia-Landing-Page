@@ -9,6 +9,7 @@ import { DekoCard } from './DekoCard';
 import { useCarouselAnimation } from '@/hooks/useCarouselAnimation';
 import { CAROUSEL_CONFIG, CARD_POSITIONS } from '@/constants/carousel';
 import { gsap } from 'gsap';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 type ProductId = 'neko' | 'geko' | 'coming-soon';
 
@@ -137,12 +138,10 @@ export function Products() {
   return (
     <section className="bg-black pt-16 pb-8 overflow-x-hidden">
       <div className="w-full">
-        <h2 className="mb-3 text-center text-2xl font-normal text-white sm:text-3xl md:text-4xl">
-          {t('products.title')}
-        </h2>
-        <p className="mb-4 text-center text-sm font-normal leading-relaxed text-gray-300 sm:text-base md:text-lg md:mx-auto md:max-w-xl">
-          {t('products.description')}
-        </p>
+        <SectionHeader
+          title={t('products.title')}
+          subtitle={t('products.description')}
+        />
 
         <div className="mb-4 flex justify-center gap-2.5">
           {PRODUCTS.map((productId, idx) => {
