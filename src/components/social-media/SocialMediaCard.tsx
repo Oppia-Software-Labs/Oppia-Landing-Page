@@ -16,19 +16,8 @@ interface SocialMediaCardProps {
 function SocialMediaCardComponent({ post, isCenter = false }: SocialMediaCardProps) {
   const textSegments = formatHashtags(post.content);
 
-  return (
-    <article
-      className={cn(
-        'flex h-[265px] flex-col rounded-lg p-5',
-        'bg-gradient-to-b from-[#111111] to-[#242424]',
-        'border border-[#313030]',
-        'transition-all duration-300 ease-out',
-        'hover:shadow-lg',
-        'self-start',
-        isCenter && 'scale-110 z-10 shadow-2xl origin-top'
-      )}
-      aria-label={`Post by ${post.author.name}`}
-    >
+  const cardContent = (
+    <>
       <header className="mb-1.5 flex items-center gap-3 pt-4">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#121212]">
           <OppiaIsotypeIcon width={24} height={24} className="h-6 w-6" />
@@ -44,7 +33,7 @@ function SocialMediaCardComponent({ post, isCenter = false }: SocialMediaCardPro
       </header>
 
       <div className="mb-4 flex flex-1 items-center overflow-hidden">
-        <p className="text-xs leading-relaxed text-white line-clamp-5">
+        <p className="text-xs leading-relaxed text-white line-clamp-5 whitespace-pre-line">
           {textSegments.map((segment, index) => {
             if (segment.isHashtag) {
               return (
@@ -79,6 +68,47 @@ function SocialMediaCardComponent({ post, isCenter = false }: SocialMediaCardPro
           <span className="text-xs">{post.interactions.shares}</span>
         </div>
       </footer>
+    </>
+  );
+
+  const cardClassName = cn(
+    'flex h-[265px] flex-col rounded-lg p-5',
+    'bg-gradient-to-b from-[#111111] to-[#242424]',
+    'border border-[#313030]',
+    'transition-all duration-300 ease-out',
+    'hover:shadow-2xl hover:border-[#404040] hover:z-50',
+    'cursor-pointer',
+    'block',
+    'relative',
+    'z-0',
+    'transform-gpu',
+    'will-change-transform',
+    isCenter && 'scale-110 z-10 shadow-2xl origin-top'
+  );
+
+  if (post.url) {
+    return (
+      <a
+        href={post.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cardClassName}
+        aria-label={`Post by ${post.author.name}`}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <article
+      className={cardClassName}
+      aria-label={`Post by ${post.author.name}`}
+    >
+      {cardContent}
     </article>
   );
 }

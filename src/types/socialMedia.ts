@@ -14,4 +14,5 @@ export interface SocialMediaPost {
     shares: number;
   };
   createdAt: string;
+  url?: string;
 }

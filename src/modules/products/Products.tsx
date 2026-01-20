@@ -1,240 +1,138 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { GekoCard } from './GekoCard';
 import { NekoCard } from './NekoCard';
 import { DekoCard } from './DekoCard';
+import { useCarouselAnimation } from '@/hooks/useCarouselAnimation';
+import { CAROUSEL_CONFIG, CARD_POSITIONS } from '@/constants/carousel';
 import { gsap } from 'gsap';
-import { Draggable } from 'gsap/Draggable';
 
 type ProductId = 'neko' | 'geko' | 'coming-soon';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(Draggable);
+const PRODUCTS: ProductId[] = ['neko', 'geko', 'coming-soon'];
+
+interface ProductCardProps {
+  'data-flick-cards-item': string;
+  'data-flick-cards-item-status': string;
+}
+
+function renderProductCard(
+  id: ProductId,
+  index: number,
+  cardProps: ProductCardProps,
+  ref: (el: HTMLDivElement | null) => void
+) {
+  switch (id) {
+    case 'neko':
+      return <NekoCard {...cardProps} ref={ref} />;
+    case 'geko':
+      return <GekoCard {...cardProps} ref={ref} />;
+    case 'coming-soon':
+      return <DekoCard {...cardProps} ref={ref} />;
+    default:
+      return null;
+  }
+}
+
+function getProductTranslationKey(productId: ProductId): string {
+  return productId === 'coming-soon' ? 'comingSoon' : productId;
+}
+
+function animateCardsToIndex(
+  cards: HTMLElement[],
+  targetIndex: number,
+  currentIndex: number,
+  total: number
+) {
+  cards.forEach((card, i) => {
+    let diff = i - targetIndex;
+    if (diff > total / 2) diff -= total;
+    else if (diff < -total / 2) diff += total;
+
+    let config;
+    switch (diff) {
+      case 0:
+        config = CARD_POSITIONS.ACTIVE;
+        break;
+      case 1:
+        config = CARD_POSITIONS.ADJACENT_RIGHT;
+        break;
+      case -1:
+        config = CARD_POSITIONS.ADJACENT_LEFT;
+        break;
+      default:
+        config = CARD_POSITIONS.HIDDEN;
+    }
+
+    card.setAttribute('data-flick-cards-item-status', config.status);
+
+    const parent = card.parentElement;
+    if (parent) {
+      parent.style.zIndex = String(config.zIndex);
+    }
+
+    gsap.to(card, {
+      duration: CAROUSEL_CONFIG.ANIMATION_DURATION,
+      ease: CAROUSEL_CONFIG.EASING,
+      xPercent: config.x,
+      yPercent: config.y,
+      rotation: config.rotation,
+      scale: config.scale,
+      opacity: config.opacity,
+    });
+  });
 }
 
 export function Products() {
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
-  const sliderRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
-  const draggersRef = useRef<Draggable[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const products: ProductId[] = ['neko', 'geko', 'coming-soon'];
-  const total = products.length;
+  const total = PRODUCTS.length;
 
-  const renderCard = (id: ProductId, index: number) => {
-    const cardProps = {
-      'data-flick-cards-item': '',
-      'data-flick-cards-item-status': '',
-    } as const;
+  const handleIndexChange = useCallback(
+    (newIndex: number) => {
+      setActiveIndex(newIndex);
+    },
+    []
+  );
 
-    const ref = (el: HTMLDivElement | null) => {
+  const getCardRef = useCallback((index: number) => {
+    return (el: HTMLDivElement | null) => {
       if (el) cardsRef.current[index] = el;
     };
+  }, []);
 
-    switch (id) {
-      case 'neko':
-        return <NekoCard {...cardProps} ref={ref} />;
-      case 'geko':
-        return <GekoCard {...cardProps} ref={ref} />;
-      case 'coming-soon':
-        return <DekoCard {...cardProps} ref={ref} />;
-      default:
-        return null;
-    }
-  };
+  const { sliderRef } = useCarouselAnimation({
+    cardsRef,
+    totalCards: total,
+    activeIndex,
+    onIndexChange: handleIndexChange,
+  });
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !sliderRef.current || !listRef.current) return;
+  const handleProductButtonClick = useCallback(
+    (targetIndex: number) => {
+      if (activeIndex === targetIndex) return;
 
-    const slider = sliderRef.current;
-    const cards = cardsRef.current.filter(Boolean);
-    
-    if (cards.length === 0) return;
+      setActiveIndex(targetIndex);
+      const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
+      animateCardsToIndex(cards, targetIndex, activeIndex, total);
+    },
+    [activeIndex, total]
+  );
 
-    let currentActiveIndex = activeIndex;
-    const sliderWidth = slider.offsetWidth;
-    const threshold = 0.1;
-
-    // Generate draggers inside each card
-    const draggers: HTMLDivElement[] = [];
-    cards.forEach(card => {
-      const dragger = document.createElement('div');
-      dragger.setAttribute('data-flick-cards-dragger', '');
-      dragger.style.cssText = 'position: absolute; inset: 0; z-index: 100; pointer-events: auto; touch-action: pan-y; cursor: grab;';
-      card.appendChild(dragger);
-      draggers.push(dragger);
-    });
-
-    // Set initial drag status
-    slider.setAttribute('data-flick-drag-status', 'grab');
-
-    function getConfig(i: number, currentIndex: number) {
-      let diff = i - currentIndex;
-      if (diff > total / 2) diff -= total;
-      else if (diff < -total / 2) diff += total;
-
-      switch (diff) {
-        case  0: return { x: 0,   y: 0,   rot: 0,  s: 1,   o: 1, z: 50 };
-        case  1: return { x: 55,  y: 3,   rot: 25, s: 0.85, o: 0.9, z: 10 };
-        case -1: return { x: -55, y: 3,   rot: -25,s: 0.85, o: 0.9, z: 10 };
-        case  2: return { x: 80,  y: 8,   rot: 35, s: 0.7, o: 0.5, z: 5 };
-        case -2: return { x: -80, y: 8,   rot: -35,s: 0.7, o: 0.5, z: 5 };
-        default:
-          const dir = diff > 0 ? 1 : -1;
-          return { x: 100 * dir, y: 12, rot: 45 * dir, s: 0.5, o: 0, z: 1 };
-      }
-    }
-
-    function renderCards(newIndex: number) {
-      cards.forEach((card, i) => {
-        const cfg = getConfig(i, newIndex);
-        let status;
-
-        if (cfg.x === 0)        status = 'active';
-        else if (cfg.x === 55)  status = '2-after';
-        else if (cfg.x === -55) status = '2-before';
-        else if (cfg.x === 80)  status = '3-after';
-        else if (cfg.x === -80) status = '3-before';
-        else                    status = 'hidden';
-
-        card.setAttribute('data-flick-cards-item-status', status);
-
-        card.setAttribute('data-flick-cards-item-status', status);
-        
-        // Apply z-index to parent container
-        const parent = card.parentElement;
-        if (parent) {
-          parent.style.zIndex = String(cfg.z);
-        }
-
-        gsap.to(card, {
-          duration: 0.6,
-          ease: 'elastic.out(1.2, 1)',
-          xPercent: cfg.x,
-          yPercent: cfg.y,
-          rotation: cfg.rot,
-          scale: cfg.s,
-          opacity: cfg.o
-        });
-      });
-    }
-
-    renderCards(activeIndex);
-
-    if (total < 3) {
-      console.log('Need at least 3 cards for carousel');
-      return;
-    }
-
-    let pressClientX = 0;
-    let pressClientY = 0;
-
-    const draggableInstances = Draggable.create(draggers, {
-      type: 'x',
-      edgeResistance: 0.8,
-      bounds: { minX: -sliderWidth / 2, maxX: sliderWidth / 2 },
-      inertia: false,
-
-      onPress(this: Draggable) {
-        const evt = this.pointerEvent;
-        if ('clientX' in evt) {
-          pressClientX = evt.clientX;
-          pressClientY = evt.clientY;
-        }
-        slider.setAttribute('data-flick-drag-status', 'grabbing');
-        (this.target as HTMLElement).style.cursor = 'grabbing';
-      },
-
-      onDrag(this: Draggable) {
-        const rawProgress = this.x / sliderWidth;
-        const progress = Math.min(1, Math.abs(rawProgress));
-        const direction = rawProgress > 0 ? -1 : 1;
-        const nextIndex = (currentActiveIndex + direction + total) % total;
-
-        cards.forEach((card, i) => {
-          const from = getConfig(i, currentActiveIndex);
-          const to = getConfig(i, nextIndex);
-          const mix = (prop: keyof typeof from) => from[prop] + ((to[prop] as number) - (from[prop] as number)) * progress;
-
-          gsap.set(card, {
-            xPercent: mix('x'),
-            yPercent: mix('y'),
-            rotation: mix('rot'),
-            scale: mix('s'),
-            opacity: mix('o')
-          });
-        });
-      },
-
-      onRelease(this: Draggable) {
-        slider.setAttribute('data-flick-drag-status', 'grab');
-        (this.target as HTMLElement).style.cursor = 'grab';
-
-        const evt = this.pointerEvent;
-        let releaseClientX = 0;
-        let releaseClientY = 0;
-        if ('clientX' in evt) {
-          releaseClientX = evt.clientX;
-          releaseClientY = evt.clientY;
-        }
-        const dragDistance = Math.hypot(releaseClientX - pressClientX, releaseClientY - pressClientY);
-
-        const raw = this.x / sliderWidth;
-        let shift = 0;
-        if (raw > threshold) shift = -1;
-        else if (raw < -threshold) shift = 1;
-
-        if (shift !== 0) {
-          currentActiveIndex = (currentActiveIndex + shift + total) % total;
-          setActiveIndex(currentActiveIndex);
-          renderCards(currentActiveIndex);
-        }
-
-        gsap.to(this.target, {
-          x: 0,
-          duration: 0.3,
-          ease: 'power1.out'
-        });
-
-        if (dragDistance < 4) {
-          // Temporarily allow clicks to pass through
-          (this.target as HTMLElement).style.pointerEvents = 'none';
-
-          // Allow the DOM to register pointer-through
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              const el = document.elementFromPoint(releaseClientX, releaseClientY);
-              if (el) {
-                const evt = new MouseEvent('click', {
-                  view: window,
-                  bubbles: true,
-                  cancelable: true
-                });
-                el.dispatchEvent(evt);
-              }
-
-              // Restore pointer events
-              (this.target as HTMLElement).style.pointerEvents = 'auto';
-            });
-          });
-        }
-      }
-    });
-
-    draggersRef.current = draggableInstances;
-
-    // Cleanup
-    return () => {
-      draggableInstances.forEach(d => d.kill());
-      draggers.forEach(d => d.remove());
-    };
-  }, [activeIndex]);
+  const getInitialZIndex = useCallback(
+    (index: number) => {
+      const diff = index - activeIndex;
+      return diff === 0 ? CARD_POSITIONS.ACTIVE.zIndex : CARD_POSITIONS.ADJACENT_LEFT.zIndex;
+    },
+    [activeIndex]
+  );
 
   return (
     <section className="bg-black pt-16 pb-8 overflow-x-hidden">
@@ -247,64 +145,21 @@ export function Products() {
         </p>
 
         <div className="mb-4 flex justify-center gap-2.5">
-          {products.map((productId, idx) => {
-            const translationKey = productId === 'coming-soon' ? 'comingSoon' : productId;
+          {PRODUCTS.map((productId, idx) => {
+            const translationKey = getProductTranslationKey(productId);
+            const isActive = idx === activeIndex;
+
             return (
               <button
                 key={productId}
-                onClick={() => {
-                  if (activeIndex === idx) return;
-                  setActiveIndex(idx);
-                  
-                  const cards = cardsRef.current.filter(Boolean);
-                  cards.forEach((card, i) => {
-                    let diff = i - idx;
-                    if (diff > total / 2) diff -= total;
-                    else if (diff < -total / 2) diff += total;
-
-                    let targetCfg;
-                    switch (diff) {
-                      case  0: 
-                        targetCfg = { x: 0,   y: 0,   rot: 0,  s: 1,   o: 1, z: 50 };
-                        card.setAttribute('data-flick-cards-item-status', 'active');
-                        break;
-                      case  1: 
-                        targetCfg = { x: 55,  y: 3,   rot: 25, s: 0.85, o: 0.9, z: 10 };
-                        card.setAttribute('data-flick-cards-item-status', '2-after');
-                        break;
-                      case -1: 
-                        targetCfg = { x: -55, y: 3,   rot: -25, s: 0.85, o: 0.9, z: 10 };
-                        card.setAttribute('data-flick-cards-item-status', '2-before');
-                        break;
-                      default:
-                        targetCfg = { x: 0, y: 0, rot: 0, s: 0.5, o: 0, z: 1 };
-                        card.setAttribute('data-flick-cards-item-status', 'hidden');
-                    }
-
-                    // Apply z-index to parent container
-                    const parent = card.parentElement;
-                    if (parent) {
-                      parent.style.zIndex = String(targetCfg.z);
-                    }
-
-                    if (typeof gsap !== 'undefined' && gsap.to) {
-                      gsap.to(card, {
-                        duration: 0.6,
-                        ease: 'elastic.out(1.2, 1)',
-                        xPercent: targetCfg.x,
-                        yPercent: targetCfg.y,
-                        rotation: targetCfg.rot,
-                        scale: targetCfg.s,
-                        opacity: targetCfg.o
-                      });
-                    }
-                  });
-                }}
+                onClick={() => handleProductButtonClick(idx)}
                 className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${
-                  idx === activeIndex
+                  isActive
                     ? 'bg-white text-black'
                     : 'bg-white/4 text-white hover:bg-white/8'
                 }`}
+                aria-pressed={isActive}
+                aria-label={`Switch to ${t(`products.${translationKey}.name`)}`}
               >
                 {t(`products.${translationKey}.name`)}
               </button>
@@ -312,31 +167,38 @@ export function Products() {
           })}
         </div>
 
-        <div 
-          ref={sliderRef} 
+        <div
+          ref={sliderRef}
           data-flick-cards-init=""
           className="relative w-full"
           style={{ minHeight: '700px' }}
         >
-          <div className="opacity-0 pointer-events-none relative" style={{ width: '47em', margin: '0 auto' }}>
+          <div
+            className="opacity-0 pointer-events-none relative"
+            style={{ width: '47em', margin: '0 auto' }}
+          >
             <div style={{ paddingTop: '75%' }}></div>
           </div>
-          
+
           <div className="w-full h-full absolute top-0 left-0">
-            <div 
+            <div
               ref={listRef}
               data-flick-cards-list=""
               className="flex justify-center items-center w-full h-full relative"
             >
-              {products.map((productId, index) => {
-                // Set initial z-index based on position
-                const diff = index - activeIndex;
-                let initialZ = 10;
-                if (diff === 0) initialZ = 50;
-                
+              {PRODUCTS.map((productId, index) => {
+                const cardProps: ProductCardProps = {
+                  'data-flick-cards-item': '',
+                  'data-flick-cards-item-status': '',
+                };
+
                 return (
-                  <div key={productId} className="absolute" style={{ zIndex: initialZ }}>
-                    {renderCard(productId, index)}
+                  <div
+                    key={productId}
+                    className="absolute"
+                    style={{ zIndex: getInitialZIndex(index) }}
+                  >
+                    {renderProductCard(productId, index, cardProps, getCardRef(index))}
                   </div>
                 );
               })}
