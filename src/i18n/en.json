@@ -45,6 +45,9 @@
   "partners": {
     "title": "Powered by trusted brands"
   },
+  "socialMedia": {
+    "title": "Social Media",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
   "products": {
     "title": "Learn everything about our products",
     "description": "Discover innovative solutions designed to transform how you interact with decentralized finance and real-world assets.",
@@ -74,4 +77,3 @@
     }
   }
 }
-
