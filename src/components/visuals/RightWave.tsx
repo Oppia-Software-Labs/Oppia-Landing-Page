@@ -33,4 +33,3 @@ export function RightWave() {
     </div>
   );
 }
-

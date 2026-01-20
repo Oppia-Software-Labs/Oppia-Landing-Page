@@ -13,12 +13,12 @@ export function MenuButton({ isOpen, onToggle }: MenuButtonProps) {
   const { t } = useTranslations(locale);
 
   return (
-    <button
-      onClick={onToggle}
-      className="flex items-center gap-2 rounded-full bg-white/4 px-4 py-2 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-white/8"
-      aria-label={isOpen ? t('navbar.closeMenu') : t('navbar.menu')}
-      aria-expanded={isOpen}
-    >
+        <button
+          onClick={onToggle}
+          className="flex items-center gap-2 rounded-full bg-white/4 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-white/8"
+          aria-label={isOpen ? t('navbar.closeMenu') : t('navbar.menu')}
+          aria-expanded={isOpen}
+        >
       <div className="relative h-5 w-5">
         <svg
           className={`absolute h-5 w-5 transition-opacity duration-300 ease-out ${
