@@ -121,5 +121,16 @@
         "answer": "You can explore our projects, download Geko, or contact us directly for more information about our products and services."
       }
     ]
+  },
+  "cta": {
+    "topTextLeft": "Connect with our community and stay updated\nwith the latest news.",
+    "topTextRight": "Follow us for more updates\nin our products.",
+    "description": "Join our community and stay connected with the latest updates, news, and opportunities.",
+    "socials": {
+      "instagram": "Instagram",
+      "twitter": "Twitter (X)",
+      "discord": "Discord",
+      "linkedin": "LinkedIn"
+    }
   }
 }
