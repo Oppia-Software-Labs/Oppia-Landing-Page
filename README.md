@@ -44,7 +44,8 @@ src/
 ├── modules/                # Application modules (feature-based)
 │   ├── hero/              # Hero module
 │   │   └── Hero.tsx
-│   ├── partners/          # Partners module (future)
+│   ├── partners/          # Partners module
+│   │   └── Partners.tsx
 │   └── projects/          # Projects module (future)
 │
 ├── constants/              # Centralized constants

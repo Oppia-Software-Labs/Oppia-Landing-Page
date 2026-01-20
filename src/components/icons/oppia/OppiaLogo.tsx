@@ -9,7 +9,7 @@ export function OppiaLogo({
 }: LogoProps) {
   return (
     <Image
-      src="/oppia-logos/imagotypes/Oppia-Imagotype-White.svg"
+      src="/oppia-logos/imagotypes/Oppia-Imagotype-white.svg"
       alt="Oppia"
       width={width}
       height={height}

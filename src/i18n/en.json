@@ -48,5 +48,32 @@
   "socialMedia": {
     "title": "Social Media",
     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
+  "products": {
+    "title": "Learn everything about our products",
+    "description": "Discover innovative solutions designed to transform how you interact with decentralized finance and real-world assets.",
+    "neko": {
+      "name": "Neko",
+      "tags": "RWA,DEFI,Stocks",
+      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "cta": "See project"
+    },
+    "geko": {
+      "name": "Geko",
+      "tags": "Finance,AI Agent,Mobile",
+      "description": "AI-powered blockchain platform that teaches financial literacy and helps people manage money effectively",
+      "cta": "See project"
+    },
+    "comingSoon": {
+      "name": "Deko",
+      "tag": "Coming Soon",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "cta": "Stay Updated"
+    },
+    "deko": {
+      "name": "Deko",
+      "tags": "Web3,Finance,Mobile",
+      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "cta": "See project"
+    }
   }
 }
