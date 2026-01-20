@@ -45,33 +45,33 @@
   "partners": {
     "title": "Powered by trusted brands"
   },
-  "faq": {
-    "badge": "Have questions?",
-    "titleLine1": "We have every",
-    "titleLine2": "answer you need",
-    "description": "Find answers to common questions about Oppia, our mission, technology, and how you can get involved.",
-    "faqsData": [
-      {
-        "question": "What is Oppia?",
-        "answer": "Oppia Software Labs (OS Labs) is a Web3 innovation studio dedicated to building open-source, decentralized solutions with real-world impact. We believe in decentralization, transparency, and user empowerment. We create technology that makes a meaningful difference."
-      },
-      {
-        "question": "What is the mission of Oppia?",
-        "answer": "To harness the potential of blockchain and Web3 technologies to design scalable, impactful solutions that improve how people interact with everyday systems; starting with social good, and expanding into DeFi and beyond."
-      },
-      {
-        "question": "What techstack does Oppia use?",
-        "answer": "We have experimented with multiple techstacks across our projects, from Ethereum to Stellar and beyond. We are currently focused on building on Stellar, but we are always experimenting with new technologies and platforms."
-      },
-      {
-        "question": "What is Oppia most proud of?",
-        "answer": "Our commitment to building open-source, decentralized solutions with real-world impact. We are proud to be a part of the Web3 community and to be building technology that makes a meaningful difference."
-      },
-      {
-        "question": "Can I contribute to Oppia?",
-        "answer": "Yes, we are always looking for new contributors to help us build in our open-source projects. Reach out to us if you are interested in contributing with Oppia or checkout our projects on platforms like Drips or GrantFox."
-      }
-    ]
+  "products": {
+    "title": "Learn everything about our products",
+    "description": "Discover innovative solutions designed to transform how you interact with decentralized finance and real-world assets.",
+    "neko": {
+      "name": "Neko",
+      "tags": "RWA,DEFI,Stocks",
+      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "cta": "See project"
+    },
+    "geko": {
+      "name": "Geko",
+      "tags": "Finance,AI Agent,Mobile",
+      "description": "AI-powered blockchain platform that teaches financial literacy and helps people manage money effectively",
+      "cta": "See project"
+    },
+    "comingSoon": {
+      "name": "Deko",
+      "tag": "Coming Soon",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "cta": "Stay Updated"
+    },
+    "deko": {
+      "name": "Deko",
+      "tags": "Web3,Finance,Mobile",
+      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "cta": "See project"
+    }
   }
 }
 
