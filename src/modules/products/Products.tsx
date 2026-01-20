@@ -66,7 +66,7 @@ export function Products() {
     cards.forEach(card => {
       const dragger = document.createElement('div');
       dragger.setAttribute('data-flick-cards-dragger', '');
-      dragger.style.cssText = 'position: absolute; inset: 0; z-index: 1; pointer-events: auto; touch-action: pan-y;';
+      dragger.style.cssText = 'position: absolute; inset: 0; z-index: 100; pointer-events: auto; touch-action: pan-y; cursor: grab;';
       card.appendChild(dragger);
       draggers.push(dragger);
     });
@@ -142,9 +142,13 @@ export function Products() {
       inertia: false,
 
       onPress(this: Draggable) {
-        pressClientX = this.pointerEvent.clientX;
-        pressClientY = this.pointerEvent.clientY;
+        const evt = this.pointerEvent;
+        if ('clientX' in evt) {
+          pressClientX = evt.clientX;
+          pressClientY = evt.clientY;
+        }
         slider.setAttribute('data-flick-drag-status', 'grabbing');
+        (this.target as HTMLElement).style.cursor = 'grabbing';
       },
 
       onDrag(this: Draggable) {
@@ -170,9 +174,15 @@ export function Products() {
 
       onRelease(this: Draggable) {
         slider.setAttribute('data-flick-drag-status', 'grab');
+        (this.target as HTMLElement).style.cursor = 'grab';
 
-        const releaseClientX = this.pointerEvent.clientX;
-        const releaseClientY = this.pointerEvent.clientY;
+        const evt = this.pointerEvent;
+        let releaseClientX = 0;
+        let releaseClientY = 0;
+        if ('clientX' in evt) {
+          releaseClientX = evt.clientX;
+          releaseClientY = evt.clientY;
+        }
         const dragDistance = Math.hypot(releaseClientX - pressClientX, releaseClientY - pressClientY);
 
         const raw = this.x / sliderWidth;
