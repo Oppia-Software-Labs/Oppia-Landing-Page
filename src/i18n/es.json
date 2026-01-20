@@ -76,5 +76,50 @@
       "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
       "cta": "Ver proyecto"
     }
+  },
+  "footer": {
+    "description": "Construimos sistemas descentralizados con impacto real. Tecnología que empodera a personas y organizaciones.",
+    "links": {
+      "title": "Enlaces",
+      "features": "Características",
+      "solutions": "Soluciones",
+      "advantages": "Ventajas",
+      "faq": "Preguntas Frecuentes"
+    },
+    "resources": {
+      "title": "Recursos",
+      "contact": "Contacto",
+      "downloadGeko": "Descargar Geko",
+      "about": "Sobre nosotros"
+    },
+    "socials": {
+      "title": "Redes Sociales",
+      "instagram": "Instagram",
+      "twitter": "Twitter (X)",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "discord": "Discord"
+    },
+    "copyright": "2026 © Oppia Labs - Todos los derechos reservados"
+  },
+  "faq": {
+    "badge": "Preguntas Frecuentes",
+    "titleLine1": "Preguntas",
+    "titleLine2": "Frecuentes",
+    "description": "Encuentra respuestas a preguntas comunes sobre nuestros productos y servicios.",
+    "faqsData": [
+      {
+        "question": "¿Qué es Oppia?",
+        "answer": "Oppia construye sistemas descentralizados diseñados para impacto real. Creamos tecnología que empodera a personas, constructores y organizaciones para avanzar con confianza."
+      },
+      {
+        "question": "¿Qué productos ofrece Oppia?",
+        "answer": "Ofrecemos Neko, Geko y Deko - soluciones innovadoras diseñadas para transformar cómo interactúas con las finanzas descentralizadas y los activos del mundo real."
+      },
+      {
+        "question": "¿Cómo puedo comenzar?",
+        "answer": "Puedes explorar nuestros proyectos, descargar Geko, o contactarnos directamente para más información sobre nuestros productos y servicios."
+      }
+    ]
   }
 }

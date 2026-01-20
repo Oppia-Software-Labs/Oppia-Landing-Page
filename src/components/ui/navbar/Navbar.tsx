@@ -16,14 +16,14 @@ export function Navbar() {
     <>
       {showBackdrop && (
         <div
-          className={`fixed inset-0 z-40 bg-black/60 ${
+          className={`fixed inset-0 z-[9998] bg-black/60 ${
             isClosing ? 'backdrop-fade-out' : 'backdrop-fade-in'
           }`}
           onClick={toggleMenu}
           aria-hidden="true"
         />
       )}
-      <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+      <nav className="fixed top-4 left-0 right-0 z-[9999] flex justify-center px-4">
         <div 
           className={`flex backdrop-blur-sm ${
             isMenuOpen && !isClosing

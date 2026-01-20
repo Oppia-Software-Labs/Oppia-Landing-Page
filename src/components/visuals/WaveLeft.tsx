@@ -10,7 +10,7 @@ export function WaveLeft({ className = '' }: WaveLeftProps) {
   return (
     <div className={`absolute bottom-0 left-0 z-0 ${className}`}>
       <Image
-        src="/oppia-projects/wave-left.svg"
+        src="/visuals/projects-cards/wave-left.svg"
         alt=""
         width={400}
         height={480}

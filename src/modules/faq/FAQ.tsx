@@ -4,7 +4,7 @@ import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { X } from 'lucide-react'; 
 import { ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FAQItem {
   question: string;
@@ -17,7 +17,7 @@ export function FAQ() {
   const setFaqOpenIndex = useAppStore((state) => state.setFaqOpenIndex);
   const { t } = useTranslations(locale);
 
-  const faqsData = (t('faq.faqsData') as unknown) as FAQItem[];
+  const faqsData = (t('faq.faqsData') as unknown) as FAQItem[] || [];
 
   return (
     <section className="bg-black py-16 px-4 sm:px-6 lg:px-8">
@@ -50,7 +50,7 @@ export function FAQ() {
               }}
               className={`relative overflow-hidden rounded-2xl transition-[background,border-color] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                 faqOpenIndex === index
-                  ? 'border-transparent bg-gradient-to-b from-[#03A7FF] to-[#001E68]'
+                  ? 'border-transparent bg-gradient-to-b from-[#03A7FF] to-[#00398F]'
                   : 'border bg-[#080808] hover:border-[#303130]'
               }`}
             >
