@@ -15,13 +15,13 @@ export function LanguageButton() {
   };
 
   return (
-    <button
-      onClick={toggleLanguage}
-      className="flex items-center gap-1.5 rounded-full bg-white/4 px-4 py-2 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-white/8"
-      aria-label={t('navbar.changeLanguage')}
-    >
+        <button
+          onClick={toggleLanguage}
+          className="flex items-center gap-1.5 rounded-full bg-white/4 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-white/8"
+          aria-label={t('navbar.changeLanguage')}
+        >
       <svg
-        className="h-4 w-4"
+        className="h-5 w-5"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

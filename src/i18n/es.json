@@ -48,5 +48,32 @@
   "socialMedia": {
     "title": "Redes Sociales",
     "description": "Lorem Ipsum es simplemente texto de relleno de la industria de impresión y composición tipográfica. Lorem Ipsum ha sido el texto de relleno estándar de la industria"
+  "products": {
+    "title": "Conoce todo sobre nuestros productos",
+    "description": "Descubre soluciones innovadoras diseñadas para transformar cómo interactúas con las finanzas descentralizadas y los activos del mundo real.",
+    "neko": {
+      "name": "Neko",
+      "tags": "RWA,DEFI,Stocks",
+      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "cta": "Ver proyecto"
+    },
+    "geko": {
+      "name": "Geko",
+      "tags": "Finance,AI Agent,Mobile",
+      "description": "Plataforma blockchain impulsada por IA que enseña educación financiera y ayuda a las personas a gestionar su dinero de manera efectiva",
+      "cta": "Ver proyecto"
+    },
+    "comingSoon": {
+      "name": "Deko",
+      "tag": "Coming Soon",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "cta": "Mantente al día"
+    },
+    "deko": {
+      "name": "Deko",
+      "tags": "Web3,Finanzas,Mobile",
+      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "cta": "Ver proyecto"
+    }
   }
 }
