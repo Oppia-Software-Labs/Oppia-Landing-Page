@@ -1,7 +1,14 @@
 interface LinkedInIconProps {
+  /** CSS classes to apply to the icon */
   className?: string;
 }
 
+/**
+ * LinkedIn icon component
+ * 
+ * @param props - Component props
+ * @param props.className - Optional CSS classes
+ */
 export function LinkedInIcon({ className }: LinkedInIconProps) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

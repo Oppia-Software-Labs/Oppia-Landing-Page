@@ -22,7 +22,7 @@ export const CARD_POSITIONS = {
   ADJACENT_RIGHT: {
     x: 55,
     y: 3,
-    rotation: 25,
+    rotation: 0,
     scale: 0.85,
     opacity: 0.9,
     zIndex: 10,
@@ -31,7 +31,7 @@ export const CARD_POSITIONS = {
   ADJACENT_LEFT: {
     x: -55,
     y: 3,
-    rotation: -25,
+    rotation: 0,
     scale: 0.85,
     opacity: 0.9,
     zIndex: 10,
@@ -40,7 +40,7 @@ export const CARD_POSITIONS = {
   FAR_RIGHT: {
     x: 80,
     y: 8,
-    rotation: 35,
+    rotation: 0,
     scale: 0.7,
     opacity: 0.5,
     zIndex: 5,
@@ -49,7 +49,7 @@ export const CARD_POSITIONS = {
   FAR_LEFT: {
     x: -80,
     y: 8,
-    rotation: -35,
+    rotation: 0,
     scale: 0.7,
     opacity: 0.5,
     zIndex: 5,
@@ -58,7 +58,7 @@ export const CARD_POSITIONS = {
   HIDDEN: {
     x: 100,
     y: 12,
-    rotation: 45,
+    rotation: 0,
     scale: 0.5,
     opacity: 0,
     zIndex: 1,

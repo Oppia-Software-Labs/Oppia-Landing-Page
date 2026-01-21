@@ -7,7 +7,7 @@ export function LeftWave() {
         viewBox="0 0 1264 1178"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute left-0 top-0 h-full w-auto opacity-80"
+        className="absolute left-0 top-0 h-full w-auto opacity-80 scale-[0.3] sm:scale-[0.5] md:scale-[0.7] lg:scale-100 origin-left"
         aria-hidden="true"
         preserveAspectRatio="xMinYMin meet"
       >

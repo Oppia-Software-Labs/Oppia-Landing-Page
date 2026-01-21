@@ -1,7 +1,14 @@
 interface InstagramIconProps {
+  /** CSS classes to apply to the icon */
   className?: string;
 }
 
+/**
+ * Instagram icon component
+ * 
+ * @param props - Component props
+ * @param props.className - Optional CSS classes
+ */
 export function InstagramIcon({ className }: InstagramIconProps) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

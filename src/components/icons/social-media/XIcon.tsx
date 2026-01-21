@@ -1,7 +1,14 @@
 interface XIconProps {
+  /** CSS classes to apply to the icon */
   className?: string;
 }
 
+/**
+ * X (formerly Twitter) icon component
+ * 
+ * @param props - Component props
+ * @param props.className - Optional CSS classes
+ */
 export function XIcon({ className }: XIconProps) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

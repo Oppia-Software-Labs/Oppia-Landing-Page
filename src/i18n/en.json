@@ -47,7 +47,7 @@
   },
   "socialMedia": {
     "title": "Social Media",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
+    "description": "Stay connected with us. Follow our journey as we build decentralized systems and share updates, insights, and opportunities with our community."
   },
   "products": {
     "title": "Learn everything about our products",
@@ -132,5 +132,9 @@
       "discord": "Discord",
       "linkedin": "LinkedIn"
     }
+  },
+  "team": {
+    "title": "Meet Our Team",
+    "description": "The talented individuals building the future of decentralized systems."
   }
 }

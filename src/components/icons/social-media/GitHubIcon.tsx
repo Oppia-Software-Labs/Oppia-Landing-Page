@@ -1,7 +1,14 @@
 interface GitHubIconProps {
+  /** CSS classes to apply to the icon */
   className?: string;
 }
 
+/**
+ * GitHub icon component
+ * 
+ * @param props - Component props
+ * @param props.className - Optional CSS classes
+ */
 export function GitHubIcon({ className }: GitHubIconProps) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

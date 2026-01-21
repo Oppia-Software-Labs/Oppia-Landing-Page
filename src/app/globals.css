@@ -380,3 +380,91 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.section-resource {
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  padding-top: 7.5em;
+  padding-bottom: 7.5em;
+  display: flex;
+  background-color: #000;
+}
+
+.section-resource__collection {
+  flex: 1;
+  justify-content: center;
+  max-width: 80em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.section-resource__list {
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  flex-flow: nowrap;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* Team Card Styles - Responsive widths only (rest migrated to Tailwind) */
+@media screen and (min-width: 640px) and (max-width: 991px) {
+  .team-card-item {
+    width: calc(50% - 0.5px - 1em);
+    min-width: calc(50% - 0.5px - 1em);
+    max-width: calc(50% - 0.5px - 1em);
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .team-card-item {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Team cards container - smooth scroll and no side borders */
+.team-cards-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.team-cards-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Active card state styling */
+[data-flick-cards-item-status="active"] [data-momentum-hover-target] {
+  border-color: rgba(211, 255, 91, 0.3);
+  box-shadow: 0 8px 16px rgba(211, 255, 91, 0.1), 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Flick Cards Drag Status */
+[data-flick-cards-init][data-flick-drag-status="grab"] {
+  cursor: grab;
+}
+
+[data-flick-cards-init][data-flick-drag-status="grab"] * {
+  cursor: grab;
+}
+
+[data-flick-cards-init][data-flick-drag-status="grabbing"] {
+  cursor: grabbing;
+}
+
+[data-flick-cards-init][data-flick-drag-status="grabbing"] * {
+  cursor: grabbing;
+}
+
+/* Flick Cards Item Status Styles */
+[data-flick-cards-item-status="hidden"] {
+  pointer-events: none;
+}
+
+[data-flick-cards-item-status="active"] {
+  pointer-events: auto;
+}

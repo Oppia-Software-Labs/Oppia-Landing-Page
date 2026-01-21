@@ -47,7 +47,7 @@
   },
   "socialMedia": {
     "title": "Redes Sociales",
-    "description": "Lorem Ipsum es simplemente texto de relleno de la industria de impresión y composición tipográfica. Lorem Ipsum ha sido el texto de relleno estándar de la industria"
+    "description": "Mantente conectado con nosotros. Sigue nuestro viaje mientras construimos sistemas descentralizados y compartimos actualizaciones, perspectivas y oportunidades con nuestra comunidad."
   },
   "products": {
     "title": "Conoce todo sobre nuestros productos",
@@ -132,5 +132,9 @@
       "discord": "Discord",
       "linkedin": "LinkedIn"
     }
+  },
+  "team": {
+    "title": "Conoce Nuestro Equipo",
+    "description": "Los talentosos individuos que construyen el futuro de los sistemas descentralizados."
   }
 }
