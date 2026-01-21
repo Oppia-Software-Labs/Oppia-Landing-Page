@@ -33,7 +33,7 @@ function SocialMediaCardComponent({ post, isCenter = false }: SocialMediaCardPro
       </header>
 
       <div className="mb-4 flex flex-1 items-center overflow-hidden">
-        <p className="text-xs leading-relaxed text-white line-clamp-5 whitespace-pre-line">
+        <p className="text-sm leading-relaxed text-white line-clamp-5 whitespace-pre-line">
           {textSegments.map((segment, index) => {
             if (segment.isHashtag) {
               return (

@@ -11,6 +11,7 @@ import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { XIcon } from '@/components/icons/social-media/XIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
 import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
+import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 
 export function CTA() {
   const locale = useAppStore((state) => state.locale);
@@ -22,7 +23,7 @@ export function CTA() {
   }));
 
   return (
-    <section className="relative bg-black overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+    <section className={`relative bg-black overflow-hidden ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
       <div className="relative z-10 mx-auto max-w-7xl">
         {/* Top Text Sections */}
         <div className="mb-8 flex flex-col gap-4 text-center">

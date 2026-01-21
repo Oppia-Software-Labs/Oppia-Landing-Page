@@ -6,6 +6,7 @@ import { useSocialMediaPosts } from '@/hooks/useSocialMediaPosts';
 import { SocialMediaCard } from '@/components/social-media/SocialMediaCard';
 import Marquee from '@/components/ui/marquee';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 
 export function SocialMedia() {
   const locale = useAppStore((state) => state.locale);
@@ -17,7 +18,7 @@ export function SocialMedia() {
 
   return (
     <section
-      className="bg-black py-16 px-4 sm:px-6 lg:px-8"
+      className={`bg-black ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}
       aria-labelledby="social-media-title"
     >
       <div className="mx-auto max-w-7xl">

@@ -16,28 +16,8 @@ interface SectionHeaderProps {
   badge?: ReactNode;
 }
 
-/**
- * SectionHeader component for displaying section titles and descriptions
- * 
- * Provides a consistent header style across different sections of the site.
- * Supports responsive typography and optional badges.
- * 
- * @param props - Component props
- * @param props.title - Section title (required)
- * @param props.subtitle - Optional section description
- * @param props.className - Additional classes for the header
- * @param props.titleClassName - Additional classes for the title
- * @param props.subtitleClassName - Additional classes for the subtitle
- * @param props.badge - Optional badge element
- * 
- * @example
- * ```tsx
- * <SectionHeader 
- *   title="Our Team" 
- *   subtitle="Meet the amazing people behind our company"
- * />
- * ```
- */
+
+
 export function SectionHeader({
   title,
   subtitle,

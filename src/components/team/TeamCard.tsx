@@ -43,29 +43,30 @@ export function TeamCard({ member }: TeamCardProps) {
       >
         <div 
           data-momentum-hover-target="" 
-          className="text-white rounded-[1.5em] w-full relative overflow-hidden border border-white/15 shadow-[0_4px_6px_rgba(0,0,0,0.3)] transition-[border-color,box-shadow] duration-300 ease-in-out"
+          className="text-white rounded-[1.5em] w-full relative overflow-hidden border border-white/15 shadow-[0_4px_6px_rgba(0,0,0,0.3)] transition-[border-color,box-shadow] duration-300 ease-in-out p-5"
         >
           <div className="pointer-events-none pt-[150%]"></div>
-          <div className="absolute top-0 left-0 w-full h-full z-0">
+          <div className="absolute top-5 left-5 right-5 bottom-5 z-0 overflow-hidden rounded-[1.2em]">
             <Image
               src={member.image}
               alt={member.name}
               fill
-              className="object-cover"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               priority
+              style={{ objectPosition: 'center top' }}
             />
           </div>
           <div 
-            className="absolute top-0 left-0 w-full h-full flex flex-col justify-end gap-2 z-[2]"
-            style={{ padding: `0 ${TEAM_CARD.PADDING.SIDES} ${TEAM_CARD.PADDING.BOTTOM} ${TEAM_CARD.PADDING.SIDES}`, paddingTop: '20em' }}
+            className="absolute top-0 left-0 w-full h-full flex flex-col justify-end gap-2 z-[2] pointer-events-none"
+            style={{ padding: `0 ${TEAM_CARD.PADDING.SIDES} ${TEAM_CARD.PADDING.BOTTOM} ${TEAM_CARD.PADDING.SIDES}` }}
           >
             <div className="flex items-center justify-start gap-1">
               <h3 className="m-0 mb-1 text-2xl font-medium leading-none">{member.name}</h3>
               <VerifiedCheckIcon className="w-6" />
             </div>
             <p className="opacity-67 m-0 text-base font-normal leading-none">{member.role}</p>
-            <div className="mt-4 flex flex-col gap-2">
+            <div className="mt-4 flex flex-col gap-2 pointer-events-auto">
               <div className="flex gap-3">
                 {member.socialLinks.twitter && (
                   <a

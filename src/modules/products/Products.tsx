@@ -10,6 +10,7 @@ import { useCarouselAnimation } from '@/hooks/useCarouselAnimation';
 import { CAROUSEL_CONFIG, CARD_POSITIONS } from '@/constants/carousel';
 import { gsap } from 'gsap';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 
 type ProductId = 'neko' | 'geko' | 'coming-soon';
 
@@ -136,11 +137,12 @@ export function Products() {
   );
 
   return (
-    <section className="bg-black pt-16 pb-8 overflow-x-hidden">
-      <div className="w-full">
+    <section className={`bg-black ${SECTION_SPACING.MEDIUM} overflow-x-hidden`}>
+      <div className={`w-full ${CONTAINER_PADDING.HORIZONTAL}`}>
         <SectionHeader
           title={t('products.title')}
           subtitle={t('products.description')}
+          className="mb-8"
         />
 
         <div className="mb-4 flex justify-center gap-2.5">
@@ -155,7 +157,7 @@ export function Products() {
                 className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${
                   isActive
                     ? 'bg-white text-black'
-                    : 'bg-white/4 text-white hover:bg-white/8'
+                    : 'bg-white/50 text-white hover:bg-white/60'
                 }`}
                 aria-pressed={isActive}
                 aria-label={`Switch to ${t(`products.${translationKey}.name`)}`}

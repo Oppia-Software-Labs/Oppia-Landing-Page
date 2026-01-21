@@ -6,6 +6,7 @@ import { useMomentumHover } from '@/hooks/useMomentumHover';
 import { teamMembers } from '@/utils/getTeamMembers';
 import { TeamCard } from '@/components/team/TeamCard';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 
 /**
  * Team section component
@@ -28,10 +29,10 @@ export function Team() {
 
   return (
     <section
-      className="bg-black py-16"
+      className={`bg-black ${SECTION_SPACING.MEDIUM}`}
       data-momentum-hover-init=""
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className={`mx-auto max-w-7xl ${CONTAINER_PADDING.HORIZONTAL}`}>
         <SectionHeader
           title={t('team.title')}
           subtitle={t('team.description')}

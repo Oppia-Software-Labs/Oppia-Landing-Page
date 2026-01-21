@@ -6,6 +6,7 @@ import { X } from 'lucide-react';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 
 interface FAQItem {
   question: string;
@@ -21,7 +22,7 @@ export function FAQ() {
   const faqsData = (t('faq.faqsData') as unknown) as FAQItem[] || [];
 
   return (
-    <section className="bg-black py-16 px-4 sm:px-6 lg:px-8">
+    <section className={`bg-black ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
       <div className="mx-auto max-w-4xl">
         <SectionHeader
           title={
@@ -33,6 +34,7 @@ export function FAQ() {
           }
           subtitle={t('faq.description')}
           subtitleClassName="mx-auto max-w-xl"
+          className="mb-8"
         />
 
         <div className="space-y-4">

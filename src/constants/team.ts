@@ -12,8 +12,10 @@ export const TEAM_CARD = {
   PADDING: {
     TOP: '0',
     SIDES: '2em',
-    BOTTOM: '2em',
+    BOTTOM: '1em',
   },
+  /** Content margin from top - used to push content down */
+  CONTENT_TOP_MARGIN: '0',
   /** Border radius */
   BORDER_RADIUS: '1.5em',
   /** Border width */
