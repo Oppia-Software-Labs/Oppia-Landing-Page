@@ -5,6 +5,7 @@ import { ProductCardBase } from './ProductCardBase';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { forwardRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface NekoCardProps {
   'data-flick-cards-item': string;
@@ -14,6 +15,7 @@ interface NekoCardProps {
 export const NekoCard = forwardRef<HTMLDivElement, NekoCardProps>((props, ref) => {
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
+  const router = useRouter();
 
   const tags = t('products.neko.tags').split(',');
   const description = t('products.neko.description');
@@ -21,6 +23,10 @@ export const NekoCard = forwardRef<HTMLDivElement, NekoCardProps>((props, ref) =
 
   const status = props['data-flick-cards-item-status'] || '';
   const isActive = status === 'active' || !status;
+
+  const handleSeeProject = () => {
+    router.push('/projects/neko');
+  };
 
   return (
     <div
@@ -52,6 +58,7 @@ export const NekoCard = forwardRef<HTMLDivElement, NekoCardProps>((props, ref) =
             </p>
 
             <button
+              onClick={handleSeeProject}
               className="mb-5 w-fit rounded-full px-8 py-2.5 text-sm font-medium bg-gray-300 text-black hover:bg-gray-400 transition-all duration-400"
               style={{
                 transitionTimingFunction: 'cubic-bezier(0.625, 0.05, 0, 1)',

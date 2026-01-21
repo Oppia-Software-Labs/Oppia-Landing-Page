@@ -5,14 +5,14 @@
 /** Team card dimensions and styling */
 export const TEAM_CARD = {
   /** Card width in pixels */
-  WIDTH: 300,
+  WIDTH: 330,
   /** Aspect ratio for team cards (height/width) */
-  ASPECT_RATIO: 1.5,
+  ASPECT_RATIO: 1.6,
   /** Padding values */
   PADDING: {
-    TOP: '0',
+    TOP: '0.5em',
     SIDES: '2em',
-    BOTTOM: '1em',
+    BOTTOM: '1.0em',
   },
   /** Content margin from top - used to push content down */
   CONTENT_TOP_MARGIN: '0',
@@ -61,3 +61,4 @@ export const TEAM_SPACING = {
   SOCIAL_MARGIN_TOP: '1rem',
 } as const;
 
+   

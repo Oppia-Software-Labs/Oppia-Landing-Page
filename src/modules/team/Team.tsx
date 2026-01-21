@@ -38,7 +38,7 @@ export function Team() {
           subtitle={t('team.description')}
           className="mb-12"
         />
-      </div>
+          </div>
 
       <div className="flex flex-nowrap justify-center gap-8 overflow-x-auto scroll-smooth team-cards-container">
         {teamMembers.map((member) => (

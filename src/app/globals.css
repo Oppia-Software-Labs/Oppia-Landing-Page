@@ -414,15 +414,15 @@ body {
     width: calc(50% - 0.5px - 1em);
     min-width: calc(50% - 0.5px - 1em);
     max-width: calc(50% - 0.5px - 1em);
-  }
+}
 }
 
 @media screen and (max-width: 639px) {
   .team-card-item {
-    width: 100%;
+  width: 100%;
     min-width: 100%;
     max-width: 100%;
-  }
+}
 }
 
 /* Team cards container - smooth scroll and no side borders */
@@ -463,7 +463,7 @@ body {
 /* Flick Cards Item Status Styles */
 [data-flick-cards-item-status="hidden"] {
   pointer-events: none;
-}
+  }
 
 [data-flick-cards-item-status="active"] {
   pointer-events: auto;

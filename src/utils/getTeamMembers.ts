@@ -16,7 +16,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Santiago Villarreal',
     role: 'Backend Engineer & Co-Founder',
     description: 'Building decentralized systems for real-world impact.',
-    image: '/team/Santiago-Villarreal.png',
+    image: '/team/Santiago-Arley.svg',
     socialLinks: {
       twitter: 'https://x.com/Villarley_',
       linkedin: 'https://www.linkedin.com/in/SantiagoVillarrealArley',
@@ -29,7 +29,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Kevin Latino',
     role: 'Frontend Engineer & Co-Founder',
     description: 'Creating technology that empowers builders and organizations.',
-    image: '/team/Kevin-Latino.png',
+    image: '/team/Kevin-Latino.svg',
     socialLinks: {
       twitter: 'https://x.com/KevinLatino_',
       linkedin: 'https://www.linkedin.com/in/kevinlatino',
@@ -40,9 +40,9 @@ export const teamMembers: TeamMember[] = [
   {
     id: '3',
     name: 'Matias Aguilar',
-    role: 'Smart Contracts Engineer & Co-Founder',
+    role: 'SC Engineer & Co-Founder',
     description: 'Building secure and efficient smart contracts for decentralized applications.',
-    image: '/team/Matias-Aguilar.png',
+    image: '/team/Matias-Aguilar.svg',
     socialLinks: {
       twitter: 'https://x.com/aguilar1x1',
       linkedin: 'https://www.linkedin.com/in/aguilar1x/',
@@ -55,7 +55,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Fabian Sanchez',
     role: 'Full Stack Engineer & Co-Founder',
     description: 'Designing and developing end-to-end solutions for the decentralized web.',
-    image: '/team/Fabian-Sanchez.png',
+    image: '/team/Fabian-Sanchez.svg',
     socialLinks: {
       twitter: 'https://x.com/fabiansanchd',
       linkedin: 'https://www.linkedin.com/in/fabian-sanchez-d',

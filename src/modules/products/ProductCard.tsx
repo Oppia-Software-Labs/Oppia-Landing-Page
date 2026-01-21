@@ -80,19 +80,6 @@ export function ProductCard({ product, position, isActive, isTransitioning: _isT
             </button>
           </div>
         </div>
-
-        {product.id === 'geko' && isActive && (
-          <div className="absolute bottom-0 right-0 z-20">
-            <Image
-              src="/oppia-projects/Geko.png"
-              alt="Geko"
-              width={350}
-              height={350}
-              className="h-[350px] w-[350px]"
-              priority
-            />
-          </div>
-        )}
       </ProductCardBase>
     </div>
   );

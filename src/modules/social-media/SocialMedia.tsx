@@ -13,7 +13,6 @@ export function SocialMedia() {
   const { t } = useTranslations(locale);
   const { posts } = useSocialMediaPosts();
 
-  // Duplicar los posts para crear un loop infinito
   const duplicatedPosts = [...posts, ...posts, ...posts];
 
   return (

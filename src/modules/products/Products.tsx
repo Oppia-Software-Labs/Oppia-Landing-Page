@@ -17,6 +17,10 @@ type ProductId = 'neko' | 'geko' | 'coming-soon';
 
 const PRODUCTS: ProductId[] = ['neko', 'geko', 'coming-soon'];
 
+function getProjectSlug(productId: ProductId): string {
+  return productId === 'coming-soon' ? 'deko' : productId;
+}
+
 interface ProductCardProps {
   'data-flick-cards-item': string;
   'data-flick-cards-item-status': string;
@@ -154,7 +158,9 @@ export function Products() {
             return (
               <button
                 key={productId}
-                onClick={() => handleProductButtonClick(idx)}
+                onClick={() => {
+                  handleProductButtonClick(idx);
+                }}
                 className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${
                   isActive
                     ? 'bg-white text-black'

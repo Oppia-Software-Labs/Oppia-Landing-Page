@@ -131,7 +131,9 @@
       "twitter": "Twitter (X)",
       "discord": "Discord",
       "linkedin": "LinkedIn"
-    }
+    },
+    "website": "Website",
+    "twitter": "Twitter (X)"
   },
   "team": {
     "title": "Meet Our Team",

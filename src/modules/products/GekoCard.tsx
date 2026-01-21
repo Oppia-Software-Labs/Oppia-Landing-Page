@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import { ProductCardBase } from './ProductCardBase';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { forwardRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface GekoCardProps {
   'data-flick-cards-item': string;
@@ -14,6 +14,7 @@ interface GekoCardProps {
 export const GekoCard = forwardRef<HTMLDivElement, GekoCardProps>((props, ref) => {
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
+  const router = useRouter();
 
   const tags = t('products.geko.tags').split(',');
   const description = t('products.geko.description');
@@ -21,6 +22,10 @@ export const GekoCard = forwardRef<HTMLDivElement, GekoCardProps>((props, ref) =
 
   const status = props['data-flick-cards-item-status'] || '';
   const isActive = status === 'active' || !status;
+
+  const handleSeeProject = () => {
+    router.push('/projects/geko');
+  };
 
   return (
     <div
@@ -52,6 +57,7 @@ export const GekoCard = forwardRef<HTMLDivElement, GekoCardProps>((props, ref) =
             </p>
 
             <button
+              onClick={handleSeeProject}
               className="mb-5 w-fit rounded-full px-8 py-2.5 text-sm font-medium bg-gray-300 text-black hover:bg-gray-400 transition-all duration-400"
               style={{
                 transitionTimingFunction: 'cubic-bezier(0.625, 0.05, 0, 1)',
@@ -61,30 +67,6 @@ export const GekoCard = forwardRef<HTMLDivElement, GekoCardProps>((props, ref) =
             </button>
           </div>
         </div>
-
-      {isActive ? (
-        <div className="absolute bottom-0 right-0 z-20">
-          <Image
-            src="/oppia-projects/Geko.png"
-            alt="Geko"
-            width={280}
-            height={280}
-            className="h-[280px] w-[280px]"
-            priority
-          />
-        </div>
-      ) : (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <Image
-            src="/oppia-projects/Geko.svg"
-            alt="Geko Logo"
-            width={200}
-            height={200}
-            className="h-[200px] w-[200px]"
-            priority
-          />
-        </div>
-      )}
       </ProductCardBase>
     </div>
   );

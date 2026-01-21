@@ -32,11 +32,11 @@ interface TeamCardProps {
  */
 export function TeamCard({ member }: TeamCardProps) {
 
-  return (
-    <div 
+    return (
+      <div
       className="team-card-item relative flex-shrink-0"
       style={{ width: `${TEAM_CARD.WIDTH}px`, minWidth: `${TEAM_CARD.WIDTH}px`, maxWidth: `${TEAM_CARD.WIDTH}px` }}
-    >
+      >
       <div 
         data-momentum-hover-element="" 
         className="w-full relative transition-transform duration-300 ease-in-out hover:-translate-y-0.5"
@@ -47,16 +47,16 @@ export function TeamCard({ member }: TeamCardProps) {
         >
           <div className="pointer-events-none pt-[150%]"></div>
           <div className="absolute top-5 left-5 right-5 bottom-5 z-0 overflow-hidden rounded-[1.2em]">
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
               className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               priority
               style={{ objectPosition: 'center top' }}
-            />
-          </div>
+              />
+            </div>
           <div 
             className="absolute top-0 left-0 w-full h-full flex flex-col justify-end gap-2 z-[2] pointer-events-none"
             style={{ padding: `0 ${TEAM_CARD.PADDING.SIDES} ${TEAM_CARD.PADDING.BOTTOM} ${TEAM_CARD.PADDING.SIDES}` }}
@@ -64,54 +64,54 @@ export function TeamCard({ member }: TeamCardProps) {
             <div className="flex items-center justify-start gap-1">
               <h3 className="m-0 mb-1 text-2xl font-medium leading-none">{member.name}</h3>
               <VerifiedCheckIcon className="w-6" />
-            </div>
+              </div>
             <p className="opacity-67 m-0 text-base font-normal leading-none">{member.role}</p>
             <div className="mt-4 flex flex-col gap-2 pointer-events-auto">
               <div className="flex gap-3">
-                {member.socialLinks.twitter && (
-                  <a
-                    href={member.socialLinks.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white transition-colors"
-                    aria-label={`${member.name} Twitter`}
-                  >
-                    <XIcon className="h-5 w-5" />
-                  </a>
-                )}
-                {member.socialLinks.linkedin && (
-                  <a
-                    href={member.socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white transition-colors"
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <LinkedInIcon className="h-5 w-5" />
-                  </a>
-                )}
-                {member.socialLinks.github && (
-                  <a
-                    href={member.socialLinks.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white transition-colors"
-                    aria-label={`${member.name} GitHub`}
-                  >
-                    <GitHubIcon className="h-5 w-5" />
-                  </a>
-                )}
-                {member.socialLinks.instagram && (
-                  <a
-                    href={member.socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/70 hover:text-white transition-colors"
-                    aria-label={`${member.name} Instagram`}
-                  >
-                    <InstagramIcon className="h-5 w-5" />
-                  </a>
-                )}
+                    {member.socialLinks.twitter && (
+                      <a
+                        href={member.socialLinks.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 hover:text-white transition-colors"
+                        aria-label={`${member.name} Twitter`}
+                      >
+                        <XIcon className="h-5 w-5" />
+                      </a>
+                    )}
+                    {member.socialLinks.linkedin && (
+                      <a
+                        href={member.socialLinks.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 hover:text-white transition-colors"
+                        aria-label={`${member.name} LinkedIn`}
+                      >
+                        <LinkedInIcon className="h-5 w-5" />
+                      </a>
+                    )}
+                    {member.socialLinks.github && (
+                      <a
+                        href={member.socialLinks.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 hover:text-white transition-colors"
+                        aria-label={`${member.name} GitHub`}
+                      >
+                        <GitHubIcon className="h-5 w-5" />
+                      </a>
+                    )}
+                    {member.socialLinks.instagram && (
+                      <a
+                        href={member.socialLinks.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 hover:text-white transition-colors"
+                        aria-label={`${member.name} Instagram`}
+                      >
+                        <InstagramIcon className="h-5 w-5" />
+                      </a>
+                    )}
                 {member.socialLinks.telegram && (
                   <a
                     href={member.socialLinks.telegram}
@@ -123,12 +123,12 @@ export function TeamCard({ member }: TeamCardProps) {
                     <TelegramIcon className="h-5 w-5" />
                   </a>
                 )}
-              </div>
+                </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
