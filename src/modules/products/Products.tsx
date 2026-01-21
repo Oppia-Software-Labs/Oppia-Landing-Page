@@ -11,6 +11,7 @@ import { CAROUSEL_CONFIG, CARD_POSITIONS } from '@/constants/carousel';
 import { gsap } from 'gsap';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
+import { COLORS } from '@/constants/colors';
 
 type ProductId = 'neko' | 'geko' | 'coming-soon';
 
@@ -157,8 +158,9 @@ export function Products() {
                 className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${
                   isActive
                     ? 'bg-white text-black'
-                    : 'bg-white/50 text-white hover:bg-white/60'
+                    : 'text-white'
                 }`}
+                style={!isActive ? { backgroundColor: COLORS.background.dark } : undefined}
                 aria-pressed={isActive}
                 aria-label={`Switch to ${t(`products.${translationKey}.name`)}`}
               >
