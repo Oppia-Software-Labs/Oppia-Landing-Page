@@ -1,0 +1,115 @@
+/**
+ * Product configuration constants
+ */
+
+export type ProductSlug = 'neko' | 'geko' | 'deko';
+
+export interface ProductLogoConfig {
+  active: {
+    src: string;
+    width: number;
+    height: number;
+    className: string;
+  };
+  inactive: {
+    src: string;
+    width: number;
+    height: number;
+    className: string;
+  };
+}
+
+export interface CornerIconConfig {
+  src: string;
+  width: number;
+  height: number;
+  className: string;
+  position: string;
+}
+
+export interface ProductConfig {
+  slug: ProductSlug;
+  logo: ProductLogoConfig;
+  cornerIcon?: CornerIconConfig;
+  buttonStyle: 'white' | 'gray';
+}
+
+/** Product configurations */
+export const PRODUCT_CONFIGS: Record<ProductSlug, ProductConfig> = {
+  neko: {
+    slug: 'neko',
+    logo: {
+      active: {
+        src: '/oppia-projects/Neko.svg',
+        width: 380,
+        height: 380,
+        className: 'h-[380px] w-[380px] brightness-0 invert',
+      },
+      inactive: {
+        src: '/oppia-projects/Neko-Project.svg',
+        width: 280,
+        height: 280,
+        className: 'h-[280px] w-[280px]',
+      },
+    },
+    buttonStyle: 'white',
+  },
+  geko: {
+    slug: 'geko',
+    logo: {
+      active: {
+        src: '/oppia-projects/Geko.svg',
+        width: 350,
+        height: 350,
+        className: 'h-auto w-56 sm:w-64 md:w-72 lg:w-80',
+      },
+      inactive: {
+        src: '/oppia-projects/Geko.svg',
+        width: 200,
+        height: 200,
+        className: 'h-[200px] w-[200px]',
+      },
+    },
+    cornerIcon: {
+      src: '/oppia-projects/Geko.svg',
+      width: 350,
+      height: 350,
+      className: 'h-auto w-56 sm:w-64 md:w-72 lg:w-80',
+      position: 'bottom-5 right-5 translate-x-[8%] translate-y-[8%]',
+    },
+    buttonStyle: 'white',
+  },
+  deko: {
+    slug: 'deko',
+    logo: {
+      active: {
+        src: '/oppia-projects/Neko.svg',
+        width: 380,
+        height: 380,
+        className: 'h-[380px] w-[380px] brightness-0 invert',
+      },
+      inactive: {
+        src: '/oppia-projects/Neko-Project.svg',
+        width: 280,
+        height: 280,
+        className: 'h-[280px] w-[280px]',
+      },
+    },
+    buttonStyle: 'white',
+  },
+} as const;
+
+/** Logo position configurations */
+export const LOGO_POSITIONS = {
+  ACTIVE: {
+    neko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
+    geko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
+    deko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
+  },
+  INACTIVE: {
+    neko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+    geko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+    deko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+  },
+} as const;
+

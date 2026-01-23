@@ -10,11 +10,11 @@ export function WaveLeft({ className = '' }: WaveLeftProps) {
   return (
     <div className={`absolute bottom-0 left-0 z-0 ${className}`}>
       <Image
-        src="/visuals/projects-cards/wave-left.svg"
+        src="/visuals/projects-cards/left-wave.svg"
         alt=""
         width={400}
         height={480}
-        className="h-[480px] w-[400px] opacity-80"
+        className="h-[500px] w-[420px] opacity-80"
         aria-hidden="true"
         priority={false}
       />

@@ -7,6 +7,7 @@ interface AppState {
   isMenuOpen: boolean;
   toggleMenu: () => void;
   closeMenu: () => void;
+  setMenuOpen: (isOpen: boolean) => void;
   faqOpenIndex: number | null;
   setFaqOpenIndex: (index: number | null) => void;
 }
@@ -22,6 +23,7 @@ export const useAppStore = create<AppState>((set) => ({
   isMenuOpen: false,
   toggleMenu: () => set((state) => ({ isMenuOpen: !state.isMenuOpen })),
   closeMenu: () => set({ isMenuOpen: false }),
+  setMenuOpen: (isOpen: boolean) => set({ isMenuOpen: isOpen }),
   faqOpenIndex: 0,
   setFaqOpenIndex: (index: number | null) => set({ faqOpenIndex: index }),
 }));

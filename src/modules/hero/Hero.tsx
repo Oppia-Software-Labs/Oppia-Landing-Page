@@ -4,7 +4,7 @@ import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { LeftWave } from '@/components/visuals/LeftWave';
 import { RightWave } from '@/components/visuals/RightWave';
-import { Button } from '@/components/ui/Button';
+import { DirectionalButton } from '@/components/ui/DirectionalButton';
 
 export function Hero() {
   const locale = useAppStore((state) => state.locale);
@@ -31,24 +31,22 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col gap-2.5 sm:flex-row sm:gap-3.5">
-          <Button
+          <DirectionalButton
             variant="primary"
             size="md"
             asLink
-            href="#discover"
-            className="rounded-full bg-white text-black transition-all duration-300 ease-out hover:bg-gray-100"
+            href="#products"
           >
             {t('hero.ctaPrimary')} →
-          </Button>
-          <Button
-            variant="ghost"
+          </DirectionalButton>
+          <DirectionalButton
+            variant="dark"
             size="md"
             asLink
-            href="#products"
-            className="hero-secondary-button text-white transition-all duration-300 ease-out"
+            href="#cta"
           >
             {t('hero.ctaSecondary')}
-          </Button>
+          </DirectionalButton>
         </div>
       </div>
     </section>

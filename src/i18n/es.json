@@ -45,6 +45,24 @@
   "partners": {
     "title": "Powered by trusted brands"
   },
+  "whoAreWe": {
+    "title": "Quiénes somos",
+    "description": "Un estudio de tecnología e innovación. No solo creamos productos, construimos soluciones con propósito, diseñadas para marcar la diferencia.",
+    "cards": {
+      "functionality": {
+        "title": "Funcionalidad",
+        "description": "Los sistemas descentralizados solo importan cuando son utilizables, confiables y accesibles."
+      },
+      "simplicity": {
+        "title": "Simplicidad",
+        "description": "Nos enfocamos en la claridad sobre la complejidad, y el valor a largo plazo sobre el bombo a corto plazo."
+      },
+      "purpose": {
+        "title": "Propósito",
+        "description": "Creemos que la tecnología debe resolver problemas reales, haciendo la vida más fácil y ahorrando tiempo."
+      }
+    }
+  },
   "socialMedia": {
     "title": "Redes Sociales",
     "description": "Mantente conectado con nosotros. Sigue nuestro viaje mientras construimos sistemas descentralizados y compartimos actualizaciones, perspectivas y oportunidades con nuestra comunidad."
@@ -56,13 +74,17 @@
       "name": "Neko",
       "tags": "RWA,DEFI,Stocks",
       "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
-      "cta": "Ver proyecto"
+      "cta": "Ver proyecto",
+      "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
+      "discoverButton": "Descubrir →"
     },
     "geko": {
       "name": "Geko",
       "tags": "Finance,AI Agent,Mobile",
       "description": "Plataforma blockchain impulsada por IA que enseña educación financiera y ayuda a las personas a gestionar su dinero de manera efectiva",
-      "cta": "Ver proyecto"
+      "cta": "Ver proyecto",
+      "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
+      "discoverButton": "Descubrir →"
     },
     "comingSoon": {
       "name": "Deko",
@@ -74,7 +96,9 @@
       "name": "Deko",
       "tags": "Web3,Finanzas,Mobile",
       "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
-      "cta": "Ver proyecto"
+      "cta": "Ver proyecto",
+      "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
+      "discoverButton": "Descubrir →"
     }
   },
   "footer": {
@@ -133,7 +157,23 @@
       "linkedin": "LinkedIn"
     },
     "website": "Sitio Web",
-    "twitter": "Twitter (X)"
+    "twitter": "Twitter (X)",
+    "bottomDescription": "Un estudio de tecnología e innovación. No solo creamos productos, construimos soluciones con propósito, diseñadas para marcar la diferencia.",
+    "bottomCtaText": "Toma el control de tus finanzas ahora",
+    "discoverButton": "Descubrir",
+    "productsButton": "Productos"
+  },
+  "projectCta": {
+    "bottomDescription": {
+      "neko": "Neko Protocol permite préstamos y empréstitos DeFi utilizando activos del mundo real tokenizados. Desbloquea el poder de las finanzas descentralizadas.",
+      "geko": "Plataforma blockchain impulsada por IA que enseña educación financiera y ayuda a las personas a gestionar su dinero de manera efectiva. Comienza tu viaje financiero.",
+      "deko": "Plataforma DeFi revolucionaria para activos del mundo real tokenizados. Transforma cómo interactúas con las finanzas descentralizadas."
+    },
+    "bottomCtaText": {
+      "neko": "Desbloquea el poder de los activos del mundo real tokenizados",
+      "geko": "Comienza tu viaje financiero con herramientas impulsadas por IA",
+      "deko": "Transforma tu experiencia DeFi"
+    }
   },
   "team": {
     "title": "Conoce Nuestro Equipo",

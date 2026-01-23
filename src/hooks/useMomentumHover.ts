@@ -61,13 +61,14 @@ export function useMomentumHover(config: UseMomentumHoverConfig = {}) {
       let velY = 0;
       let rafId: number | null = null;
 
-      root.addEventListener('mousemove', (e: MouseEvent) => {
+      root.addEventListener('mousemove', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
         if (rafId) return;
         rafId = requestAnimationFrame(() => {
-          velX = e.clientX - prevX;
-          velY = e.clientY - prevY;
-          prevX = e.clientX;
-          prevY = e.clientY;
+          velX = mouseEvent.clientX - prevX;
+          velY = mouseEvent.clientY - prevY;
+          prevX = mouseEvent.clientX;
+          prevY = mouseEvent.clientY;
           rafId = null;
         });
       });

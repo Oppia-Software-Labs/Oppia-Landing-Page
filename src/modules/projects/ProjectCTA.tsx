@@ -1,0 +1,161 @@
+'use client';
+
+import Image from 'next/image';
+import { useTranslations } from '@/i18n/i18n';
+import { SocialCard } from '@/modules/cta/SocialCard';
+import { CTA_CONFIG } from '@/constants/cta';
+import { SOCIAL_LINKS } from '@/constants/socialLinks';
+import { PROJECT_CTA_CONFIGS } from '@/constants/projectCta';
+import { ProductSlug } from '@/constants/products';
+import { Locale } from '@/i18n/i18n';
+import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
+import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
+import { XIcon } from '@/components/icons/social-media/XIcon';
+import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
+import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+
+interface ProjectCTAProps {
+  slug: ProductSlug;
+  locale: Locale;
+}
+
+export function ProjectCTA({ slug, locale }: ProjectCTAProps) {
+  const { t } = useTranslations(locale);
+  const config = PROJECT_CTA_CONFIGS[slug as ProductSlug];
+
+  return (
+    <section className={`relative bg-black overflow-hidden ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <SectionHeader
+          title={t('cta.topTextLeft')}
+          subtitle={t('cta.topTextRight')}
+          className="mb-8"
+          titleClassName="text-2xl sm:text-3xl font-medium whitespace-pre-line"
+          subtitleClassName="text-sm text-white/80 whitespace-pre-line"
+        />
+
+        <div
+          className="relative rounded-3xl p-10 sm:p-14 lg:p-28 overflow-hidden"
+          style={{
+            background: `linear-gradient(to bottom, ${config.gradient.from}, ${config.gradient.to})`,
+          }}
+        >
+          {/* Left Wave */}
+          <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4">
+            <Image
+              src="/visuals/cta/left-wave.svg"
+              alt=""
+              width={CTA_CONFIG.WAVES.LEFT.width}
+              height={CTA_CONFIG.WAVES.LEFT.height}
+              className={`h-[${CTA_CONFIG.WAVES.LEFT.height}px] w-[${CTA_CONFIG.WAVES.LEFT.width}px] opacity-100 brightness-150`}
+              aria-hidden="true"
+            />
+          </div>
+
+          {/* Right Wave */}
+          <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+            <Image
+              src="/visuals/cta/right-wave.svg"
+              alt=""
+              width={CTA_CONFIG.WAVES.RIGHT.width}
+              height={CTA_CONFIG.WAVES.RIGHT.height}
+              className={`h-[${CTA_CONFIG.WAVES.RIGHT.height}px] w-[${CTA_CONFIG.WAVES.RIGHT.width}px] opacity-100 brightness-150`}
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-8 lg:pt-12">
+            {/* Left Side - Logo, Description, Social Cards */}
+            <div className="flex flex-col">
+              <div className="mb-6">
+                <div className="flex items-center gap-2">
+                  {/* Project Logo */}
+                  <Image
+                    src={config.logoPath}
+                    alt={`${slug.charAt(0).toUpperCase() + slug.slice(1)} Logo`}
+                    width={400}
+                    height={180}
+                    className="h-24 w-auto"
+                    priority
+                  />
+                  {/* Project Logotype */}
+                <Image
+                  src={config.logotypePath}
+                    alt={`${slug.charAt(0).toUpperCase() + slug.slice(1)} Logotype`}
+                    width={200}
+                    height={80}
+                    className="h-20 w-auto brightness-0 invert"
+                    priority
+                />
+                </div>
+                <p className="text-base text-white/90 leading-relaxed max-w-md pt-4">
+                  {t('cta.description')}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                {config.links.website && (
+                  <SocialCard href={config.links.website} label={t('cta.website')} />
+                )}
+                {config.links.twitter && (
+                  <SocialCard href={config.links.twitter} label={t('cta.twitter')} />
+                )}
+              </div>
+            </div>
+
+            {/* Right Side - Large Social Icons */}
+            <div className="flex items-center justify-center lg:justify-end">
+              <div className="flex gap-0 items-end">
+                {/* Instagram */}
+                <a
+                  href={SOCIAL_LINKS.INSTAGRAM}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.translateY}`}
+                  aria-label="Visit our Instagram"
+                >
+                  <InstagramIcon className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.iconSize} text-white`} />
+                </a>
+
+                {/* X/Twitter */}
+                <a
+                  href={SOCIAL_LINKS.TWITTER}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.TWITTER.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.TWITTER.translateY}`}
+                  aria-label="Visit our X (Twitter)"
+                >
+                  <XIcon className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
+                </a>
+
+                {/* Discord */}
+                <a
+                  href={SOCIAL_LINKS.DISCORD}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.DISCORD.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.DISCORD.translateY}`}
+                  aria-label="Join our Discord"
+                >
+                  <DiscordIcon className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.iconSize} text-white`} />
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href={SOCIAL_LINKS.LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.translateY}`}
+                  aria-label="Visit our LinkedIn"
+                >
+                  <LinkedInIcon className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+

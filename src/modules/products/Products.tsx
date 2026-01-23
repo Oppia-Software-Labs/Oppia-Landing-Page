@@ -154,6 +154,7 @@ export function Products() {
           {PRODUCTS.map((productId, idx) => {
             const translationKey = getProductTranslationKey(productId);
             const isActive = idx === activeIndex;
+            const currentText = t(`products.${translationKey}.name`);
 
             return (
               <button
@@ -161,16 +162,26 @@ export function Products() {
                 onClick={() => {
                   handleProductButtonClick(idx);
                 }}
-                className={`rounded-full px-6 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`btn-slanted btn-slanted-product rounded-full px-7 py-2.5 text-base font-medium ${
                   isActive
-                    ? 'bg-white text-black'
-                    : 'text-white'
+                    ? 'btn-slanted-product--active'
+                    : 'btn-slanted-product--inactive'
                 }`}
-                style={!isActive ? { backgroundColor: COLORS.background.dark } : undefined}
                 aria-pressed={isActive}
-                aria-label={`Switch to ${t(`products.${translationKey}.name`)}`}
+                aria-label={`Switch to ${currentText}`}
               >
-                {t(`products.${translationKey}.name`)}
+                <div className="btn-slanted-label__wrap">
+                  <span className="btn-slanted-label btn-slanted-label--current">
+                    {currentText}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="btn-slanted-label btn-slanted-label--opposite"
+                  >
+                    {currentText}
+                  </span>
+                </div>
+                <div className="btn-slanted-bg"></div>
               </button>
             );
           })}

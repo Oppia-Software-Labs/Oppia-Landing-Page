@@ -7,125 +7,17 @@ import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { StellarLogo } from '@/components/icons/partners/StellarLogo';
 import { CatalitecLogo } from '@/components/icons/partners/CatalitecLogo';
-import { SocialCard } from '@/modules/cta/SocialCard';
-import { CTA_CONFIG } from '@/constants/cta';
-import { SOCIAL_LINKS } from '@/constants/socialLinks';
-import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
-import { XIcon } from '@/components/icons/social-media/XIcon';
-import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
-import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
-import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 import { Footer } from '@/modules/footer/Footer';
-
-let gsap: any;
-let ScrollTrigger: any;
-let Flip: any;
-
-if (typeof window !== 'undefined') {
-  gsap = require('gsap').gsap;
-  ScrollTrigger = require('gsap/ScrollTrigger').ScrollTrigger;
-  Flip = require('gsap/Flip').Flip;
-  if (gsap && ScrollTrigger && Flip) {
-    gsap.registerPlugin(ScrollTrigger, Flip);
-  }
-}
-
-function initFlipOnScroll() {
-  if (!gsap || !ScrollTrigger || !Flip) {
-    console.error('GSAP plugins not loaded');
-    return;
-  }
-
-  let wrapperElements = document.querySelectorAll("[data-flip-element='wrapper']");
-  let targetEl = document.querySelector("[data-flip-element='target']");
-
-  console.log('Wrappers:', wrapperElements.length);
-  console.log('Target:', !!targetEl);
-
-  if (!wrapperElements.length || !targetEl) {
-    console.error('Missing elements - wrappers:', wrapperElements.length, 'target:', !!targetEl);
-    return;
-  }
-
-  if (wrapperElements.length < 2) {
-    console.error('Not enough wrappers:', wrapperElements.length);
-    return;
-  }
-
-  // Kill any existing ScrollTriggers first
-  ScrollTrigger.getAll().forEach((st: any) => st.kill());
-
-  let tl: any;
-  function flipTimeline() {
-    if (tl) {
-      tl.kill();
-      gsap.set(targetEl, { clearProps: 'all' });
-    }
-
-    // Refresh ScrollTrigger to recalculate
-    ScrollTrigger.refresh();
-
-    // Use the first and last wrapper elements for the scroll trigger.
-    tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: wrapperElements[0] as HTMLElement,
-        start: 'center center',
-        endTrigger: wrapperElements[wrapperElements.length - 1] as HTMLElement,
-        end: 'center center',
-        scrub: 0.25,
-      },
-    });
-
-    // Loop through each wrapper element.
-    wrapperElements.forEach(function (element, index) {
-      let nextIndex = index + 1;
-      if (nextIndex < wrapperElements.length) {
-        let nextWrapperEl = wrapperElements[nextIndex] as HTMLElement;
-        let thisWrapperEl = element as HTMLElement;
-        // Calculate vertical center positions relative to the document.
-        let nextRect = nextWrapperEl.getBoundingClientRect();
-        let thisRect = thisWrapperEl.getBoundingClientRect();
-        let scrollY = window.pageYOffset || window.scrollY || 0;
-        let nextDistance = nextRect.top + scrollY + nextWrapperEl.offsetHeight / 2;
-        let thisDistance = thisRect.top + scrollY + thisWrapperEl.offsetHeight / 2;
-        let offset = nextDistance - thisDistance;
-
-        console.log(`Adding Flip from wrapper ${index} to ${nextIndex}, offset: ${offset}`);
-
-        // Add the Flip.fit tween to the timeline.
-        tl.add(
-          Flip.fit(targetEl, nextWrapperEl, {
-            duration: offset,
-            ease: 'none',
-          })
-        );
-      }
-    });
-
-    console.log('Timeline created successfully');
-  }
-
-  flipTimeline();
-
-  let resizeTimer: NodeJS.Timeout;
-  const handleResize = () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      flipTimeline();
-    }, 100);
-  };
-
-  window.addEventListener('resize', handleResize);
-
-  return () => {
-    window.removeEventListener('resize', handleResize);
-    if (tl) tl.kill();
-    ScrollTrigger.getAll().forEach((st: any) => st.kill());
-  };
-}
+import { ProjectCTA } from '@/modules/projects/ProjectCTA';
+import { initFlipOnScroll } from '@/utils/flipAnimation';
+import { ANIMATION_TIMING, getProjectLogoPath } from '@/constants/projects';
+import { ProductSlug } from '@/constants/products';
+import { BottomCTASection } from '@/components/cta/BottomCTASection';
+import { useVideoPlaybackControl } from '@/hooks/useVideoPlaybackControl';
 
 const VALID_SLUGS = ['neko', 'geko', 'deko'] as const;
 type ProjectSlug = typeof VALID_SLUGS[number];
+
 
 function getProductTranslationKey(slug: string): string {
   return slug === 'deko' ? 'deko' : slug;
@@ -136,27 +28,31 @@ export default function ProjectPage() {
   const slug = params?.slug as string;
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      let cleanupFn: (() => void) | undefined;
-
-      // Wait for DOM to be fully ready - use requestAnimationFrame to ensure render is complete
-      const initTimeout = setTimeout(() => {
-        requestAnimationFrame(() => {
-          cleanupFn = initFlipOnScroll();
-        });
-      }, 200);
-
-      return () => {
-        clearTimeout(initTimeout);
-        if (cleanupFn) cleanupFn();
-        if (ScrollTrigger) {
-          ScrollTrigger.getAll().forEach((st: any) => st.kill());
-        }
-      };
+    if (typeof window === 'undefined') {
+      return;
     }
+
+    let cleanupFn: (() => void) | null = null;
+
+    const initTimeout = setTimeout(() => {
+      requestAnimationFrame(() => {
+        cleanupFn = initFlipOnScroll();
+      });
+    }, ANIMATION_TIMING.INIT_DELAY);
+
+    return () => {
+      clearTimeout(initTimeout);
+      if (cleanupFn) {
+        cleanupFn();
+      }
+    };
   }, [slug]);
+
+  useVideoPlaybackControl(videoRef, [slug]);
 
   if (!VALID_SLUGS.includes(slug as ProjectSlug)) {
     return (
@@ -168,11 +64,6 @@ export default function ProjectPage() {
 
   const translationKey = getProductTranslationKey(slug);
   const projectName = t(`products.${translationKey}.name`);
-
-  // Get logo filename based on slug
-  const getLogoPath = (slug: string) => {
-    return `/oppia-projects/Logotypes/${slug}-logotype.svg`;
-  };
 
   return (
     <div className="relative overflow-hidden min-h-screen bg-black">
@@ -203,7 +94,7 @@ export default function ProjectPage() {
           <div className="relative z-10 min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] p-8 sm:p-12 lg:p-16 flex flex-col items-center justify-center gap-12">
             <div>
               <Image
-                src={getLogoPath(slug)}
+                src={getProjectLogoPath(slug)}
                 alt={`${projectName} Logo`}
                 width={400}
                 height={400}
@@ -212,39 +103,28 @@ export default function ProjectPage() {
               />
             </div>
           </div>
-          
-          {/* Content Section at Bottom Corners */}
+
+          {/* Bottom CTA Section */}
           <div className="absolute z-10 bottom-8 left-8 right-8 lg:left-12 lg:right-12 lg:bottom-12">
-            {/* Divider Line */}
-            <div className="w-full border-t border-white/20 mb-6"></div>
-            
-            {/* Content Section */}
-            <div className="w-full flex flex-col lg:flex-row justify-between gap-6 items-start lg:items-center">
-              {/* Left: Description */}
-              <div className="max-w-md">
-                <p className="text-white text-sm sm:text-base leading-relaxed">
-                  {t(`products.${translationKey}.description`)}
-                </p>
-              </div>
-              
-              {/* Right: CTA Text and Buttons */}
-              <div className="flex flex-col gap-3 items-start lg:items-end">
-                <p className="text-white text-sm sm:text-base font-medium">
-                  Unlock the power of tokenized real-world assets
-                </p>
-                <div className="flex gap-3">
-                  <button className="px-4 py-2 text-sm rounded-full bg-white/90 text-[#001D66] font-medium hover:bg-white transition-all">
-                    Discover →
-                  </button>
-                </div>
-              </div>
-            </div>
+            <BottomCTASection
+              description={t(`projectCta.bottomDescription.${slug}`)}
+              ctaText={t(`projectCta.bottomCtaText.${slug}`)}
+              buttons={[
+                {
+                  text: t('cta.discoverButton'),
+                  variant: 'primary',
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
 
-      <section className="flex flex-col justify-center items-center min-h-screen pt-[2vh] pb-[15vh] px-[5vw] relative gap-[1.5em]">
-        <p className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-center uppercase">
+      <section
+        ref={videoSectionRef}
+        className="flex flex-col justify-center items-center min-h-screen pt-[2vh] pb-[15vh] px-[5vw] relative gap-[1.5em]"
+      >
+        <p className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-center uppercase">
           Discover What {projectName} is
         </p>
 
@@ -257,11 +137,10 @@ export default function ProjectPage() {
               style={{ transform: 'translateX(0) rotate(0.001deg)' }}
             >
               <video
-                autoPlay
-                muted
+                ref={videoRef}
                 playsInline
                 loop
-                webkit-playsinline=""
+                controls={false}
                 className="object-cover w-full h-full absolute rounded-inherit"
               >
                 <source src="/pitch/pitch.mp4" type="video/mp4" />
@@ -291,125 +170,17 @@ export default function ProjectPage() {
       </section>
 
       <section className="flex flex-col justify-center items-center pb-[3vh] px-[5vw] relative">
-        <p className="text-white text-sm sm:text-base lg:text-lg font-normal mb-4">
+        <p className="text-white text-lg sm:text-xl lg:text-2xl font-semibold mb-4">
           Powered by
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
-          <StellarLogo width={150} height={30} className="h-6 w-auto opacity-80 transition-opacity hover:opacity-100" />
-          <CatalitecLogo width={150} height={30} className="h-6 w-auto opacity-80 transition-opacity hover:opacity-100" />
+          <StellarLogo width={160} height={32} className="h-7 sm:h-8 lg:h-9 w-auto opacity-80 transition-opacity hover:opacity-100" />
+          <CatalitecLogo width={160} height={32} className="h-7 sm:h-8 lg:h-9 w-auto opacity-80 transition-opacity hover:opacity-100" />
         </div>
       </section>
 
-      {slug === 'neko' && (
-        <section className={`relative bg-black overflow-hidden ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
-          <div className="relative z-10 mx-auto max-w-7xl">
-            {/* Top Text Sections */}
-            <div className="mb-8 flex flex-col gap-4 text-center">
-              <p className="text-2xl sm:text-3xl text-white font-medium whitespace-pre-line">
-                {t('cta.topTextLeft')}
-              </p>
-              <p className="text-sm text-white/80 whitespace-pre-line">
-                {t('cta.topTextRight')}
-              </p>
-            </div>
-            <div className="relative rounded-3xl bg-gradient-to-b from-[#03A7FF] to-[#00398F] p-10 sm:p-14 lg:p-28 overflow-hidden">
-              {/* Left Wave */}
-              <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4">
-                <Image
-                  src="/visuals/cta/left-wave.svg"
-                  alt=""
-                  width={CTA_CONFIG.WAVES.LEFT.width}
-                  height={CTA_CONFIG.WAVES.LEFT.height}
-                  className={`h-[${CTA_CONFIG.WAVES.LEFT.height}px] w-[${CTA_CONFIG.WAVES.LEFT.width}px] opacity-100 brightness-150`}
-                  aria-hidden="true"
-                />
-              </div>
-
-              {/* Right Wave */}
-              <div className="absolute top-0 right-0 z-0 translate-x-1/4">
-                <Image
-                  src="/visuals/cta/right-wave.svg"
-                  alt=""
-                  width={CTA_CONFIG.WAVES.RIGHT.width}
-                  height={CTA_CONFIG.WAVES.RIGHT.height}
-                  className={`h-[${CTA_CONFIG.WAVES.RIGHT.height}px] w-[${CTA_CONFIG.WAVES.RIGHT.width}px] opacity-100 brightness-150`}
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                {/* Left Side - Logo, Description, Social Cards */}
-                <div className="flex flex-col">
-                  <div className="mb-6">
-                    <Image
-                      src="/oppia-projects/Logotypes/Neko.svg"
-                      alt="Neko Logo"
-                      width={48}
-                      height={48}
-                      className="h-12 w-auto mb-4 brightness-0 invert"
-                    />
-                    <p className="text-base text-white/90 leading-relaxed max-w-md">
-                      {t('cta.description')}
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <SocialCard href="https://www.nekoprotocol.xyz/" label={t('cta.website')} />
-                    <SocialCard href="https://x.com/NekoProto" label={t('cta.twitter')} />
-                  </div>
-                </div>
-
-                {/* Right Side - Large Social Icons */}
-                <div className="flex items-center justify-center lg:justify-end">
-                  <div className="flex gap-0 items-end">
-                    {/* Instagram */}
-                    <a
-                      href={SOCIAL_LINKS.INSTAGRAM}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.translateY}`}
-                      aria-label="Visit our Instagram"
-                    >
-                      <InstagramIcon className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.iconSize} text-white`} />
-                    </a>
-
-                    {/* X/Twitter */}
-                    <a
-                      href={SOCIAL_LINKS.TWITTER}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.TWITTER.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.TWITTER.translateY}`}
-                      aria-label="Visit our X (Twitter)"
-                    >
-                      <XIcon className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
-                    </a>
-
-                    {/* Discord */}
-                    <a
-                      href={SOCIAL_LINKS.DISCORD}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.DISCORD.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.DISCORD.translateY}`}
-                      aria-label="Join our Discord"
-                    >
-                      <DiscordIcon className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.iconSize} text-white`} />
-                    </a>
-
-                    {/* LinkedIn */}
-                    <a
-                      href={SOCIAL_LINKS.LINKEDIN}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.translateY}`}
-                      aria-label="Visit our LinkedIn"
-                    >
-                      <LinkedInIcon className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      {VALID_SLUGS.includes(slug as ProjectSlug) && (
+        <ProjectCTA slug={slug as ProductSlug} locale={locale} />
       )}
 
       <Footer />

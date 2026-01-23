@@ -4,37 +4,36 @@ import Image from 'next/image';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { OppiaLogo } from '@/components/icons/oppia/OppiaLogo';
-import { SocialCard } from './SocialCard';
-import { CTA_SOCIAL_LINKS, SOCIAL_LINKS } from '@/constants/socialLinks';
+import { SOCIAL_LINKS, CTA_SOCIAL_LINKS } from '@/constants/socialLinks';
 import { CTA_CONFIG } from '@/constants/cta';
+import { SocialCard } from './SocialCard';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { XIcon } from '@/components/icons/social-media/XIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
 import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
 export function CTA() {
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
 
-  const socialLinks = CTA_SOCIAL_LINKS.map((link) => ({
-    href: link.href,
-    label: t(link.labelKey),
-  }));
-
   return (
     <section className={`relative bg-black overflow-hidden ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
       <div className="relative z-10 mx-auto max-w-7xl">
-        {/* Top Text Sections */}
-        <div className="mb-8 flex flex-col gap-4 text-center">
-          <p className="text-2xl sm:text-3xl text-white font-medium whitespace-pre-line">
-            {t('cta.topTextLeft')}
-          </p>
-          <p className="text-sm text-white/80 whitespace-pre-line">
-            {t('cta.topTextRight')}
-          </p>
-        </div>
-        <div className="relative rounded-3xl bg-gradient-to-b from-[#0288D1] to-[#002D6B] p-10 sm:p-14 lg:p-28 overflow-hidden">
+        <SectionHeader
+          title={t('cta.topTextLeft')}
+          subtitle={t('cta.topTextRight')}
+          className="mb-8"
+          titleClassName="text-2xl sm:text-3xl font-medium whitespace-pre-line"
+          subtitleClassName="text-sm text-white/80 whitespace-pre-line"
+        />
+        <div
+          className="relative rounded-3xl p-10 sm:p-14 lg:p-28 overflow-hidden"
+          style={{
+            background: 'linear-gradient(to bottom, #03A7FF, #00398F)',
+          }}
+        >
           {/* Left Wave */}
           <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4">
             <Image
@@ -58,8 +57,8 @@ export function CTA() {
               aria-hidden="true"
             />
           </div>
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left Side - Logo, Description, Social Cards */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-8 lg:pt-12">
+            {/* Left Side - Logo, Description, and Social Cards */}
             <div className="flex flex-col">
               <div className="mb-6">
                 <OppiaLogo width={48} height={48} className="h-12 w-auto mb-4" />
@@ -69,8 +68,8 @@ export function CTA() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                {socialLinks.map((social) => (
-                  <SocialCard key={social.href} href={social.href} label={social.label} />
+                {CTA_SOCIAL_LINKS.map((social) => (
+                  <SocialCard key={social.href} href={social.href} label={t(social.labelKey)} />
                 ))}
               </div>
             </div>

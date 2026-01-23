@@ -22,9 +22,22 @@ export function NavbarTopBar({
         isOpen={showMenuContent}
         onToggle={onToggleMenu}
       />
-      <div className="absolute pr-8 left-1/2 -translate-x-1/2">
+      <a
+        href="#hero"
+        onClick={(e) => {
+          e.preventDefault();
+          const element = document.querySelector('#hero');
+          if (element) {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }
+        }}
+        className="absolute pr-8 left-1/2 -translate-x-1/2 cursor-pointer"
+      >
         <OppiaLogo width={140} height={40} className="h-8 w-auto" priority />
-      </div>
+      </a>
       <div className="flex items-center gap-4">
         <DiscoverLink />
         <LanguageButton />

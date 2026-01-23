@@ -61,12 +61,12 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-2 mb-4">
               <OppiaLogo width={48} height={48} className="h-12 w-auto" />
             </Link>
-            <p className="text-sm text-gray-400 mb-4 max-w-xs leading-relaxed">
+            <p className="text-base text-gray-400 mb-4 max-w-xs leading-relaxed">
               {t('footer.description')}
             </p>
             <a
               href="mailto:info@oppiasoftwarelabs.com"
-              className="text-sm text-gray-400 hover:text-white transition-colors"
+              className="text-base text-gray-400 hover:text-white transition-colors"
             >
               info@oppiasoftwarelabs.com
             </a>
@@ -76,25 +76,25 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-48">
           {/* Links */}
           <div>
-            <h3 className="mb-4 text-base font-semibold text-white">{t('footer.links.title')}</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">{t('footer.links.title')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#features" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#features" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.links.features')}
                 </Link>
               </li>
               <li>
-                <Link href="#solutions" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#solutions" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.links.solutions')}
                 </Link>
               </li>
               <li>
-                <Link href="#advantages" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#advantages" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.links.advantages')}
                 </Link>
               </li>
               <li>
-                <Link href="#faq" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#faq" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.links.faq')}
                 </Link>
               </li>
@@ -103,20 +103,20 @@ export function Footer() {
 
           {/* Recursos */}
           <div>
-            <h3 className="mb-4 text-base font-semibold text-white">{t('footer.resources.title')}</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">{t('footer.resources.title')}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="#contact" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#contact" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.resources.contact')}
                 </Link>
               </li>
               <li>
-                <Link href="#download" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#download" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.resources.downloadGeko')}
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="text-sm text-gray-400 hover:text-white transition-colors">
+                <Link href="#about" className="text-base text-gray-400 hover:text-white transition-colors">
                   {t('footer.resources.about')}
                 </Link>
               </li>
@@ -125,20 +125,34 @@ export function Footer() {
 
           {/* Socials */}
           <div>
-            <h3 className="mb-4 text-base font-semibold text-white">{t('footer.socials.title')}</h3>
+            <h3 className="mb-4 text-lg font-semibold text-white">{t('footer.socials.title')}</h3>
             <ul className="space-y-3">
-              {FOOTER_SOCIAL_LINKS.map((social) => (
+              {FOOTER_SOCIAL_LINKS.map((social) => {
+                // Map social names to translation keys
+                const getTranslationKey = (name: string) => {
+                  const nameMap: Record<string, string> = {
+                    'X': 'twitter',
+                    'Instagram': 'instagram',
+                    'LinkedIn': 'linkedin',
+                    'GitHub': 'github',
+                    'Discord': 'discord',
+                  };
+                  return nameMap[name] || name.toLowerCase();
+                };
+                
+                return (
                 <li key={social.href}>
                   <a
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                      className="text-base text-gray-400 hover:text-white transition-colors"
                   >
-                    {t(`footer.socials.${social.name.toLowerCase()}`)}
+                      {t(`footer.socials.${getTranslationKey(social.name)}`)}
                   </a>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </div>
           </div>
@@ -151,7 +165,7 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="mt-8 flex flex-col items-center justify-between gap-6 lg:flex-row">
-          <p className="text-sm text-gray-400">
+          <p className="text-base text-gray-400">
             {t('footer.copyright')}
           </p>
 

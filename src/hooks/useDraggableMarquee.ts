@@ -60,7 +60,9 @@ export function useDraggableMarquee(options: UseDraggableMarqueeOptions = {}) {
       duration,
       ease: 'none',
       repeat: -1,
-      onReverseComplete: () => marqueeLoop.progress(1),
+      onReverseComplete: () => {
+        marqueeLoop.progress(1);
+      },
       modifiers: {
         x: (x) => wrapX(parseFloat(x)) + 'px',
       },
@@ -74,13 +76,17 @@ export function useDraggableMarquee(options: UseDraggableMarqueeOptions = {}) {
     const timeScale = { value: 1 };
 
     timeScale.value = baseDirection;
-    wrapper.setAttribute('data-direction', baseDirection < 0 ? 'right' : 'left');
+    if (wrapper) {
+      wrapper.setAttribute('data-direction', baseDirection < 0 ? 'right' : 'left');
+    }
 
     if (baseDirection < 0) marqueeLoop.progress(1);
 
     function applyTimeScale() {
       marqueeLoop.timeScale(timeScale.value);
-      wrapper.setAttribute('data-direction', timeScale.value < 0 ? 'right' : 'left');
+      if (wrapper) {
+        wrapper.setAttribute('data-direction', timeScale.value < 0 ? 'right' : 'left');
+      }
     }
 
     applyTimeScale();
@@ -90,7 +96,7 @@ export function useDraggableMarquee(options: UseDraggableMarqueeOptions = {}) {
       type: 'pointer,touch',
       preventDefault: true,
       debounce: false,
-      onChangeX: (observerEvent) => {
+      onChangeX: (observerEvent: any) => {
         let velocityTimeScale = observerEvent.velocityX * -sensitivity;
         velocityTimeScale = gsap.utils.clamp(-multiplier, multiplier, velocityTimeScale);
 
