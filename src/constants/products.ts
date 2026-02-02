@@ -39,7 +39,6 @@ export interface ProductConfig {
 export const PRODUCT_CONFIGS: Record<ProductSlug, ProductConfig> = {
   neko: {
     slug: 'neko',
-    comingSoon: true,
     logo: {
       active: {
         src: '/oppia-projects/Neko.svg',
@@ -58,6 +57,7 @@ export const PRODUCT_CONFIGS: Record<ProductSlug, ProductConfig> = {
   },
   geko: {
     slug: 'geko',
+    comingSoon: true,
     logo: {
       active: {
         src: '/oppia-projects/Geko.svg',
