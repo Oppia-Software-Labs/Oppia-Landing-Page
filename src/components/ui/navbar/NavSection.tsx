@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useTranslations } from '@/i18n/i18n';
 import { useAppStore } from '@/store/store';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
@@ -8,6 +9,7 @@ import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
+import { navbarVariants } from '@/animations/navbar';
 
 interface NavLink {
   href: string;
@@ -49,30 +51,35 @@ export function NavSection({
   ] as const;
 
   return (
-    <div className="twostep-nav__bottom-col">
+    <motion.div className="twostep-nav__bottom-col" variants={navbarVariants.menuSection}>
       <div className="twostep-nav__section">
         <h3 className="twostep-nav__section-title">{t(titleKey)}</h3>
         {showSocialIcons ? (
           <nav className="twostep-nav__section-nav">
             {links.map((link, index) => (
-              <a
+              <motion.a
                 key={`${link.translationKey}-${index}`}
                 href={link.href}
                 target={link.isExternal ? '_blank' : undefined}
                 rel={link.isExternal ? 'noopener noreferrer' : undefined}
                 onClick={() => handleClick(link.href, link.isExternal ?? false)}
                 className="twostep-nav__link"
+                variants={navbarVariants.menuItem}
               >
                 <span className="twostep-nav__link-span">
                   {t(link.translationKey)}
                 </span>
-              </a>
+              </motion.a>
             ))}
           </nav>
         ) : (
           <ul className="twostep-nav__ul">
             {links.map((link, index) => (
-              <li key={`${link.translationKey}-${index}`} className="twostep-nav__li">
+              <motion.li
+                key={`${link.translationKey}-${index}`}
+                className="twostep-nav__li"
+                variants={navbarVariants.menuItem}
+              >
                 <a
                   href={link.href}
                   target={link.isExternal ? '_blank' : undefined}
@@ -84,7 +91,7 @@ export function NavSection({
                     {t(link.translationKey)}
                   </span>
                 </a>
-              </li>
+              </motion.li>
             ))}
           </ul>
         )}
@@ -106,7 +113,7 @@ export function NavSection({
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

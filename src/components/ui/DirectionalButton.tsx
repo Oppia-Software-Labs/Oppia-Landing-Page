@@ -16,9 +16,9 @@ interface DirectionalButtonProps
 }
 
 const sizeStyles = {
-  sm: 'h-10 px-5 text-sm',
-  md: 'h-12 px-5 text-base',
-  lg: 'h-14 px-6 text-lg',
+  sm: 'h-9 px-4 text-xs',
+  md: 'h-10 px-4 text-sm',
+  lg: 'h-11 px-5 text-base',
 };
 
 export function DirectionalButton({

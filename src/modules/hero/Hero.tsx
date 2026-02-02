@@ -1,10 +1,12 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { LeftWave } from '@/components/visuals/LeftWave';
 import { RightWave } from '@/components/visuals/RightWave';
 import { DirectionalButton } from '@/components/ui/DirectionalButton';
+import { heroVariants } from '@/animations/hero';
 
 export function Hero() {
   const locale = useAppStore((state) => state.locale);
@@ -15,22 +17,37 @@ export function Hero() {
       <LeftWave />
       <RightWave />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center sm:px-6 sm:pt-52 lg:px-8">
-        <div 
-          className="mb-4 inline-block rounded-full px-3.5 py-1.5 text-sm font-semibold text-white hero-badge"
+      <motion.div
+        className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center sm:px-6 sm:pt-52 lg:px-8"
+        variants={heroVariants.container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div
+          className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-semibold text-white hero-badge"
+          variants={heroVariants.badge}
         >
           {t('hero.badge')}
-        </div>
+        </motion.div>
 
-        <h1 className="mb-4 text-2xl font-normal leading-[1.1] text-white sm:text-3xl md:text-4xl lg:text-5xl">
+        <motion.h1
+          className="mb-3 text-xl font-normal leading-[1.1] text-white sm:text-2xl md:text-3xl lg:text-4xl"
+          variants={heroVariants.title}
+        >
           {t('hero.title')}
-        </h1>
+        </motion.h1>
 
-        <p className="mb-8 max-w-2xl text-base font-bold leading-relaxed text-gray-300 sm:text-lg">
+        <motion.p
+          className="mb-6 max-w-2xl text-sm font-bold leading-relaxed text-gray-300 sm:text-base"
+          variants={heroVariants.description}
+        >
           {t('hero.description')}
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col gap-2.5 sm:flex-row sm:gap-3.5">
+        <motion.div
+          className="flex flex-col gap-2 sm:flex-row sm:gap-3"
+          variants={heroVariants.buttons}
+        >
           <DirectionalButton
             variant="primary"
             size="md"
@@ -47,8 +64,8 @@ export function Hero() {
           >
             {t('hero.ctaSecondary')}
           </DirectionalButton>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

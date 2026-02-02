@@ -1,14 +1,20 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { OppiaLogo } from '@/components/icons/oppia/OppiaLogo';
 import { NavSection } from './NavSection';
+import { LanguageButton } from './LanguageButton';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
+import { navbarVariants } from '@/animations/navbar';
+import { useAppStore } from '@/store/store';
 
 interface NavMenuContentProps {
   onLinkClick: (href: string) => void;
 }
 
 export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
+  const isMenuOpen = useAppStore((state) => state.isMenuOpen);
+
   const knowUsLinks = [
     {
       href: '#who-are-we',
@@ -58,7 +64,7 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
     },
     {
       href: '#faq',
-      translationKey: 'navbar.menuSections.team.links.careers',
+      translationKey: 'navbar.menuSections.team.links.faq',
     },
     {
       href: '#cta',
@@ -67,10 +73,18 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
   ];
 
   return (
-    <div className="twostep-nav__bottom">
+    <motion.div className="twostep-nav__bottom">
       <div className="twostep-nav__bottom-overflow">
         <div className="twostep-nav__bottom-inner">
-          <div className="twostep-nav__bottom-row">
+          <div className="twostep-nav__menu-language mb-6 flex justify-center sm:hidden">
+            <LanguageButton />
+          </div>
+          <motion.div
+            className="twostep-nav__bottom-row"
+            variants={navbarVariants.menuContent}
+            initial="hidden"
+            animate={isMenuOpen ? 'show' : 'hidden'}
+          >
             <NavSection
               titleKey="navbar.menuSections.knowUs.title"
               links={knowUsLinks}
@@ -86,17 +100,20 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
               links={teamLinks}
               onLinkClick={onLinkClick}
             />
-            <div className="twostep-nav__bottom-col is--visual">
+            <motion.div
+              className="twostep-nav__bottom-col is--visual"
+              variants={navbarVariants.visual}
+            >
               <div className="twostep-nav__visual">
                 <div className="twostep-nav__visual-img flex items-center justify-center bg-gradient-to-br from-[#03A7FF] to-[#00398F] rounded-lg">
                   <OppiaLogo width={200} height={200} className="opacity-80" />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

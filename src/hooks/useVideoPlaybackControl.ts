@@ -1,16 +1,7 @@
-/**
- * Hook for controlling video playback based on scroll position and visibility
- * Handles user interaction detection and video play/pause logic
- */
-
 import { useEffect, RefObject } from 'react';
 import { ANIMATION_TIMING, VIDEO_VISIBILITY_CONFIG } from '@/constants/projects';
 
-/**
- * Hook to control video playback based on visibility and user interaction
- * @param videoRef - Reference to the video element
- * @param dependencies - Dependencies that should trigger re-initialization
- */
+
 export function useVideoPlaybackControl(
   videoRef: RefObject<HTMLVideoElement | null>,
   dependencies: unknown[] = []
@@ -25,9 +16,7 @@ export function useVideoPlaybackControl(
     let userInteracted = false;
     let playAttempted = false;
 
-    /**
-     * Suppresses NotAllowedError from console if it occurs before user interaction
-     */
+
     const errorHandler = (event: ErrorEvent): boolean | void => {
       if (
         event.error?.name === 'NotAllowedError' &&
@@ -37,24 +26,22 @@ export function useVideoPlaybackControl(
         return false;
       }
     };
-
+    
     window.addEventListener('error', errorHandler);
 
-    /**
-     * Tracks user interaction to enable video playback
-     */
+
     const handleUserInteraction = (): void => {
       if (!userInteracted) {
         userInteracted = true;
         playAttempted = false;
 
-        // Small delay to ensure the interaction is fully registered
         setTimeout(() => {
           const targetEl = document.querySelector("[data-flip-element='target']") as HTMLElement;
           if (targetEl && video.paused) {
             const rect = targetEl.getBoundingClientRect();
             const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
             if (isVisible) {
+              video.muted = false;
               video.play()
                 .then(() => {
                   playAttempted = true;
@@ -68,9 +55,7 @@ export function useVideoPlaybackControl(
       }
     };
 
-    /**
-     * Checks if an element is visible in the viewport
-     */
+
     const isElementVisible = (rect: DOMRect, viewportHeight: number, viewportWidth: number): boolean => {
       return (
         rect.bottom > 0 &&
@@ -80,9 +65,7 @@ export function useVideoPlaybackControl(
       );
     };
 
-    /**
-     * Checks if small video section is visible with threshold
-     */
+
     const checkSmallSectionVisibility = (
       rect: DOMRect | undefined,
       viewportHeight: number
@@ -93,9 +76,7 @@ export function useVideoPlaybackControl(
       return rect.bottom > startThreshold && rect.top < endThreshold;
     };
 
-    /**
-     * Checks if element is completely out of viewport with margin
-     */
+
     const isElementOutOfView = (
       rect: DOMRect,
       viewportHeight: number,
@@ -110,14 +91,11 @@ export function useVideoPlaybackControl(
       );
     };
 
-    /**
-     * Attempts to play the video if conditions are met
-     */
+
     const attemptPlay = (): void => {
       if (video.paused && userInteracted) {
-        // Always try to play if user has interacted and video is paused
-        // Don't check playAttempted or readyState to allow retries
         try {
+          video.muted = false;
           const playPromise = video.play();
           if (playPromise !== undefined) {
             playPromise
@@ -126,11 +104,9 @@ export function useVideoPlaybackControl(
               })
               .catch((error: Error) => {
                 if (error.name === 'NotAllowedError') {
-                  // Still blocked, will retry
                   playAttempted = false;
                   return;
                 }
-                // Handle other errors silently
                 playAttempted = false;
                 setTimeout(() => {
                   playAttempted = false;
@@ -139,16 +115,13 @@ export function useVideoPlaybackControl(
           }
         } catch (error: unknown) {
           if (error instanceof Error && error.name !== 'NotAllowedError') {
-            // Handle unexpected errors silently
           }
           playAttempted = false;
         }
       }
     };
 
-    /**
-     * Checks if video should be paused based on position
-     */
+
     const shouldPause = (
       largeSectionRect: DOMRect | undefined,
       smallSectionRect: DOMRect | undefined,
@@ -171,9 +144,6 @@ export function useVideoPlaybackControl(
       return isPastLargeSection || isBeforeSmallSection || isTargetOutOfView;
     };
 
-    /**
-     * Main visibility check loop
-     */
     const checkVideoVisibility = (): void => {
       const targetEl = document.querySelector("[data-flip-element='target']") as HTMLElement;
       const wrapperElements = document.querySelectorAll("[data-flip-element='wrapper']");
@@ -201,13 +171,10 @@ export function useVideoPlaybackControl(
         : false;
       const isSmallSectionVisible = checkSmallSectionVisibility(smallSectionRect, viewportHeight);
 
-      // Play video if any section is visible and user has interacted
       if ((isTargetVisible || isLargeSectionVisible || isSmallSectionVisible) && userInteracted) {
         attemptPlay();
       } else if (!userInteracted && (isTargetVisible || isLargeSectionVisible || isSmallSectionVisible)) {
-        // Wait for user interaction - don't attempt to play
       } else {
-        // Check if we should pause
         if (shouldPause(largeSectionRect, smallSectionRect, targetRect, viewportHeight, viewportWidth)) {
           if (!video.paused) {
             video.pause();
@@ -218,7 +185,6 @@ export function useVideoPlaybackControl(
       animationFrameId = requestAnimationFrame(checkVideoVisibility);
     };
 
-    // Listen for user interactions
     const events = ['click', 'touchstart', 'scroll', 'keydown', 'mousedown'] as const;
     const removeEventListeners: (() => void)[] = [];
 
@@ -229,7 +195,6 @@ export function useVideoPlaybackControl(
       });
     });
 
-    // Start checking after a delay to ensure DOM is ready
     const initTimeout = setTimeout(() => {
       checkVideoVisibility();
     }, ANIMATION_TIMING.INIT_DELAY + VIDEO_VISIBILITY_CONFIG.INIT_DELAY_OFFSET);

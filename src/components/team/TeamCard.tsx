@@ -6,36 +6,18 @@ import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { TelegramIcon } from '@/components/icons/social-media/TelegramIcon';
 import { VerifiedCheckIcon } from '@/components/icons/social-media/VerifiedCheckIcon';
-import { TEAM_CARD, TEAM_CARD_COLORS, SOCIAL_ICON, TEAM_SPACING } from '@/constants/team';
 
 interface TeamCardProps {
   /** Team member data to display */
   member: TeamMember;
 }
 
-/**
- * TeamCard component displays a single team member's information
- * 
- * Features:
- * - Displays member image, name, role, and verified badge
- * - Shows social media links (Twitter, LinkedIn, GitHub, Instagram, Telegram)
- * - Includes momentum hover effects
- * - Responsive design with optimized images
- * 
- * @param props - Component props
- * @param props.member - Team member data object
- * 
- * @example
- * ```tsx
- * <TeamCard member={teamMembers[0]} />
- * ```
- */
+
 export function TeamCard({ member }: TeamCardProps) {
 
     return (
       <div
-      className="team-card-item relative flex-shrink-0"
-      style={{ width: `${TEAM_CARD.WIDTH}px`, minWidth: `${TEAM_CARD.WIDTH}px`, maxWidth: `${TEAM_CARD.WIDTH}px` }}
+      className="team-card-item relative shrink-0 w-full max-w-[250px] max-[414px]:max-w-[230px] md:w-[280px] md:min-w-[280px] md:max-w-[280px]"
       >
       <div 
         data-momentum-hover-element="" 
@@ -43,10 +25,10 @@ export function TeamCard({ member }: TeamCardProps) {
       >
         <div 
           data-momentum-hover-target="" 
-          className="text-white rounded-[1.5em] w-full relative overflow-hidden border border-white/15 shadow-[0_4px_6px_rgba(0,0,0,0.3)] transition-[border-color,box-shadow] duration-300 ease-in-out p-5"
+          className="text-white rounded-lg md:rounded-xl w-full relative overflow-hidden border border-white/15 shadow-[0_4px_6px_rgba(0,0,0,0.3)] transition-[border-color,box-shadow] duration-300 ease-in-out p-2.5 md:p-3.5"
         >
           <div className="pointer-events-none pt-[150%]"></div>
-          <div className="absolute top-5 left-5 right-5 bottom-5 z-0 overflow-hidden rounded-[1.2em]">
+          <div className="absolute top-2.5 left-2.5 right-2.5 bottom-2.5 md:top-3.5 md:left-3.5 md:right-3.5 md:bottom-3.5 z-0 overflow-hidden rounded-lg md:rounded-[1em]">
               <Image
                 src={member.image}
                 alt={member.name}
@@ -58,16 +40,15 @@ export function TeamCard({ member }: TeamCardProps) {
               />
             </div>
           <div 
-            className="absolute top-0 left-0 w-full h-full flex flex-col justify-end gap-2 z-[2] pointer-events-none"
-            style={{ padding: `0 ${TEAM_CARD.PADDING.SIDES} ${TEAM_CARD.PADDING.BOTTOM} ${TEAM_CARD.PADDING.SIDES}` }}
+            className="absolute top-0 left-0 w-full h-full flex flex-col justify-end gap-1 md:gap-1.5 z-2 pointer-events-none px-2.5 pb-2 md:px-3.5 md:pb-3.5"
           >
             <div className="flex items-center justify-start gap-1">
-              <h3 className="m-0 mb-1 text-2xl font-medium leading-none">{member.name}</h3>
-              <VerifiedCheckIcon className="w-6" />
+              <h3 className="m-0 mb-0.5 text-[15px] md:text-lg font-medium leading-none">{member.name}</h3>
+              <VerifiedCheckIcon className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" />
               </div>
-            <p className="opacity-67 m-0 text-base font-normal leading-none">{member.role}</p>
-            <div className="mt-4 flex flex-col gap-2 pointer-events-auto">
-              <div className="flex gap-3">
+            <p className="opacity-67 m-0 text-[11px] md:text-xs font-normal leading-none">{member.role}</p>
+            <div className="mt-1.5 md:mt-2.5 flex flex-col gap-1.5 pointer-events-auto">
+              <div className="flex gap-1.5 md:gap-2">
                     {member.socialLinks.twitter && (
                       <a
                         href={member.socialLinks.twitter}
@@ -76,7 +57,7 @@ export function TeamCard({ member }: TeamCardProps) {
                         className="text-white/70 hover:text-white transition-colors"
                         aria-label={`${member.name} Twitter`}
                       >
-                        <XIcon className="h-5 w-5" />
+                        <XIcon className="h-3 w-3 md:h-3.5 md:w-3.5" />
                       </a>
                     )}
                     {member.socialLinks.linkedin && (
@@ -87,7 +68,7 @@ export function TeamCard({ member }: TeamCardProps) {
                         className="text-white/70 hover:text-white transition-colors"
                         aria-label={`${member.name} LinkedIn`}
                       >
-                        <LinkedInIcon className="h-5 w-5" />
+                        <LinkedInIcon className="h-3 w-3 md:h-3.5 md:w-3.5" />
                       </a>
                     )}
                     {member.socialLinks.github && (
@@ -98,7 +79,7 @@ export function TeamCard({ member }: TeamCardProps) {
                         className="text-white/70 hover:text-white transition-colors"
                         aria-label={`${member.name} GitHub`}
                       >
-                        <GitHubIcon className="h-5 w-5" />
+                        <GitHubIcon className="h-3 w-3 md:h-3.5 md:w-3.5" />
                       </a>
                     )}
                     {member.socialLinks.instagram && (
@@ -109,7 +90,7 @@ export function TeamCard({ member }: TeamCardProps) {
                         className="text-white/70 hover:text-white transition-colors"
                         aria-label={`${member.name} Instagram`}
                       >
-                        <InstagramIcon className="h-5 w-5" />
+                        <InstagramIcon className="h-3 w-3 md:h-3.5 md:w-3.5" />
                       </a>
                     )}
                 {member.socialLinks.telegram && (
@@ -120,7 +101,7 @@ export function TeamCard({ member }: TeamCardProps) {
                     className="text-white/70 hover:text-white transition-colors"
                     aria-label={`${member.name} Telegram`}
                   >
-                    <TelegramIcon className="h-5 w-5" />
+                    <TelegramIcon className="h-3 w-3 md:h-3.5 md:w-3.5" />
                   </a>
                 )}
                 </div>

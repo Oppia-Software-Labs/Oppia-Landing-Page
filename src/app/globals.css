@@ -118,8 +118,27 @@
   }
 }
 
+html {
+  overflow-x: hidden;
+  background-color: #000;
+  width: 100%;
+  max-width: 100vw;
+}
+
 body {
   font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
+  background-color: #000;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+#__next,
+[data-nextjs-scroll-focus-boundary] {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 
@@ -391,8 +410,16 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: #000;
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    background-color: #000;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 }
 
@@ -424,21 +451,7 @@ body {
 }
 
 /* Team Card Styles - Responsive widths only (rest migrated to Tailwind) */
-@media screen and (min-width: 640px) and (max-width: 991px) {
-  .team-card-item {
-    width: calc(50% - 0.5px - 1em);
-    min-width: calc(50% - 0.5px - 1em);
-    max-width: calc(50% - 0.5px - 1em);
-}
-}
-
-@media screen and (max-width: 639px) {
-  .team-card-item {
-  width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-}
-}
+/* Team cards: responsive layout handled by Tailwind in TeamCard + Team.tsx */
 
 /* Team cards container - smooth scroll and no side borders */
 .team-cards-container {
@@ -538,6 +551,14 @@ body {
   display: flex;
 }
 
+@media screen and (max-width: 414px) {
+  .twostep-nav__width {
+    padding-top: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+}
+
 .twostep-nav__bar {
   pointer-events: auto;
   color: #f2f2f2;
@@ -547,6 +568,13 @@ body {
   transition: max-width var(--animation-default-long) 0.2s, border-radius var(--animation-default-long) 0.2s;
   overflow: hidden;
   border-radius: 9999px;
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__bar {
+    max-width: 100%;
+    border-radius: 1.25rem;
+  }
 }
 
 [data-twostep-nav][data-nav-status="active"] .twostep-nav__bar {
@@ -591,12 +619,30 @@ body {
   z-index: 1;
   align-items: center;
   width: 100%;
-  height: 5em;
-  padding: 1em 1.5em;
+  height: 4em;
+  padding: 0.85em 1.25em;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 1em;
+  gap: 0.85em;
   position: relative;
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__top {
+    height: 1.5em !important;
+    padding: 0.12em 0.4em !important;
+    gap: 0.4em !important;
+    grid-template-columns: auto 1fr auto !important;
+    justify-content: space-between !important;
+  }
+  
+  .twostep-nav__top > *:first-child {
+    margin-right: 0 !important;
+  }
+  
+  .twostep-nav__top > *:last-child {
+    margin-left: 0 !important;
+  }
 }
 
 .twostep-nav__top > *:first-child {
@@ -616,17 +662,41 @@ body {
   margin-left: 5em;
 }
 
+@media screen and (max-width: 414px) {
+  .twostep-nav__logo {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    justify-self: center !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+  }
+}
+
 .twostep-nav__logo-svg {
-  height: 2.5em;
+  height: 2.1em;
   width: auto;
-  max-width: 140px;
+  max-width: 120px;
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__logo-svg {
+    height: 0.85em;
+    max-width: 50px;
+  }
 }
 
 .twostep-nav__menu-text {
   color: #f2f2f2;
-  font-size: 0.875em;
+  font-size: 0.9em;
   font-weight: 500;
   white-space: nowrap;
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__menu-text {
+    font-size: 0.55em;
+  }
 }
 
 .twostep-nav__toggle {
@@ -637,11 +707,18 @@ body {
   align-items: center;
   padding: 0;
   display: flex;
-  gap: 0.75em;
+  gap: 0.6em;
   position: relative;
   border: none;
   width: auto;
   height: auto;
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__toggle {
+    gap: 0.2em !important;
+    padding: 0 !important;
+  }
 }
 
 .twostep-nav__toggle-bars {
@@ -649,18 +726,48 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 3em;
-  height: 3em;
+  width: 2.5em;
+  height: 2.5em;
   position: relative;
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__toggle-bars {
+    width: 1.25em;
+    height: 1.25em;
+  }
 }
 
 .twostep-nav__toggle-bar {
   background-color: #f2f2f2;
-  width: 2.25em;
-  height: 0.15em;
+  width: 2em;
+  height: 0.12em;
   position: absolute;
   transition: transform var(--animation-default);
   transform: translateY(-0.3em) rotate(0.001deg);
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__toggle-bar {
+    width: 1.1em;
+    height: 0.09em;
+  }
+  
+  .twostep-nav__toggle .twostep-nav__toggle-bar {
+    transform: translateY(-0.2em) rotate(0.001deg);
+  }
+  
+  .twostep-nav__toggle .twostep-nav__toggle-bar:nth-child(2) {
+    transform: translateY(0.125em) rotate(0.001deg);
+  }
+  
+  .twostep-nav__toggle:hover .twostep-nav__toggle-bars .twostep-nav__toggle-bar {
+    transform: translateY(0.2em) rotate(0.001deg);
+  }
+  
+  .twostep-nav__toggle:hover .twostep-nav__toggle-bars .twostep-nav__toggle-bar:nth-child(2) {
+    transform: translateY(-0.125em) rotate(0.001deg);
+  }
 }
 
 .twostep-nav__toggle:hover .twostep-nav__toggle-bars .twostep-nav__toggle-bar {
@@ -710,6 +817,14 @@ body {
   [data-twostep-nav][data-nav-status="active"] .twostep-nav__top-line {
     transition: all var(--animation-default) 0.2s;
     inset: auto 0em -0.5em;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .twostep-nav__top-line {
+    bottom: -0.5em;
+    left: 0.75em;
+    right: 0.75em;
   }
 }
 
@@ -790,7 +905,7 @@ body {
   }
   
   .twostep-nav__link-span {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 }
 
@@ -815,7 +930,7 @@ body {
   }
   
   .twostep-nav__link-span {
-    font-size: 1.25em;
+    font-size: 1.1em;
   }
   
   .twostep-nav__bottom-inner {
@@ -865,7 +980,7 @@ body {
 .twostep-nav__link-span {
   letter-spacing: -0.04em;
   font-family: inherit;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 400;
   line-height: 1.2;
   color: #f2f2f2;
@@ -875,7 +990,7 @@ body {
   opacity: 0.7;
   letter-spacing: -0.02em;
   font-family: inherit;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 400;
   line-height: 1;
   color: #f2f2f2;
@@ -889,7 +1004,7 @@ body {
 }
 
 .twostep-nav__section-title {
-  font-size: 0.65em;
+  font-size: 0.6em;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -994,12 +1109,49 @@ body {
   cursor: pointer;
   --rotate: var(--btn-slanted-rotate);
   --move: var(--btn-slanted-move);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 414px) {
+  .btn-slanted {
+    font-size: 0.6rem;
+    padding: 0.22em 0.4em;
+  }
+}
+
+/* Navbar language button: same base style as Discover, slanted effect kept, black text on white hover */
+.btn-slanted-nav {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-slanted-nav .btn-slanted-label {
+  color: inherit;
+}
+
+.btn-slanted-nav:hover,
+.btn-slanted-nav:focus-visible {
+  background-color: rgba(255, 255, 255, 1);
+  color: #000;
+}
+
+.btn-slanted-nav:hover .btn-slanted-label,
+.btn-slanted-nav:focus-visible .btn-slanted-label {
+  color: #000;
+}
+
+@media screen and (max-width: 640px) {
+  .btn-slanted-nav {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.85rem;
+  }
 }
 
 /* Product buttons with slanted effect */

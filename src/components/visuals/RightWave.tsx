@@ -7,7 +7,7 @@ export function RightWave() {
   const gradientId2 = 'right-wave-gradient-2';
   
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden max-md:hidden">
       <svg
         viewBox="0 0 516 1178"
         fill="none"

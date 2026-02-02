@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { GekoCard } from './GekoCard';
@@ -12,6 +13,7 @@ import { gsap } from 'gsap';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 import { COLORS } from '@/constants/colors';
+import { productsVariants } from '@/animations/products';
 
 type ProductId = 'neko' | 'geko' | 'coming-soon';
 
@@ -143,14 +145,25 @@ export function Products() {
 
   return (
     <section className={`bg-black ${SECTION_SPACING.MEDIUM} overflow-x-hidden`}>
-      <div className={`w-full ${CONTAINER_PADDING.HORIZONTAL}`}>
-        <SectionHeader
-          title={t('products.title')}
-          subtitle={t('products.description')}
-          className="mb-8"
-        />
+      <motion.div
+        className={`w-full ${CONTAINER_PADDING.HORIZONTAL}`}
+        variants={productsVariants.container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, margin: '-100px' }}
+      >
+        <motion.div variants={productsVariants.title}>
+          <SectionHeader
+            title={t('products.title')}
+            subtitle={t('products.description')}
+            className="mb-6"
+          />
+        </motion.div>
 
-        <div className="mb-4 flex justify-center gap-2.5">
+        <motion.div
+          className="mb-3 flex justify-center gap-2"
+          variants={productsVariants.buttons}
+        >
           {PRODUCTS.map((productId, idx) => {
             const translationKey = getProductTranslationKey(productId);
             const isActive = idx === activeIndex;
@@ -162,7 +175,7 @@ export function Products() {
                 onClick={() => {
                   handleProductButtonClick(idx);
                 }}
-                className={`btn-slanted btn-slanted-product rounded-full px-7 py-2.5 text-base font-medium ${
+                className={`btn-slanted btn-slanted-product rounded-full px-5 py-2 text-sm font-medium max-md:px-4 max-md:py-1.5 max-md:text-xs max-[414px]:px-3 max-[414px]:py-1 max-[414px]:text-[11px] ${
                   isActive
                     ? 'btn-slanted-product--active'
                     : 'btn-slanted-product--inactive'
@@ -185,17 +198,16 @@ export function Products() {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           ref={sliderRef}
           data-flick-cards-init=""
-          className="relative w-full"
-          style={{ minHeight: '700px' }}
+          className="relative w-full min-h-[640px] max-md:min-h-[400px] max-[414px]:min-h-[360px]"
+          variants={productsVariants.cards}
         >
           <div
-            className="opacity-0 pointer-events-none relative"
-            style={{ width: '47em', margin: '0 auto' }}
+            className="opacity-0 pointer-events-none relative w-[42em] max-md:w-[17rem] max-[414px]:w-[15rem] mx-auto"
           >
             <div style={{ paddingTop: '75%' }}></div>
           </div>
@@ -212,20 +224,31 @@ export function Products() {
                   'data-flick-cards-item-status': '',
                 };
 
+                // Determine variant based on product position
+                let cardVariant = productsVariants.cardCenter;
+                if (productId === 'neko') {
+                  cardVariant = productsVariants.cardLeft;
+                } else if (productId === 'geko') {
+                  cardVariant = productsVariants.cardCenter;
+                } else if (productId === 'coming-soon') {
+                  cardVariant = productsVariants.cardRight;
+                }
+
                 return (
-                  <div
+                  <motion.div
                     key={productId}
                     className="absolute"
                     style={{ zIndex: getInitialZIndex(index) }}
+                    variants={cardVariant}
                   >
                     {renderProductCard(productId, index, cardProps, getCardRef(index))}
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

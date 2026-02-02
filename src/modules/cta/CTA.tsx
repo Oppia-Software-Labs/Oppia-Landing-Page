@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
@@ -11,8 +12,10 @@ import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { XIcon } from '@/components/icons/social-media/XIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
 import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
+import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { ctaVariants } from '@/animations/cta';
 
 export function CTA() {
   const locale = useAppStore((state) => state.locale);
@@ -20,16 +23,24 @@ export function CTA() {
 
   return (
     <section className={`relative bg-black overflow-hidden ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <SectionHeader
-          title={t('cta.topTextLeft')}
-          subtitle={t('cta.topTextRight')}
-          className="mb-8"
-          titleClassName="text-2xl sm:text-3xl font-medium whitespace-pre-line"
-          subtitleClassName="text-sm text-white/80 whitespace-pre-line"
-        />
+      <motion.div
+        className="relative z-10 mx-auto max-w-7xl"
+        variants={ctaVariants.container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
+      >
+        <motion.div variants={ctaVariants.header}>
+          <SectionHeader
+            title={t('cta.topTextLeft')}
+            subtitle={t('cta.topTextRight')}
+            className="mb-5"
+            titleClassName="text-xl sm:text-2xl font-medium whitespace-pre-line"
+            subtitleClassName="text-xs text-white/80 whitespace-pre-line"
+          />
+        </motion.div>
         <div
-          className="relative rounded-3xl p-10 sm:p-14 lg:p-28 overflow-hidden"
+          className="relative rounded-2xl p-6 sm:p-8 lg:p-14 lg:py-16 max-w-6xl mx-auto overflow-hidden"
           style={{
             background: 'linear-gradient(to bottom, #03A7FF, #00398F)',
           }}
@@ -57,74 +68,98 @@ export function CTA() {
               aria-hidden="true"
             />
           </div>
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-8 lg:pt-12">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 pt-4 lg:pt-6">
             {/* Left Side - Logo, Description, and Social Cards */}
-            <div className="flex flex-col">
-              <div className="mb-6">
-                <OppiaLogo width={48} height={48} className="h-12 w-auto mb-4" />
-                <p className="text-base text-white/90 leading-relaxed max-w-md">
+            <motion.div
+              className="flex flex-col pr-0 lg:pr-6"
+              variants={ctaVariants.leftSide}
+            >
+              <div className="mb-4">
+                <motion.div variants={ctaVariants.logo}>
+                  <OppiaLogo width={48} height={48} className="h-12 w-auto mb-3" />
+                </motion.div>
+                <motion.p
+                  className="text-sm text-white/90 leading-relaxed max-w-md"
+                  variants={ctaVariants.description}
+                >
                   {t('cta.description')}
-                </p>
+                </motion.p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <motion.div
+                className="grid grid-cols-2 gap-2"
+                variants={ctaVariants.socialCards}
+              >
                 {CTA_SOCIAL_LINKS.map((social) => (
-                  <SocialCard key={social.href} href={social.href} label={t(social.labelKey)} />
+                  <motion.div key={social.href} variants={ctaVariants.socialCard}>
+                    <SocialCard href={social.href} label={t(social.labelKey)} />
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Right Side - Large Social Icons */}
-            <div className="flex items-center justify-center lg:justify-end">
-              <div className="flex gap-0 items-end">
+            <motion.div
+              className="flex items-center justify-center lg:justify-end pl-0 lg:pl-6"
+              variants={ctaVariants.rightSide}
+            >
+              <motion.div
+                className="flex items-end"
+                variants={ctaVariants.socialIcons}
+              >
                 {/* Instagram */}
-                <a
+                <motion.a
                   href={SOCIAL_LINKS.INSTAGRAM}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.translateY}`}
+                  className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.size} rounded-xl max-md:rounded-lg bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center p-1.5 max-md:p-1 ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.translateY}`}
                   aria-label="Visit our Instagram"
+                  variants={ctaVariants.socialIcon}
                 >
                   <InstagramIcon className={`${CTA_CONFIG.LARGE_ICONS.INSTAGRAM.iconSize} text-white`} />
-                </a>
+                </motion.a>
 
                 {/* X/Twitter */}
-                <a
+                <motion.a
                   href={SOCIAL_LINKS.TWITTER}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.TWITTER.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.TWITTER.translateY}`}
+                  className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.size} rounded-xl max-md:rounded-lg bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center p-1.5 max-md:p-1 ${CTA_CONFIG.LARGE_ICONS.TWITTER.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.TWITTER.translateY}`}
                   aria-label="Visit our X (Twitter)"
+                  variants={ctaVariants.socialIcon}
                 >
                   <XIcon className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
-                </a>
+                </motion.a>
 
                 {/* Discord */}
-                <a
+                <motion.a
                   href={SOCIAL_LINKS.DISCORD}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.DISCORD.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 -mr-3 ${CTA_CONFIG.LARGE_ICONS.DISCORD.translateY}`}
+                  className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.size} rounded-xl max-md:rounded-lg bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center p-1.5 max-md:p-1 ${CTA_CONFIG.LARGE_ICONS.DISCORD.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.DISCORD.translateY}`}
                   aria-label="Join our Discord"
+                  variants={ctaVariants.socialIcon}
                 >
                   <DiscordIcon className={`${CTA_CONFIG.LARGE_ICONS.DISCORD.iconSize} text-white`} />
-                </a>
+                </motion.a>
 
                 {/* LinkedIn */}
-                <a
+                <motion.a
                   href={SOCIAL_LINKS.LINKEDIN}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.size} rounded-2xl bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.translateY}`}
+                  className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.size} rounded-xl max-md:rounded-lg bg-[#FFFFFF]/16 backdrop-blur-sm border-2 border-white flex items-center justify-center p-1.5 max-md:p-1 ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.rotation} transition-all hover:bg-[#FFFFFF]/24 hover:scale-105 ${CTA_CONFIG.LARGE_ICONS.LINKEDIN.translateY}`}
                   aria-label="Visit our LinkedIn"
+                  variants={ctaVariants.socialIcon}
                 >
                   <LinkedInIcon className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
-                </a>
-              </div>
-            </div>
+                </motion.a>
+
+              </motion.div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

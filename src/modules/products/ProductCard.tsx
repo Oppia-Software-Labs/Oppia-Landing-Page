@@ -80,18 +80,18 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>((props, 
         cursor: 'pointer',
       }}
     >
-      <ProductCardBase className="h-[600px] w-[450px]">
+      <ProductCardBase>
         <div
-          className={`flex h-full flex-col items-center justify-between p-6 pt-9 transition-opacity duration-300 ${
+          className={`flex h-full flex-col items-center justify-center p-5 pt-7 max-md:p-3 max-md:pt-5 max-[414px]:p-2.5 max-[414px]:pt-4 transition-opacity duration-300 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="flex w-full flex-col items-center">
+          <div className="flex w-full flex-col items-center text-center -translate-y-24 max-md:-translate-y-16 max-[414px]:-translate-y-12">
             <ProductTags tags={tags} />
 
-            <h3 className="mb-4 text-5xl font-bold text-white">{projectName}</h3>
+            <h3 className="mb-3 text-4xl font-bold text-white max-md:text-2xl max-md:mb-2.5 max-[414px]:text-xl max-[414px]:mb-2">{projectName}</h3>
 
-            <p className="mb-5 max-w-[320px] text-base font-normal leading-relaxed text-white text-center">
+            <p className="mb-4 max-w-[300px] text-sm font-normal leading-relaxed text-white text-center max-md:max-w-[240px] max-md:text-xs max-md:mb-3 max-[414px]:max-w-[200px] max-[414px]:text-[11px] max-[414px]:mb-2.5">
               {description}
             </p>
 

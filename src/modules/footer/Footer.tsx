@@ -73,88 +73,102 @@ export function Footer() {
           </div>
 
           {/* Links, Resources, Socials */}
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-48">
-          {/* Links */}
-          <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">{t('footer.links.title')}</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="#features" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.links.features')}
-                </Link>
-              </li>
-              <li>
-                <Link href="#solutions" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.links.solutions')}
-                </Link>
-              </li>
-              <li>
-                <Link href="#advantages" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.links.advantages')}
-                </Link>
-              </li>
-              <li>
-                <Link href="#faq" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.links.faq')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Recursos */}
-          <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">{t('footer.resources.title')}</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="#contact" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.resources.contact')}
-                </Link>
-              </li>
-              <li>
-                <Link href="#download" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.resources.downloadGeko')}
-                </Link>
-              </li>
-              <li>
-                <Link href="#about" className="text-base text-gray-400 hover:text-white transition-colors">
-                  {t('footer.resources.about')}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Socials */}
-          <div>
-            <h3 className="mb-4 text-lg font-semibold text-white">{t('footer.socials.title')}</h3>
-            <ul className="space-y-3">
-              {FOOTER_SOCIAL_LINKS.map((social) => {
-                // Map social names to translation keys
-                const getTranslationKey = (name: string) => {
-                  const nameMap: Record<string, string> = {
-                    'X': 'twitter',
-                    'Instagram': 'instagram',
-                    'LinkedIn': 'linkedin',
-                    'GitHub': 'github',
-                    'Discord': 'discord',
-                  };
-                  return nameMap[name] || name.toLowerCase();
-                };
-                
-                return (
-                <li key={social.href}>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                      className="text-base text-gray-400 hover:text-white transition-colors"
-                  >
-                      {t(`footer.socials.${getTranslationKey(social.name)}`)}
-                  </a>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-10 sm:gap-12 lg:gap-16">
+            {/* Links */}
+            <nav className="min-w-[140px]" aria-label={t('footer.links.title')}>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
+                {t('footer.links.title')}
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="#products" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.features')}
+                  </Link>
                 </li>
-                );
-              })}
-            </ul>
-          </div>
+                <li>
+                  <Link href="#products" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.solutions')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#who-are-we" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.advantages')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#cta" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.resources.contact')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#faq" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.faq')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#who-are-we" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.resources.about')}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* Socials */}
+            <nav className="min-w-[140px]" aria-label={t('footer.socials.title')}>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
+                {t('footer.socials.title')}
+              </h3>
+              <ul className="space-y-3">
+                {FOOTER_SOCIAL_LINKS.map((social) => {
+                  const getTranslationKey = (name: string) => {
+                    const nameMap: Record<string, string> = {
+                      'X': 'twitter',
+                      'Instagram': 'instagram',
+                      'LinkedIn': 'linkedin',
+                      'GitHub': 'github',
+                      'Discord': 'discord',
+                    };
+                    return nameMap[name] || name.toLowerCase();
+                  };
+                  return (
+                    <li key={social.href}>
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                      >
+                        {t(`footer.socials.${getTranslationKey(social.name)}`)}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            {/* Projects */}
+            <nav className="min-w-[140px]" aria-label={t('footer.projects.title')}>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
+                {t('footer.projects.title')}
+              </h3>
+              <ul className="space-y-3 list-none pl-0 m-0">
+                <li>
+                  <Link href="/projects/neko" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('products.neko.name')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/geko" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('products.geko.name')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/projects/deko" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('products.deko.name')}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
 

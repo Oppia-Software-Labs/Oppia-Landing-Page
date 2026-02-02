@@ -1,11 +1,13 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { OppiaLogo } from '@/components/icons/oppia/OppiaLogo';
 import { LanguageButton } from './LanguageButton';
 import { DiscoverLink } from './DiscoverLink';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
+import { navbarVariants } from '@/animations/navbar';
 
 interface NavTopBarProps {
   onToggle: () => void;
@@ -25,8 +27,13 @@ export function NavTopBar({ onToggle, isActive }: NavTopBarProps) {
   };
 
   return (
-    <div className="twostep-nav__top">
-      <button
+    <motion.div
+      className="twostep-nav__top max-[414px]:gap-0.5"
+      variants={navbarVariants.topBar}
+      initial="hidden"
+      animate="show"
+    >
+      <motion.button
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -34,26 +41,35 @@ export function NavTopBar({ onToggle, isActive }: NavTopBarProps) {
         }}
         className="twostep-nav__toggle"
         aria-label={isActive ? t('navbar.closeMenu') : t('navbar.menu')}
+        variants={navbarVariants.menuButton}
       >
         <div className="twostep-nav__toggle-bars">
           <div className="twostep-nav__toggle-bar"></div>
           <div className="twostep-nav__toggle-bar"></div>
         </div>
         <span className="twostep-nav__menu-text">{t('navbar.menu')}</span>
-      </button>
-      <a
+      </motion.button>
+      <motion.a
         href="#hero"
         onClick={handleLogoClick}
         className="twostep-nav__logo"
+        variants={navbarVariants.logo}
       >
-        <OppiaLogo width={140} height={46} className="twostep-nav__logo-svg" />
-      </a>
-      <div className="flex items-center gap-3">
-        <DiscoverLink />
-        <LanguageButton />
-      </div>
+        <OppiaLogo width={120} height={40} className="twostep-nav__logo-svg max-sm:w-[48px] max-sm:h-[16px]" />
+      </motion.a>
+      <motion.div
+        className="flex items-center gap-3 max-[414px]:gap-1.5"
+        variants={navbarVariants.topButtons}
+      >
+        <div className="hidden sm:block">
+          <DiscoverLink />
+        </div>
+        <div className="hidden sm:block">
+          <LanguageButton />
+        </div>
+      </motion.div>
       <div className="twostep-nav__top-line"></div>
-    </div>
+    </motion.div>
   );
 }
 

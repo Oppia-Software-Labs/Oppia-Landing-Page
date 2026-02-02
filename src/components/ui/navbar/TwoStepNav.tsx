@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAppStore } from '@/store/store';
 import { NavTopBar } from './NavTopBar';
 import { NavMenuContent } from './NavMenuContent';
@@ -13,6 +14,8 @@ export function TwoStepNav() {
   const isMenuOpen = useAppStore((state) => state.isMenuOpen);
   const closeMenu = useAppStore((state) => state.closeMenu);
   const { scrollToElement } = useSmoothScroll();
+  const pathname = usePathname();
+  const router = useRouter();
 
   const setNavStatus = (status: NavStatus) => {
     if (navRef.current) {
@@ -87,7 +90,14 @@ export function TwoStepNav() {
   const handleLinkClick = (href: string) => {
     closeMenu();
     if (href.startsWith('#')) {
-      scrollToElement(href);
+      // Si estamos en el root, hacer scroll directamente
+      if (pathname === '/') {
+        scrollToElement(href);
+      } else {
+        // Si estamos en otra página, navegar al root con el hash
+        // El hash se preservará y el useEffect en page.tsx hará el scroll
+        window.location.href = `/${href}`;
+      }
     }
   };
 

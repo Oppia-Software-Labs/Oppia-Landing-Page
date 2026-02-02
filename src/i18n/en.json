@@ -28,7 +28,7 @@
         "title": "TEAM",
         "links": {
           "members": "Members",
-          "careers": "Careers",
+          "faq": "FAQ",
           "join": "Join"
         }
       }
@@ -106,8 +106,8 @@
     "links": {
       "title": "Links",
       "features": "Features",
-      "solutions": "Soluciones",
-      "advantages": "Ventajas",
+      "solutions": "Solutions",
+      "advantages": "Advantages",
       "faq": "FAQ"
     },
     "resources": {
@@ -115,6 +115,9 @@
       "contact": "Contact",
       "downloadGeko": "Download Geko",
       "about": "About Us"
+    },
+    "projects": {
+      "title": "Projects"
     },
     "socials": {
       "title": "Socials",
@@ -127,22 +130,30 @@
     "copyright": "2026 © Oppia Labs - All Rights Reserved"
   },
   "faq": {
-    "badge": "FAQ",
-    "titleLine1": "Frequently Asked",
-    "titleLine2": "Questions",
-    "description": "Find answers to common questions about our products and services.",
+    "badge": "Have questions?",
+    "titleLine1": "We have every",
+    "titleLine2": "answer you need",
+    "description": "Find answers to common questions about Oppia, our mission, technology, and how you can get involved.",
     "faqsData": [
       {
         "question": "What is Oppia?",
-        "answer": "Oppia builds decentralized systems designed for real-world impact. We create technology that empowers people, builders, and organizations to move forward with confidence."
+        "answer": "Oppia Software Labs (OS Labs) is a Web3 innovation studio dedicated to building open-source, decentralized solutions with real-world impact. We believe in decentralization, transparency, and user empowerment. We create technology that makes a meaningful difference."
       },
       {
-        "question": "What products does Oppia offer?",
-        "answer": "We offer Neko, Geko, and Deko - innovative solutions designed to transform how you interact with decentralized finance and real-world assets."
+        "question": "What is the mission of Oppia?",
+        "answer": "To harness the potential of blockchain and Web3 technologies to design scalable, impactful solutions that improve how people interact with everyday systems; starting with social good, and expanding into DeFi and beyond."
       },
       {
-        "question": "How can I get started?",
-        "answer": "You can explore our projects, download Geko, or contact us directly for more information about our products and services."
+        "question": "What techstack does Oppia use?",
+        "answer": "We have experimented with multiple techstacks across our projects, from Ethereum to Stellar and beyond. We are currently focused on building on Stellar, but we are always experimenting with new technologies and platforms."
+      },
+      {
+        "question": "What is Oppia most proud of?",
+        "answer": "Our commitment to building open-source, decentralized solutions with real-world impact. We are proud to be a part of the Web3 community and to be building technology that makes a meaningful difference."
+      },
+      {
+        "question": "Can I contribute to Oppia?",
+        "answer": "Yes, we are always looking for new contributors to help us build in our open-source projects. Reach out to us if you are interested in contributing with Oppia or checkout our projects on platforms like Drips or GrantFox."
       }
     ]
   },
@@ -154,7 +165,8 @@
       "instagram": "Instagram",
       "twitter": "Twitter (X)",
       "discord": "Discord",
-      "linkedin": "LinkedIn"
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
     },
     "website": "Website",
     "twitter": "Twitter (X)",

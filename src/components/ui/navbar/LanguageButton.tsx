@@ -21,8 +21,9 @@ export function LanguageButton() {
 
   return (
     <button
+      type="button"
       onClick={toggleLanguage}
-      className="btn-slanted"
+      className="btn-slanted btn-slanted-nav"
       aria-label={t('navbar.changeLanguage')}
     >
       <div className="btn-slanted-label__wrap">

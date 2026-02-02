@@ -10,7 +10,7 @@ interface ProductButtonProps {
 }
 
 export function ProductButton({ text, onClick, variant = 'gray' }: ProductButtonProps) {
-  const baseClasses = 'mb-5 w-fit rounded-full px-8 py-2.5 text-sm font-medium transition-all duration-400';
+  const baseClasses = 'mb-4 w-fit rounded-full px-6 py-2 text-xs font-medium transition-all duration-400 max-md:mb-2.5 max-md:px-4 max-md:py-1.5 max-md:text-[11px] max-[414px]:mb-2 max-[414px]:px-3 max-[414px]:py-1 max-[414px]:text-[10px]';
   const variantClasses =
     variant === 'white'
       ? 'bg-white text-black hover:bg-white shadow-none'

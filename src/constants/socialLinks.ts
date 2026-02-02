@@ -3,7 +3,7 @@ export const SOCIAL_LINKS = {
   TWITTER: 'https://x.com/OppiaLabs',
   LINKEDIN: 'https://www.linkedin.com/company/oppia-software-labs',
   GITHUB: 'https://github.com/Oppia-Software-Labs',
-  DISCORD: 'https://discord.gg/tY5Zputa',
+  DISCORD: 'https://discord.gg/DbCFms7z24',
 } as const;
 
 export const CTA_SOCIAL_LINKS = [

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { StellarLogo } from '@/components/icons/partners/StellarLogo';
@@ -14,6 +15,8 @@ import { ANIMATION_TIMING, getProjectLogoPath } from '@/constants/projects';
 import { ProductSlug } from '@/constants/products';
 import { BottomCTASection } from '@/components/cta/BottomCTASection';
 import { useVideoPlaybackControl } from '@/hooks/useVideoPlaybackControl';
+import { projectPageVariants } from '@/animations/projectPage';
+import 'animate.css';
 
 const VALID_SLUGS = ['neko', 'geko', 'deko'] as const;
 type ProjectSlug = typeof VALID_SLUGS[number];
@@ -67,8 +70,8 @@ export default function ProjectPage() {
 
   return (
     <div className="relative overflow-hidden min-h-screen bg-black">
-      <section className="flex flex-col justify-center items-center pt-[5vh] pb-[2vh] px-[2vw] relative">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#001D66] to-[#03A7FF] min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] w-[96vw] max-w-[96vw]">
+      <section className="animate__fadeInRight animate__animated flex flex-col justify-center items-center pt-[2vh] sm:pt-[4vh] lg:pt-[5vh] pb-[2vh] px-[2vw] relative">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#001D66] to-[#03A7FF] min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] w-[96vw] max-w-[96vw]">
           <div className="absolute top-0 left-0 z-0 -translate-x-1/4">
             <Image
               src="/oppia-projects/left-wave.svg"
@@ -91,14 +94,14 @@ export default function ProjectPage() {
             />
           </div>
 
-          <div className="relative z-10 min-h-[70vh] sm:min-h-[80vh] lg:min-h-[90vh] p-8 sm:p-12 lg:p-16 flex flex-col items-center justify-center gap-12">
-            <div>
+          <div className="relative z-10 min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] px-5 py-6 sm:p-12 lg:p-16 flex flex-col items-center justify-center gap-4 sm:gap-12">
+            <div className="flex justify-center items-center w-full">
               <Image
                 src={getProjectLogoPath(slug)}
                 alt={`${projectName} Logo`}
                 width={400}
                 height={400}
-                className="h-48 w-auto sm:h-60 md:h-72 lg:h-80 brightness-0 invert"
+                className="h-32 w-auto sm:h-60 md:h-72 lg:h-80 brightness-0 invert mx-auto block"
                 priority
               />
             </div>
@@ -122,11 +125,17 @@ export default function ProjectPage() {
 
       <section
         ref={videoSectionRef}
-        className="flex flex-col justify-center items-center min-h-screen pt-[2vh] pb-[15vh] px-[5vw] relative gap-[1.5em]"
+        className="flex flex-col justify-center items-center min-h-0 sm:min-h-screen pt-[3vh] pb-[6vh] sm:pb-[10vh] lg:pb-[15vh] px-[5vw] relative gap-4 sm:gap-[1.5em]"
       >
-        <p className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-center uppercase">
+        <motion.p
+          className="text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center uppercase"
+          variants={projectPageVariants.discoverTitle}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.3 }}
+        >
           Discover What {projectName} is
-        </p>
+        </motion.p>
 
         <div className="rounded-2xl w-[20em] sm:w-[15em] relative">
           <div className="pt-[56.25%]"></div>
@@ -140,6 +149,7 @@ export default function ProjectPage() {
                 ref={videoRef}
                 playsInline
                 loop
+                muted={false}
                 controls={false}
                 className="object-cover w-full h-full absolute rounded-inherit"
               >
@@ -169,15 +179,31 @@ export default function ProjectPage() {
         </div>
       </section>
 
-      <section className="flex flex-col justify-center items-center pb-[3vh] px-[5vw] relative">
-        <p className="text-white text-lg sm:text-xl lg:text-2xl font-semibold mb-4">
+      <motion.section
+        className="flex flex-col justify-center items-center pb-[3vh] px-[5vw] relative"
+        variants={projectPageVariants.poweredBy}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.3 }}
+      >
+        <motion.p
+          className="text-white text-lg sm:text-xl lg:text-2xl font-semibold mb-4"
+          variants={projectPageVariants.poweredByTitle}
+        >
           Powered by
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
-          <StellarLogo width={160} height={32} className="h-7 sm:h-8 lg:h-9 w-auto opacity-80 transition-opacity hover:opacity-100" />
-          <CatalitecLogo width={160} height={32} className="h-7 sm:h-8 lg:h-9 w-auto opacity-80 transition-opacity hover:opacity-100" />
-        </div>
-      </section>
+        </motion.p>
+        <motion.div
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8"
+          variants={projectPageVariants.poweredByLogos}
+        >
+          <motion.div variants={projectPageVariants.poweredByLogo}>
+            <StellarLogo width={160} height={32} className="h-7 sm:h-8 lg:h-9 w-auto opacity-80 transition-opacity hover:opacity-100" />
+          </motion.div>
+          <motion.div variants={projectPageVariants.poweredByLogo}>
+            <CatalitecLogo width={160} height={32} className="h-7 sm:h-8 lg:h-9 w-auto opacity-80 transition-opacity hover:opacity-100" />
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {VALID_SLUGS.includes(slug as ProjectSlug) && (
         <ProjectCTA slug={slug as ProductSlug} locale={locale} />

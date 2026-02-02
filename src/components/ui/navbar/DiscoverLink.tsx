@@ -25,7 +25,7 @@ export function DiscoverLink() {
         <a
       href="#products"
       onClick={handleClick}
-          className="rounded-full bg-white/4 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-white/8"
+          className="rounded-full bg-white/4 px-4 py-2 text-sm font-medium text-white transition-all duration-300 ease-out hover:bg-white/8 max-sm:px-3 max-sm:py-1.5 max-sm:text-xs"
         >
       {t('navbar.discover')}
     </a>

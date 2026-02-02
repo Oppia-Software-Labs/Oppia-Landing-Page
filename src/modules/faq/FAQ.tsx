@@ -7,6 +7,7 @@ import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
+import { faqVariants } from '@/animations/faq';
 
 interface FAQItem {
   question: string;
@@ -23,31 +24,49 @@ export function FAQ() {
 
   return (
     <section className={`bg-black ${SECTION_SPACING.MEDIUM} ${CONTAINER_PADDING.HORIZONTAL}`}>
-      <div className="mx-auto max-w-4xl">
-        <SectionHeader
-          title={
-            <>
-              <span>{t('faq.titleLine1')}</span>
-              <br />
-              <span>{t('faq.titleLine2')}</span>
-            </>
-          }
-          subtitle={t('faq.description')}
-          subtitleClassName="mx-auto max-w-xl"
-          className="mb-8"
-        />
+      <motion.div
+        className="mx-auto max-w-4xl"
+        variants={faqVariants.container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.2 }}
+      >
+        <motion.div variants={faqVariants.title}>
+          <SectionHeader
+            title={
+              <>
+                <span>{t('faq.titleLine1')}</span>
+                <br />
+                <span>{t('faq.titleLine2')}</span>
+              </>
+            }
+            subtitle={t('faq.description')}
+            subtitleClassName="mx-auto max-w-xl"
+            className="mb-8"
+          />
+        </motion.div>
 
-        <div className="space-y-4">
+        <motion.div
+          className="space-y-4"
+          variants={faqVariants.items}
+        >
           {faqsData.map((faq, index) => (
             <motion.div
               key={index}
-              initial={false}
+              layout
+              variants={faqVariants.item}
               animate={{
                 borderColor: faqOpenIndex === index ? 'transparent' : '#303130',
               }}
               transition={{
-                duration: 0.4,
-                ease: [0.4, 0, 0.2, 1],
+                layout: {
+                  duration: 0.6,
+                  ease: [0.16, 1, 0.3, 1],
+                },
+                borderColor: {
+                  duration: 0.4,
+                  ease: [0.4, 0, 0.2, 1],
+                },
               }}
               className={`relative overflow-hidden rounded-2xl transition-[background,border-color] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                 faqOpenIndex === index
@@ -131,8 +150,14 @@ export function FAQ() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{
-                      duration: 0.4,
-                      ease: [0.4, 0, 0.2, 1],
+                      height: {
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                      opacity: {
+                        duration: 0.4,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
                     }}
                     className="overflow-hidden"
                   >
@@ -142,11 +167,11 @@ export function FAQ() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{
-                          duration: 0.3,
-                          delay: 0.1,
-                          ease: [0.4, 0, 0.2, 1],
+                          duration: 0.5,
+                          delay: 0.15,
+                          ease: [0.16, 1, 0.3, 1],
                         }}
-                        className="text-sm leading-relaxed text-gray-300/50 sm:text-sm"
+                        className="text-[16px] leading-relaxed text-white"
                       >
                         {faq.answer}
                       </motion.p>
@@ -156,8 +181,8 @@ export function FAQ() {
               </AnimatePresence>
             </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

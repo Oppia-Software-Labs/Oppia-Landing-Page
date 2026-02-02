@@ -7,7 +7,7 @@ export function LeftWave() {
   const gradientId2 = 'left-wave-gradient-2';
   
   return (
-    <div className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden max-md:hidden">
       <svg
         viewBox="0 0 1281 1178"
         fill="none"

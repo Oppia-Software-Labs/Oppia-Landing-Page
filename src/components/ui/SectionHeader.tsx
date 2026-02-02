@@ -27,11 +27,11 @@ export function SectionHeader({
   badge,
 }: SectionHeaderProps) {
   return (
-    <header className={cn('mb-8 text-center sm:mb-12', className)}>
-      {badge && <div className="mb-4">{badge}</div>}
+    <header className={cn('mb-6 text-center sm:mb-10', className)}>
+      {badge && <div className="mb-3">{badge}</div>}
       <h2
         className={cn(
-          'mb-3 text-2xl font-normal text-white sm:text-3xl md:text-4xl',
+          'mb-2.5 text-xl font-normal text-white sm:text-2xl md:text-3xl',
           titleClassName
         )}
       >
@@ -40,7 +40,7 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={cn(
-            'mb-4 text-sm font-normal leading-relaxed text-gray-300 sm:text-base md:text-lg md:mx-auto md:max-w-xl',
+            'mb-3 text-xs font-normal leading-relaxed text-gray-300 sm:text-sm md:text-base md:mx-auto md:max-w-xl',
             subtitleClassName
           )}
         >
