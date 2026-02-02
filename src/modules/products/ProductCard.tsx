@@ -31,13 +31,15 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>((props, 
   const config = PRODUCT_CONFIGS[slug];
   const tags = t(`products.${slug}.tags`).split(',');
   const description = t(`products.${slug}.description`);
-  const ctaText = t(`products.${slug}.cta`);
+  const ctaText = config.comingSoon ? t('products.comingSoonCta') : t(`products.${slug}.cta`);
   const projectName = t(`products.${slug}.name`);
+  const isComingSoon = config.comingSoon === true;
 
   const status = props['data-flick-cards-item-status'] || '';
   const isActive = status === 'active' || !status;
 
   const handleSeeProject = () => {
+    if (isComingSoon) return;
     router.push(`/projects/${slug}`);
   };
 
@@ -63,7 +65,7 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>((props, 
       target.tagName === 'BUTTON' ||
       target.tagName === 'A';
     
-    if (!isInteractiveElement && !wasDrag) {
+    if (!isInteractiveElement && !wasDrag && !isComingSoon) {
       handleSeeProject();
     }
   };
@@ -77,7 +79,7 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>((props, 
       style={{
         perspective: '1000px',
         transformStyle: 'preserve-3d',
-        cursor: 'pointer',
+        cursor: isComingSoon ? 'default' : 'pointer',
       }}
     >
       <ProductCardBase>
@@ -95,7 +97,12 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps>((props, 
               {description}
             </p>
 
-            <ProductButton text={ctaText} onClick={handleSeeProject} variant={config.buttonStyle} />
+            <ProductButton
+              text={ctaText}
+              onClick={handleSeeProject}
+              variant={config.buttonStyle}
+              disabled={isComingSoon}
+            />
           </div>
         </div>
 

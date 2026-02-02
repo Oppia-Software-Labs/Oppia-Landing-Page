@@ -68,6 +68,7 @@
     "description": "Stay connected with us. Follow our journey as we build decentralized systems and share updates, insights, and opportunities with our community."
   },
   "products": {
+    "comingSoonCta": "Coming Soon",
     "title": "Learn everything about our products",
     "description": "Discover innovative solutions designed to transform how you interact with decentralized finance and real-world assets.",
     "neko": {

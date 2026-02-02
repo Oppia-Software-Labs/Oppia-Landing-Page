@@ -32,12 +32,14 @@ export interface ProductConfig {
   logo: ProductLogoConfig;
   cornerIcon?: CornerIconConfig;
   buttonStyle: 'white' | 'gray';
+  comingSoon?: boolean;
 }
 
 /** Product configurations */
 export const PRODUCT_CONFIGS: Record<ProductSlug, ProductConfig> = {
   neko: {
     slug: 'neko',
+    comingSoon: true,
     logo: {
       active: {
         src: '/oppia-projects/Neko.svg',
@@ -81,6 +83,7 @@ export const PRODUCT_CONFIGS: Record<ProductSlug, ProductConfig> = {
   },
   deko: {
     slug: 'deko',
+    comingSoon: true,
     logo: {
       active: {
         src: '/oppia-projects/Neko.svg',
