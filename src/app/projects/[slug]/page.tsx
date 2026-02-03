@@ -72,43 +72,45 @@ export default function ProjectPage() {
     <div className="relative overflow-hidden min-h-screen bg-black">
       <section className="animate__fadeInRight animate__animated flex flex-col justify-center items-center pt-[2vh] sm:pt-[4vh] lg:pt-[5vh] pb-[2vh] px-[2vw] relative">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#001D66] to-[#03A7FF] min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] w-[96vw] max-w-[96vw]">
-          <div className="absolute top-0 left-0 z-0 -translate-x-1/4">
+          {/* Left wave - más separada (un poco más a la izquierda) */}
+          <div className="absolute top-0 left-0 z-0 -translate-x-[32%] max-md:-translate-x-[38%]">
             <Image
               src="/oppia-projects/left-wave.svg"
               alt=""
               width={1100}
               height={500}
-              className="h-[500px] w-[1100px] opacity-100"
+              className="h-[500px] w-[1100px] max-md:h-[380px] max-md:w-[840px] opacity-100"
               aria-hidden="true"
             />
           </div>
 
-          <div className="absolute bottom-0 right-0 z-0 translate-x-1/4">
+          {/* Right wave - más separada (un poco más a la derecha) */}
+          <div className="absolute bottom-0 right-0 z-0 translate-x-[32%] max-md:translate-x-[38%]">
             <Image
               src="/oppia-projects/right-wave.svg"
               alt=""
               width={950}
               height={650}
-              className="h-[650px] w-[950px] opacity-100"
+              className="h-[650px] w-[950px] max-md:h-[480px] max-md:w-[700px] opacity-100"
               aria-hidden="true"
             />
           </div>
 
-          <div className="relative z-10 min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] px-5 py-6 sm:p-12 lg:p-16 flex flex-col items-center justify-center gap-4 sm:gap-12">
-            <div className="flex justify-center items-center w-full">
+          <div className="relative z-10 min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] px-4 py-6 sm:px-8 sm:py-8 lg:p-16 flex flex-col items-center justify-center gap-4 sm:gap-10 max-lg:-translate-y-6 sm:max-lg:-translate-y-8 lg:translate-y-0">
+            <div className="flex justify-center items-center w-full flex-1 min-h-0">
               <Image
                 src={getProjectLogoPath(slug)}
                 alt={`${projectName} Logo`}
                 width={400}
                 height={400}
-                className="h-32 w-auto sm:h-60 md:h-72 lg:h-80 brightness-0 invert mx-auto block"
+                className="h-28 w-auto sm:h-52 md:h-72 lg:h-80 brightness-0 invert mx-auto block max-w-[85%]"
                 priority
               />
             </div>
           </div>
 
-          {/* Bottom CTA Section */}
-          <div className="absolute z-10 bottom-8 left-8 right-8 lg:left-12 lg:right-12 lg:bottom-12">
+          {/* Bottom CTA Section - texto "Neko enables..." y botón Discover más arriba */}
+          <div className="absolute z-10 bottom-8 left-5 right-5 sm:bottom-10 sm:left-6 sm:right-6 lg:left-12 lg:right-12 lg:bottom-12">
             <BottomCTASection
               description={t(`projectCta.bottomDescription.${slug}`)}
               ctaText={t(`projectCta.bottomCtaText.${slug}`)}
@@ -137,7 +139,7 @@ export default function ProjectPage() {
           Discover What {projectName} is
         </motion.p>
 
-        <div className="rounded-2xl w-[20em] sm:w-[15em] relative">
+        <div className="rounded-2xl w-[min(92vw,20em)] sm:w-[22em] relative mx-auto">
           <div className="pt-[56.25%]"></div>
           <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0">
             <div

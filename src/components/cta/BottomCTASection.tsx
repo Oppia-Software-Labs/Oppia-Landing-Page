@@ -45,19 +45,19 @@ export function BottomCTASection({
   return (
     <div className={`w-full ${className}`}>
       {/* Divider Line */}
-      <div className="w-full border-t border-white/20 mb-6"></div>
+      <div className="w-full border-t border-white/20 mb-4 sm:mb-6"></div>
 
       {/* Content Section */}
-      <div className="w-full flex flex-col lg:flex-row justify-between gap-6 items-start lg:items-center">
+      <div className="w-full flex flex-col lg:flex-row justify-between gap-4 sm:gap-6 items-start lg:items-center">
         {/* Left: Description */}
-        <div className="max-w-md">
-          <p className="text-white text-sm sm:text-base leading-relaxed">{description}</p>
+        <div className="max-w-md w-full">
+          <p className="text-white text-xs sm:text-sm lg:text-base leading-relaxed">{description}</p>
         </div>
 
         {/* Right: CTA Text and Buttons */}
-        <div className="flex flex-col gap-3 items-start lg:items-end">
-          <p className="text-white text-sm sm:text-base font-medium">{ctaText}</p>
-          <div className="flex gap-3">
+        <div className="flex flex-col gap-2 sm:gap-3 items-start lg:items-end w-full lg:w-auto">
+          <p className="text-white text-xs sm:text-sm lg:text-base font-medium">{ctaText}</p>
+          <div className="flex gap-2 sm:gap-3 flex-wrap">
             {buttons.map((button, index) => (
               <button
                 key={index}
