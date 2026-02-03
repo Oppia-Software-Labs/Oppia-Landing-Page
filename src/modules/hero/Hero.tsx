@@ -20,7 +20,7 @@ export function Hero() {
 
       {/* Waves responsive: assets de visuals/hero (más pequeños) */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden md:hidden">
-        <div className="absolute bottom-0 left-0 w-[112%] h-[58%] -translate-x-[8%]">
+        <div className="absolute bottom-0 left-0 w-[118%] h-[50%] -translate-x-[6%]">
           <Image
             src="/visuals/hero/wave-responsive-down.svg"
             alt=""
@@ -31,7 +31,7 @@ export function Hero() {
             priority={false}
           />
         </div>
-        <div className="absolute -top-[4%] right-0 w-[108%] h-[50%] translate-x-[48%] origin-bottom-right -rotate-[4deg]">
+        <div className="absolute -top-[4%] right-0 w-[88%] h-[42%] translate-x-[58%] origin-bottom-right -rotate-[4deg]">
           <Image
             src="/visuals/hero/wave-responsive-top-right.svg"
             alt=""
