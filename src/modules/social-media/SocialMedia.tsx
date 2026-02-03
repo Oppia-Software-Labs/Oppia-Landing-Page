@@ -46,7 +46,7 @@ export function SocialMedia() {
 
           <Marquee pauseOnHover className="[--duration:60s] [--gap:0.5rem]">
             {duplicatedPosts.map((post, index) => (
-              <div key={`${post.id}-${index}`} className="shrink-0 w-80 pointer-events-auto relative">
+              <div key={`${post.id}-${index}`} className="shrink-0 w-64 sm:w-72 lg:w-80 pointer-events-auto relative">
                 <SocialMediaCard post={post} />
               </div>
             ))}

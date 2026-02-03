@@ -19,37 +19,37 @@ export function Footer() {
   return (
     <footer className="relative bg-black overflow-hidden">
       {/* Left Wave */}
-      <div className="absolute bottom-0 left-0 z-0 -translate-x-32 translate-y-12">
+      <div className="absolute bottom-0 left-0 z-0 -translate-x-32 translate-y-12 max-md:-translate-x-40 max-md:translate-y-16">
         <Image
           src="/visuals/footer/left-wave.svg"
           alt=""
           width={1100}
           height={500}
-          className="h-[500px] w-[1100px] opacity-80"
+          className="h-[500px] w-[1100px] max-md:h-[420px] max-md:w-[920px] opacity-80"
           aria-hidden="true"
         />
       </div>
 
       {/* Top Right Wave */}
-      <div className="absolute top-0 right-0 z-0 translate-x-24 -translate-y-4">
+      <div className="absolute top-0 right-0 z-0 translate-x-24 -translate-y-4 max-md:translate-x-32 max-md:-translate-y-8">
         <Image
           src="/visuals/footer/top-right-wave.svg"
           alt=""
           width={950}
           height={650}
-          className="h-[650px] w-[950px] opacity-80"
+          className="h-[650px] w-[950px] max-md:h-[560px] max-md:w-[820px] opacity-80"
           aria-hidden="true"
         />
       </div>
 
       {/* Down Right Wave */}
-      <div className="absolute bottom-0 right-0 z-0 translate-x-32 translate-y-12">
+      <div className="absolute bottom-0 right-0 z-0 translate-x-32 translate-y-12 max-md:translate-x-40 max-md:translate-y-16">
         <Image
           src="/visuals/footer/down-right-wave.svg"
           alt=""
           width={900}
           height={500}
-          className="h-[500px] w-[900px] opacity-80"
+          className="h-[500px] w-[900px] max-md:h-[420px] max-md:w-[760px] opacity-80"
           aria-hidden="true"
         />
       </div>
