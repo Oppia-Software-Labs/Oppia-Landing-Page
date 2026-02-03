@@ -551,7 +551,7 @@ body {
   display: flex;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 389px) {
   .twostep-nav__width {
     padding-top: 0.25em;
     padding-left: 0.5em;
@@ -570,7 +570,7 @@ body {
   border-radius: 9999px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 389px) {
   .twostep-nav__bar {
     max-width: 100%;
     border-radius: 1.25rem;
@@ -627,7 +627,69 @@ body {
   position: relative;
 }
 
-@media screen and (max-width: 414px) {
+/* Mobile: navbar compacto, menú izquierda, logo Oppia en el extremo derecho */
+@media screen and (max-width: 767px) {
+  .twostep-nav__top {
+    min-height: 3.5rem !important;
+    height: 3.5rem !important;
+    padding: 0.75rem 1rem 0.45rem !important;
+    gap: 0.5rem !important;
+    grid-template-columns: auto 1fr auto !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+  .twostep-nav__top > *:first-child {
+    justify-self: start !important;
+    align-self: center !important;
+  }
+  .twostep-nav__top > *:nth-child(3) {
+    align-self: center !important;
+  }
+  .twostep-nav__logo {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    align-self: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .twostep-nav__toggle {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+  }
+  .twostep-nav__logo-svg {
+    height: 1.75rem !important;
+    max-width: 90px !important;
+    width: auto !important;
+    vertical-align: middle;
+    display: block;
+  }
+  .twostep-nav__menu-text {
+    font-size: 0.875rem !important;
+    font-weight: 500;
+    line-height: 1 !important;
+  }
+  .twostep-nav__toggle-bars {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  .twostep-nav__toggle-bar {
+    width: 1.2rem !important;
+    height: 0.12rem !important;
+  }
+  .twostep-nav__toggle .twostep-nav__toggle-bar {
+    transform: translateY(-0.28em) rotate(0.001deg);
+  }
+  .twostep-nav__toggle .twostep-nav__toggle-bar:nth-child(2) {
+    transform: translateY(0.28em) rotate(0.001deg);
+  }
+}
+
+/* Solo pantallas muy pequeñas: navbar compacto */
+@media screen and (max-width: 359px) {
   .twostep-nav__top {
     height: 1.5em !important;
     padding: 0.12em 0.4em !important;
@@ -653,6 +715,11 @@ body {
   justify-self: end;
 }
 
+/* Desktop: botones Discover/Idioma alineados a la derecha */
+.twostep-nav__top > *:nth-child(3) {
+  justify-self: end;
+}
+
 .twostep-nav__logo {
   justify-content: center;
   align-items: center;
@@ -662,24 +729,13 @@ body {
   margin-left: 5em;
 }
 
-@media screen and (max-width: 414px) {
-  .twostep-nav__logo {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    justify-self: center !important;
-    position: relative !important;
-    left: auto !important;
-    transform: none !important;
-  }
-}
-
 .twostep-nav__logo-svg {
   height: 2.1em;
   width: auto;
   max-width: 120px;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 359px) {
   .twostep-nav__logo-svg {
     height: 0.85em;
     max-width: 50px;
@@ -693,7 +749,7 @@ body {
   white-space: nowrap;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 359px) {
   .twostep-nav__menu-text {
     font-size: 0.55em;
   }
@@ -714,7 +770,7 @@ body {
   height: auto;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 389px) {
   .twostep-nav__toggle {
     gap: 0.2em !important;
     padding: 0 !important;
@@ -731,7 +787,7 @@ body {
   position: relative;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 359px) {
   .twostep-nav__toggle-bars {
     width: 1.25em;
     height: 1.25em;
@@ -747,24 +803,20 @@ body {
   transform: translateY(-0.3em) rotate(0.001deg);
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 359px) {
   .twostep-nav__toggle-bar {
     width: 1.1em;
     height: 0.09em;
   }
-  
   .twostep-nav__toggle .twostep-nav__toggle-bar {
     transform: translateY(-0.2em) rotate(0.001deg);
   }
-  
   .twostep-nav__toggle .twostep-nav__toggle-bar:nth-child(2) {
     transform: translateY(0.125em) rotate(0.001deg);
   }
-  
   .twostep-nav__toggle:hover .twostep-nav__toggle-bars .twostep-nav__toggle-bar {
     transform: translateY(0.2em) rotate(0.001deg);
   }
-  
   .twostep-nav__toggle:hover .twostep-nav__toggle-bars .twostep-nav__toggle-bar:nth-child(2) {
     transform: translateY(-0.125em) rotate(0.001deg);
   }
@@ -820,7 +872,7 @@ body {
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 389px) {
   .twostep-nav__top-line {
     bottom: -0.5em;
     left: 0.75em;
@@ -846,11 +898,13 @@ body {
   .twostep-nav__bottom {
     transition: grid-template-rows var(--animation-default) 0s, transform var(--animation-default) 0s;
     transform: translateY(-0.625em);
+    min-height: 0;
   }
   
   [data-twostep-nav][data-nav-status="active"] .twostep-nav__bottom {
     transition: grid-template-rows var(--animation-default-long) 0.25s, transform var(--animation-default) 0.25s;
     transform: translateY(0em);
+    max-height: calc(100vh - 4rem);
   }
   
   .twostep-nav__top-line {
@@ -873,6 +927,15 @@ body {
   display: flex;
   position: relative;
   overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .twostep-nav__bottom-overflow {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 0;
+  }
 }
 
 .twostep-nav__bottom-inner {
@@ -919,10 +982,11 @@ body {
   display: flex;
 }
 
+/* Menú compacto en responsive (como referencia foto) */
 @media screen and (max-width: 767px) {
   .twostep-nav__bottom-row {
     grid-template-columns: 1fr;
-    gap: 2em;
+    gap: 1.25em;
   }
   
   .twostep-nav__bottom-col.is--visual {
@@ -930,11 +994,46 @@ body {
   }
   
   .twostep-nav__link-span {
-    font-size: 1.1em;
+    font-size: 0.95rem;
+    font-weight: 500;
   }
   
   .twostep-nav__bottom-inner {
-    padding: 1.5em;
+    padding: 1rem 1.25rem;
+  }
+  
+  .twostep-nav__section {
+    gap: 0.75em;
+  }
+  
+  .twostep-nav__section-title {
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35em;
+  }
+  
+  .twostep-nav__link {
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+  
+  .twostep-nav__section-nav {
+    gap: 0.25em;
+  }
+  
+  .twostep-nav__ul {
+    gap: 0;
+  }
+  
+  .twostep-nav__menu-language {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Ocultar redes sociales en todo el responsive (solo visible en lg+) */
+@media screen and (max-width: 1023px) {
+  .twostep-nav__social-section {
+    display: none !important;
   }
 }
 
@@ -1117,7 +1216,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 389px) {
   .btn-slanted {
     font-size: 0.6rem;
     padding: 0.22em 0.4em;

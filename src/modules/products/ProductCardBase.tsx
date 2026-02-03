@@ -12,7 +12,7 @@ interface ProductCardBaseProps {
 export function ProductCardBase({ children, className = '' }: ProductCardBaseProps) {
   return (
       <div
-        className={`relative h-[540px] w-[400px] max-w-full rounded-2xl bg-black overflow-hidden border-2 max-md:h-[380px] max-md:w-[280px] max-md:rounded-xl max-[414px]:h-[320px] max-[414px]:w-[240px] max-[414px]:rounded-lg ${className}`}
+        className={`relative h-[540px] w-[400px] max-w-full rounded-2xl bg-black overflow-hidden border-2 max-md:h-[380px] max-md:w-[280px] max-md:rounded-xl max-[389px]:h-[320px] max-[389px]:w-[240px] max-[389px]:rounded-lg ${className}`}
         style={{ borderColor: '#636363' }}
       >
       <WaveLeft className="translate-y-[5%]" />

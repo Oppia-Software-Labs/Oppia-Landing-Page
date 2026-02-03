@@ -28,7 +28,7 @@ export function NavTopBar({ onToggle, isActive }: NavTopBarProps) {
 
   return (
     <motion.div
-      className="twostep-nav__top max-[414px]:gap-0.5"
+      className="twostep-nav__top max-[389px]:gap-0.5"
       variants={navbarVariants.topBar}
       initial="hidden"
       animate="show"
@@ -55,10 +55,10 @@ export function NavTopBar({ onToggle, isActive }: NavTopBarProps) {
         className="twostep-nav__logo"
         variants={navbarVariants.logo}
       >
-        <OppiaLogo width={120} height={40} className="twostep-nav__logo-svg max-sm:w-[48px] max-sm:h-[16px]" />
+        <OppiaLogo width={120} height={40} className="twostep-nav__logo-svg max-sm:!w-[90px] max-sm:!h-[28px]" />
       </motion.a>
       <motion.div
-        className="flex items-center gap-3 max-[414px]:gap-1.5"
+        className="flex items-center gap-3 max-[389px]:gap-1.5"
         variants={navbarVariants.topButtons}
       >
         <div className="hidden sm:block">
