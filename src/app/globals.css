@@ -1259,6 +1259,12 @@ body {
   color: #000000 !important;
 }
 
+.btn-slanted-product--active .btn-slanted-label,
+.btn-slanted-product--active .btn-slanted-label--current,
+.btn-slanted-product--active .btn-slanted-label--opposite {
+  color: #000000 !important;
+}
+
 .btn-slanted-product--active:hover {
   background-color: #ffffff !important;
 }
@@ -1269,6 +1275,18 @@ body {
 
 .btn-slanted-product--active:hover .btn-slanted-label {
   color: #ffffff !important;
+}
+
+@media screen and (max-width: 767px) {
+  .btn-slanted-product--active {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  .btn-slanted-product--active .btn-slanted-label,
+  .btn-slanted-product--active .btn-slanted-label--current,
+  .btn-slanted-product--active .btn-slanted-label--opposite {
+    color: #000000 !important;
+  }
 }
 
 .btn-slanted-product--inactive {

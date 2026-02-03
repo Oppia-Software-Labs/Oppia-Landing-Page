@@ -14,7 +14,7 @@ export function WaveRight({ className = '' }: WaveRightProps) {
         alt=""
         width={500}
         height={500}
-        className="h-[550px] w-[550px] opacity-80"
+        className="h-[550px] w-[550px] max-md:h-[430px] max-md:w-[430px] max-sm:h-[370px] max-sm:w-[370px] max-[389px]:h-[320px] max-[389px]:w-[320px] opacity-80"
         aria-hidden="true"
         priority={false}
       />

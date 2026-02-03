@@ -16,8 +16,8 @@ export function ProductCardBase({ children, className = '' }: ProductCardBasePro
         style={{ borderColor: '#636363' }}
       >
       <WaveLeft className="translate-y-[5%]" />
-      <WaveRight className="translate-x-[18%] -translate-y-[5%]" />
-      <div className="relative z-10 h-full">{children}</div>
+      <WaveRight className="translate-x-[18%] -translate-y-[5%] max-md:translate-x-[8%] max-[389px]:translate-x-[4%]" />
+      <div className="relative z-10 h-full overflow-hidden">{children}</div>
     </div>
   );
 }
