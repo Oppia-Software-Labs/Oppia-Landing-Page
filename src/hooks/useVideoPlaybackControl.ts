@@ -1,13 +1,20 @@
 import { useEffect, RefObject } from 'react';
 import { ANIMATION_TIMING, VIDEO_VISIBILITY_CONFIG } from '@/constants/projects';
 
+export type UseVideoPlaybackControlOptions = {
+  /** Si false, el hook no hace nada (p. ej. en responsive: solo tap para play) */
+  enabled?: boolean;
+};
 
 export function useVideoPlaybackControl(
   videoRef: RefObject<HTMLVideoElement | null>,
-  dependencies: unknown[] = []
+  dependencies: unknown[] = [],
+  options: UseVideoPlaybackControlOptions = {}
 ): void {
+  const { enabled = true } = options;
+
   useEffect(() => {
-    if (typeof window === 'undefined' || !videoRef.current) {
+    if (!enabled || typeof window === 'undefined' || !videoRef.current) {
       return;
     }
 
@@ -171,11 +178,7 @@ export function useVideoPlaybackControl(
         : false;
       const isSmallSectionVisible = checkSmallSectionVisibility(smallSectionRect, viewportHeight);
 
-      // Pausar si el video (target) no está visible, sobre todo al hacer scroll hacia arriba en responsive
-      const targetOutOfView = isElementOutOfView(targetRect, viewportHeight, viewportWidth, VIDEO_VISIBILITY_CONFIG.PAUSE_MARGIN);
-      if (targetOutOfView && !video.paused) {
-        video.pause();
-      } else if ((isTargetVisible || isLargeSectionVisible || isSmallSectionVisible) && userInteracted) {
+      if ((isTargetVisible || isLargeSectionVisible || isSmallSectionVisible) && userInteracted) {
         attemptPlay();
       } else if (!userInteracted && (isTargetVisible || isLargeSectionVisible || isSmallSectionVisible)) {
       } else {

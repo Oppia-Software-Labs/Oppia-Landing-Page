@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -33,9 +33,21 @@ export default function ProjectPage() {
   const { t } = useTranslations(locale);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
+  const [isResponsive, setIsResponsive] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
+    const m = window.matchMedia('(max-width: 767px)');
+    setIsResponsive(m.matches);
+    const fn = () => setIsResponsive(m.matches);
+    m.addEventListener('change', fn);
+    return () => m.removeEventListener('change', fn);
+  }, []);
+
+  // En responsive no hay efecto flip (el video no “baja”), solo tap para play
+  useEffect(() => {
+    if (typeof window === 'undefined' || isResponsive) {
       return;
     }
 
@@ -53,9 +65,9 @@ export default function ProjectPage() {
         cleanupFn();
       }
     };
-  }, [slug]);
+  }, [slug, isResponsive]);
 
-  useVideoPlaybackControl(videoRef, [slug]);
+  useVideoPlaybackControl(videoRef, [slug], { enabled: !isResponsive });
 
   if (!VALID_SLUGS.includes(slug as ProjectSlug)) {
     return (
@@ -125,49 +137,79 @@ export default function ProjectPage() {
         </div>
       </section>
 
-      <section
-        ref={videoSectionRef}
-        className="flex flex-col justify-center items-center min-h-0 sm:min-h-screen pt-[38vh] sm:pt-[3vh] pb-[6vh] sm:pb-[10vh] lg:pb-[15vh] px-[5vw] relative gap-4 sm:gap-[1.5em]"
-      >
-        <motion.p
-          className="text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center uppercase"
-          variants={projectPageVariants.discoverTitle}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.3 }}
+      {isResponsive ? (
+        <section
+          ref={videoSectionRef}
+          className="flex flex-col justify-center items-center pt-[12vh] pb-[6vh] px-[5vw] relative gap-4"
         >
-          Discover What {projectName} is
-        </motion.p>
-
-        <div className="rounded-2xl w-[min(92vw,20em)] sm:w-[22em] relative mx-auto">
-          <div className="pt-[56.25%]"></div>
-          <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0">
-            <div
-              data-flip-element="target"
-              className="will-change-transform bg-[#d2800f] rounded-2xl justify-center items-center w-full h-full flex absolute top-0 left-0 overflow-hidden isolation-isolate"
-              style={{ transform: 'translateX(0) rotate(0.001deg)' }}
+          <motion.p
+            className="text-white text-xl font-semibold text-center uppercase"
+            variants={projectPageVariants.discoverTitle}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            Discover What {projectName} is
+          </motion.p>
+          <div className="rounded-2xl w-[min(92vw,20em)] relative mx-auto bg-[#d2800f] overflow-hidden">
+            <div className="pt-[56.25%]" />
+            <video
+              ref={videoRef}
+              playsInline
+              loop
+              muted={false}
+              controls
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
             >
-              <video
-                ref={videoRef}
-                playsInline
-                loop
-                muted={false}
-                controls={false}
-                className="object-cover w-full h-full absolute rounded-inherit"
-              >
-                <source src="/pitch/pitch.mp4" type="video/mp4" />
-              </video>
-            </div>
+              <source src="/pitch/pitch.mp4" type="video/mp4" />
+            </video>
           </div>
-        </div>
-      </section>
-
-      <section className="flex flex-col justify-center items-center min-h-screen pb-[15vh] px-[5vw] relative gap-[15vh] pt-[15vh]">
-        <div className="rounded-2xl w-full relative">
-          <div className="pt-[56.25%]"></div>
-          <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0"></div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <>
+          <section
+            ref={videoSectionRef}
+            className="flex flex-col justify-center items-center min-h-screen pt-[3vh] pb-[10vh] lg:pb-[15vh] px-[5vw] relative gap-4 sm:gap-[1.5em]"
+          >
+            <motion.p
+              className="text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center uppercase"
+              variants={projectPageVariants.discoverTitle}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              Discover What {projectName} is
+            </motion.p>
+            <div className="rounded-2xl w-[22em] relative mx-auto">
+              <div className="pt-[56.25%]" />
+              <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0">
+                <div
+                  data-flip-element="target"
+                  className="will-change-transform bg-[#d2800f] rounded-2xl justify-center items-center w-full h-full flex absolute top-0 left-0 overflow-hidden isolation-isolate"
+                  style={{ transform: 'translateX(0) rotate(0.001deg)' }}
+                >
+                  <video
+                    ref={videoRef}
+                    playsInline
+                    loop
+                    muted={false}
+                    controls={false}
+                    className="object-cover w-full h-full absolute rounded-inherit"
+                  >
+                    <source src="/pitch/pitch.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="flex flex-col justify-center items-center min-h-screen pb-[15vh] px-[5vw] relative gap-[15vh] pt-[15vh]">
+            <div className="rounded-2xl w-full relative">
+              <div className="pt-[56.25%]" />
+              <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0" />
+            </div>
+          </section>
+        </>
+      )}
 
       <motion.section
         className="flex flex-col justify-center items-center pb-[3vh] px-[5vw] relative"
