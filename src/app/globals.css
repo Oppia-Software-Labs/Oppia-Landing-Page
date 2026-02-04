@@ -1015,6 +1015,13 @@ body {
     letter-spacing: 0.08em;
     margin-bottom: 0.35em;
   }
+
+  /* Sin animación de entrada en mobile para evitar parpadeo */
+  .twostep-nav__bottom-row > *,
+  [data-twostep-nav][data-nav-status="active"] .twostep-nav__bottom-row > * {
+    transition: none !important;
+    transform: none !important;
+  }
   
   .twostep-nav__link {
     padding-top: 0.4em;

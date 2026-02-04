@@ -9,6 +9,7 @@ import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
+import type { NavbarVariants } from '@/animations/navbar';
 import { navbarVariants } from '@/animations/navbar';
 
 interface NavLink {
@@ -23,6 +24,7 @@ interface NavSectionProps {
   links: NavLink[];
   showSocialIcons?: boolean;
   onLinkClick?: (href: string) => void;
+  variants?: Pick<NavbarVariants, 'menuSection' | 'menuItem'>;
 }
 
 export function NavSection({
@@ -31,7 +33,9 @@ export function NavSection({
   links,
   showSocialIcons = false,
   onLinkClick,
+  variants: variantsProp,
 }: NavSectionProps) {
+  const variants = variantsProp ?? navbarVariants;
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
   const closeMenu = useAppStore((state) => state.closeMenu);
@@ -53,7 +57,7 @@ export function NavSection({
   ] as const;
 
   return (
-    <motion.div className="twostep-nav__bottom-col" variants={navbarVariants.menuSection}>
+    <motion.div className="twostep-nav__bottom-col" variants={variants.menuSection}>
       <div className="twostep-nav__section">
         <h3 className="twostep-nav__section-title">{t(titleKey)}</h3>
         {descriptionKey && (
@@ -71,7 +75,7 @@ export function NavSection({
                 rel={link.isExternal ? 'noopener noreferrer' : undefined}
                 onClick={() => handleClick(link.href, link.isExternal ?? false)}
                 className="twostep-nav__link"
-                variants={navbarVariants.menuItem}
+                variants={variants.menuItem}
               >
                 <span className="twostep-nav__link-span">
                   {t(link.translationKey)}
@@ -85,7 +89,7 @@ export function NavSection({
               <motion.li
                 key={`${link.translationKey}-${index}`}
                 className="twostep-nav__li"
-                variants={navbarVariants.menuItem}
+                variants={variants.menuItem}
               >
                 <a
                   href={link.href}

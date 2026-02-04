@@ -1,11 +1,12 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { OppiaLogo } from '@/components/icons/oppia/OppiaLogo';
 import { NavSection } from './NavSection';
 import { LanguageButton } from './LanguageButton';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
-import { navbarVariants } from '@/animations/navbar';
+import { navbarVariants, navbarVariantsMobile } from '@/animations/navbar';
 import { useAppStore } from '@/store/store';
 
 interface NavMenuContentProps {
@@ -14,6 +15,17 @@ interface NavMenuContentProps {
 
 export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
   const isMenuOpen = useAppStore((state) => state.isMenuOpen);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const m = window.matchMedia('(max-width: 767px)');
+    setIsMobile(m.matches);
+    const fn = () => setIsMobile(m.matches);
+    m.addEventListener('change', fn);
+    return () => m.removeEventListener('change', fn);
+  }, []);
+
+  const variants = isMobile ? navbarVariantsMobile : navbarVariants;
 
   const knowUsLinks = [
     {
@@ -77,7 +89,7 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
           </div>
           <motion.div
             className="twostep-nav__bottom-row"
-            variants={navbarVariants.menuContent}
+            variants={variants.menuContent}
             initial="hidden"
             animate={isMenuOpen ? 'show' : 'hidden'}
           >
@@ -85,22 +97,25 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
               titleKey="navbar.menuSections.knowUs.title"
               links={knowUsLinks}
               onLinkClick={onLinkClick}
+              variants={variants}
             />
             <div className="twostep-nav__social-section hidden lg:block">
               <NavSection
                 titleKey="navbar.menuSections.social.title"
                 links={socialLinks}
                 showSocialIcons={true}
+                variants={variants}
               />
             </div>
             <NavSection
               titleKey="navbar.menuSections.team.title"
               links={teamLinks}
               onLinkClick={onLinkClick}
+              variants={variants}
             />
             <motion.div
               className="twostep-nav__bottom-col is--visual"
-              variants={navbarVariants.visual}
+              variants={variants.visual}
             >
               <div className="twostep-nav__visual">
                 <div className="twostep-nav__visual-img flex items-center justify-center bg-gradient-to-br from-[#03A7FF] to-[#00398F] rounded-lg">

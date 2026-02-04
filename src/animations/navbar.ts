@@ -121,5 +121,25 @@ export const navbarVariants: NavbarVariants = {
   },
 };
 
+/** En mobile no animar el menú para evitar parpadeo */
+export const navbarVariantsMobile = {
+  menuContent: {
+    hidden: {},
+    show: { transition: { delayChildren: 0, staggerChildren: 0 } },
+  },
+  menuSection: {
+    hidden: { opacity: 1 },
+    show: { opacity: 1, transition: { duration: 0 } },
+  },
+  menuItem: {
+    hidden: { opacity: 1, x: 0 },
+    show: { opacity: 1, x: 0, transition: { duration: 0 } },
+  },
+  visual: {
+    hidden: { opacity: 1, scale: 1 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0 } },
+  },
+} as const;
+
 export type { NavbarVariants };
 
