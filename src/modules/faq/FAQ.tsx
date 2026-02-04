@@ -60,12 +60,12 @@ export function FAQ() {
               }}
               transition={{
                 layout: {
-                  duration: 0.6,
-                  ease: [0.16, 1, 0.3, 1],
+                  duration: 0.55,
+                  ease: [0.32, 1, 0.5, 1],
                 },
                 borderColor: {
-                  duration: 0.4,
-                  ease: [0.4, 0, 0.2, 1],
+                  duration: 0.3,
+                  ease: [0.32, 1, 0.5, 1],
                 },
               }}
               className={`relative overflow-hidden rounded-2xl transition-[background,border-color] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
@@ -151,25 +151,31 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{
                       height: {
-                        duration: 0.6,
-                        ease: [0.16, 1, 0.3, 1],
+                        duration: 0.55,
+                        ease: [0.32, 1, 0.5, 1],
                       },
                       opacity: {
-                        duration: 0.4,
-                        ease: [0.16, 1, 0.3, 1],
+                        duration: 0.3,
+                        ease: [0.32, 1, 0.5, 1],
                       },
                     }}
-                    className="overflow-hidden"
+                    className="overflow-hidden origin-top"
                   >
                     <div className="pl-4 mr-18 ml-3 pb-4 pt-0 sm:px-6 sm:pb-6 sm:pt-0">
                       <motion.p
-                        initial={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        exit={{
+                          opacity: 0,
+                          transition: {
+                            duration: 0.2,
+                            ease: [0.32, 1, 0.5, 1],
+                          },
+                        }}
                         transition={{
-                          duration: 0.5,
-                          delay: 0.15,
-                          ease: [0.16, 1, 0.3, 1],
+                          duration: 0.35,
+                          delay: 0.08,
+                          ease: [0.32, 1, 0.5, 1],
                         }}
                         className="text-sm leading-relaxed text-white"
                       >

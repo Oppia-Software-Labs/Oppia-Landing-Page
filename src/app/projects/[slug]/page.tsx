@@ -33,9 +33,7 @@ export default function ProjectPage() {
   const { t } = useTranslations(locale);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
-  const [isResponsive, setIsResponsive] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
-  );
+  const [isResponsive, setIsResponsive] = useState(false);
 
   useEffect(() => {
     const m = window.matchMedia('(max-width: 767px)');
@@ -151,7 +149,7 @@ export default function ProjectPage() {
           >
             Discover What {projectName} is
           </motion.p>
-          <div className="rounded-2xl w-[min(92vw,20em)] relative mx-auto bg-[#d2800f] overflow-hidden">
+          <div className="rounded-2xl w-[min(92vw,20em)] relative mx-auto overflow-hidden">
             <div className="pt-[56.25%]" />
             <video
               ref={videoRef}
@@ -159,7 +157,7 @@ export default function ProjectPage() {
               loop
               muted={false}
               controls
-              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl border-0 outline-none"
             >
               <source src="/pitch/pitch.mp4" type="video/mp4" />
             </video>
@@ -185,7 +183,7 @@ export default function ProjectPage() {
               <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0">
                 <div
                   data-flip-element="target"
-                  className="will-change-transform bg-[#d2800f] rounded-2xl justify-center items-center w-full h-full flex absolute top-0 left-0 overflow-hidden isolation-isolate"
+                  className="will-change-transform rounded-2xl justify-center items-center w-full h-full flex absolute top-0 left-0 overflow-hidden isolation-isolate"
                   style={{ transform: 'translateX(0) rotate(0.001deg)' }}
                 >
                   <video
@@ -194,7 +192,10 @@ export default function ProjectPage() {
                     loop
                     muted={false}
                     controls={false}
-                    className="object-cover w-full h-full absolute rounded-inherit"
+                    onClick={(e) => {
+                      e.currentTarget.paused ? e.currentTarget.play() : e.currentTarget.pause();
+                    }}
+                    className="object-cover w-full h-full absolute rounded-inherit border-0 outline-none cursor-pointer"
                   >
                     <source src="/pitch/pitch.mp4" type="video/mp4" />
                   </video>
