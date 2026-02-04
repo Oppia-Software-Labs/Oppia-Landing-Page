@@ -17,43 +17,20 @@ export default function Home() {
   const { scrollToElement } = useSmoothScroll();
 
   useEffect(() => {
-    // Si hay un hash en la URL, hacer scroll a esa sección después de que la página se cargue
     const handleHashScroll = () => {
       const hash = window.location.hash;
       if (hash) {
-        const scrollToHash = () => {
-          const element = document.querySelector(hash);
-          if (element) {
-            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - 100;
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth',
-            });
-            return true;
-          }
-          return false;
-        };
-        
-        // Intentar múltiples veces para asegurar que el elemento esté disponible
         const attempts = [100, 300, 500, 800];
         attempts.forEach((delay) => {
-          setTimeout(() => {
-            scrollToHash();
-          }, delay);
+          setTimeout(() => scrollToElement(hash, 100, 0), delay);
         });
       }
     };
 
-    // Ejecutar cuando el componente se monte
     handleHashScroll();
-    
-    // También escuchar cambios en el hash
     window.addEventListener('hashchange', handleHashScroll);
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashScroll);
-    };
+    return () => window.removeEventListener('hashchange', handleHashScroll);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- scrollToElement estable, solo hash
   }, []);
 
   return (

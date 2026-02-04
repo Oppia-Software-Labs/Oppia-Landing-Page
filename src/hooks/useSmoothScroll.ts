@@ -1,7 +1,7 @@
 import { NAV_SCROLL_OFFSET, NAV_SCROLL_DELAY } from '@/constants/navbar';
 
 /**
- * Custom hook for smooth scrolling to elements
+ * Hook para scroll suave desde el navbar a una sección.
  */
 export function useSmoothScroll() {
   const scrollToElement = (

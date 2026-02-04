@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --white-opacity-4: rgba(255, 255, 255, 0.04);
   --white-opacity-8: rgba(255, 255, 255, 0.08);
