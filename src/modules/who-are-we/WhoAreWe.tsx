@@ -12,7 +12,19 @@ export function WhoAreWe() {
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
 
-  const cards = [
+  type Card = {
+    key: 'simplicity' | 'functionality' | 'purpose';
+    title: string;
+    description: string;
+    illustration: string;
+    wave: 'left' | 'center' | 'right';
+    waveSrc?: string;
+    waveLeftSrc?: string;
+    waveRightSrc?: string;
+    hasGradient?: boolean;
+  };
+
+  const cards: Card[] = [
     {
       key: 'simplicity',
       title: t('whoAreWe.cards.simplicity.title'),
@@ -78,106 +90,187 @@ export function WhoAreWe() {
                 className="flex flex-col w-full max-w-[340px] max-md:max-w-[280px] max-[389px]:max-w-[240px] mx-auto h-full"
                 variants={cardVariant}
               >
-                <div
-                  className={`relative border-2 border-white/20 overflow-hidden p-5 md:p-6 lg:p-8 flex flex-col h-[300px] md:h-[340px] lg:h-[380px] w-full max-[389px]:h-[260px] max-[389px]:p-3 rounded-lg md:rounded-xl ${
-                    card.hasGradient
-                      ? ''
-                      : 'bg-black/40 backdrop-blur-sm'
-                  }`}
-                  style={{
-                    ...(card.hasGradient && {
-                      background: 'linear-gradient(to bottom, #03A7FF, #00398F)',
-                    }),
-                  }}
-                >
-                  {/* Waves inside card */}
-                  {card.wave === 'left' && card.waveSrc && (
-                    <>
-                      <div className="absolute bottom-0 left-0 z-0">
-                        <Image
-                          src={card.waveSrc}
-                          alt=""
-                          width={500}
-                          height={350}
-                          className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[389px]:h-[160px] max-[389px]:w-[220px]"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <div className="absolute top-0 right-0 z-0 translate-x-1/4">
-                        <Image
-                          src="/who-are-we/right-wave.svg"
-                          alt=""
-                          width={500}
-                          height={350}
-                          className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[389px]:h-[160px] max-[389px]:w-[220px]"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </>
-                  )}
-                  {card.wave === 'right' && card.waveSrc && (
-                    <>
-                      <div className="absolute bottom-0 left-0 z-0">
-                        <Image
-                          src="/who-are-we/left-wave.svg"
-                          alt=""
-                          width={500}
-                          height={350}
-                          className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[389px]:h-[160px] max-[389px]:w-[220px]"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <div className="absolute top-0 right-0 z-0 translate-x-1/4">
-                        <Image
-                          src={card.waveSrc}
-                          alt=""
-                          width={500}
-                          height={350}
-                          className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[389px]:h-[160px] max-[389px]:w-[220px]"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </>
-                  )}
-                  {card.wave === 'center' && card.waveLeftSrc && card.waveRightSrc && (
-                    <>
-                      <div className="absolute bottom-0 left-0 z-0">
-                        <Image
-                          src={card.waveLeftSrc}
-                          alt=""
-                          width={450}
-                          height={350}
-                          className="h-[180px] w-[240px] md:h-[220px] md:w-[320px] lg:h-[280px] lg:w-[380px] opacity-100 max-[389px]:h-[140px] max-[389px]:w-[180px]"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <div className="absolute inset-y-0 right-0 z-0 w-[60%] min-w-[160px]">
-                        <Image
-                          src="/who-are-we/center-right-wave.svg"
-                          alt=""
-                          width={235}
-                          height={486}
-                          className="h-full w-full opacity-100 object-cover object-right brightness-125 contrast-105"
-                          aria-hidden="true"
-                        />
-                      </div>
-                    </>
-                  )}
+                {card.hasGradient ? (
+                  <div className="rounded-lg md:rounded-xl p-[2px] bg-[linear-gradient(to_bottom,#7FD4FF,#4E82C8)]">
+                    <div className="relative overflow-hidden p-5 md:p-6 lg:p-8 flex flex-col h-[300px] md:h-[340px] lg:h-[380px] w-full max-[414px]:h-[260px] max-[414px]:p-3 rounded-[6px] md:rounded-[10px] bg-[linear-gradient(to_bottom,#03A7FF,#00398F)]">
+                      {/* Waves inside card */}
+                      {card.wave === 'left' && card.waveSrc && (
+                        <>
+                          <div className="absolute bottom-0 left-0 z-0">
+                            <Image
+                              src={card.waveSrc}
+                              alt=""
+                              width={500}
+                              height={350}
+                              className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                              aria-hidden="true"
+                            />
+                          </div>
+                          <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+                            <Image
+                              src="/who-are-we/right-wave.svg"
+                              alt=""
+                              width={500}
+                              height={350}
+                              className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </>
+                      )}
+                      {card.wave === 'right' && card.waveSrc && (
+                        <>
+                          <div className="absolute bottom-0 left-0 z-0">
+                            <Image
+                              src="/who-are-we/left-wave.svg"
+                              alt=""
+                              width={500}
+                              height={350}
+                              className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                              aria-hidden="true"
+                            />
+                          </div>
+                          <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+                            <Image
+                              src={card.waveSrc}
+                              alt=""
+                              width={500}
+                              height={350}
+                              className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </>
+                      )}
+                      {card.wave === 'center' && card.waveLeftSrc && card.waveRightSrc && (
+                        <>
+                          <div className="absolute bottom-0 left-0 z-0">
+                            <Image
+                              src={card.waveLeftSrc}
+                              alt=""
+                              width={450}
+                              height={350}
+                              className="h-[180px] w-[240px] md:h-[220px] md:w-[320px] lg:h-[280px] lg:w-[380px] opacity-100 max-[414px]:h-[140px] max-[414px]:w-[180px]"
+                              aria-hidden="true"
+                            />
+                          </div>
+                          <div className="absolute inset-y-0 right-0 z-0 w-[60%] min-w-[160px]">
+                            <Image
+                              src="/who-are-we/center-right-wave.svg"
+                              alt=""
+                              width={235}
+                              height={486}
+                              className="h-full w-full opacity-100 object-cover object-right brightness-125 contrast-105"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </>
+                      )}
 
-                  {/* Illustration */}
-                  <div className="relative z-10 flex items-center justify-center flex-1 pt-2 md:pt-3">
-                    <Image
-                      src={card.illustration}
-                      alt=""
-                      width={200}
-                      height={300}
-                      className="h-auto w-auto max-h-24 md:max-h-28 lg:max-h-32 max-[389px]:max-h-20"
-                      aria-hidden="true"
-                    />
+                      {/* Illustration */}
+                      <div className="relative z-10 flex items-center justify-center flex-1 pt-2 md:pt-3">
+                        <Image
+                          src={card.illustration}
+                          alt=""
+                          width={200}
+                          height={300}
+                          className="h-auto w-auto max-h-36 md:max-h-36 lg:max-h-36 max-[414px]:max-h-24"
+                          aria-hidden="true"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-base md:text-lg font-semibold text-white mt-2.5 md:mt-3 mb-1 md:mb-1.5 max-[389px]:text-sm max-[389px]:mt-2 max-[389px]:mb-1">{card.title}</h3>
-                <p className="text-xs md:text-sm text-gray-300 leading-relaxed max-[389px]:text-[11px]">{card.description}</p>
+                ) : (
+                  <div className="relative border-2 border-white/20 overflow-hidden p-5 md:p-6 lg:p-8 flex flex-col h-[300px] md:h-[340px] lg:h-[380px] w-full max-[414px]:h-[260px] max-[414px]:p-3 rounded-lg md:rounded-xl bg-black/40 backdrop-blur-sm">
+                    {/* Waves inside card */}
+                    {card.wave === 'left' && card.waveSrc && (
+                      <>
+                        <div className="absolute bottom-0 left-0 z-0">
+                          <Image
+                            src={card.waveSrc}
+                            alt=""
+                            width={500}
+                            height={350}
+                            className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+                          <Image
+                            src="/who-are-we/right-wave.svg"
+                            alt=""
+                            width={500}
+                            height={350}
+                            className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </>
+                    )}
+                    {card.wave === 'right' && card.waveSrc && (
+                      <>
+                        <div className="absolute bottom-0 left-0 z-0">
+                          <Image
+                            src="/who-are-we/left-wave.svg"
+                            alt=""
+                            width={500}
+                            height={350}
+                            className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+                          <Image
+                            src={card.waveSrc}
+                            alt=""
+                            width={500}
+                            height={350}
+                            className="h-[200px] w-[280px] md:h-[240px] md:w-[360px] lg:h-[300px] lg:w-[440px] opacity-100 max-[414px]:h-[160px] max-[414px]:w-[220px]"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </>
+                    )}
+                    {card.wave === 'center' && card.waveLeftSrc && card.waveRightSrc && (
+                      <>
+                        <div className="absolute bottom-0 left-0 z-0">
+                          <Image
+                            src={card.waveLeftSrc}
+                            alt=""
+                            width={450}
+                            height={350}
+                            className="h-[180px] w-[240px] md:h-[220px] md:w-[320px] lg:h-[280px] lg:w-[380px] opacity-100 max-[414px]:h-[140px] max-[414px]:w-[180px]"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div className="absolute inset-y-0 right-0 z-0 w-[60%] min-w-[160px]">
+                          <Image
+                            src="/who-are-we/center-right-wave.svg"
+                            alt=""
+                            width={235}
+                            height={486}
+                            className="h-full w-full opacity-100 object-cover object-right brightness-125 contrast-105"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      </>
+                    )}
+
+                    {/* Illustration */}
+                    <div className="relative z-10 flex items-center justify-center flex-1 pt-2 md:pt-3">
+                      <Image
+                        src={card.illustration}
+                        alt=""
+                        width={200}
+                        height={300}
+                        className="h-auto w-auto max-h-36 md:max-h-36 lg:max-h-36 max-[414px]:max-h-24"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </div>
+                )}
+                <h3 className="text-base md:text-lg font-semibold text-white mt-2.5 md:mt-3 mb-1 md:mb-1.5 max-[414px]:text-sm max-[414px]:mt-2 max-[414px]:mb-1">{card.title}</h3>
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed max-[414px]:text-[11px]">{card.description}</p>
               </motion.div>
             );
           })}
@@ -186,4 +279,3 @@ export function WhoAreWe() {
     </section>
   );
 }
-
