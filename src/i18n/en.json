@@ -7,11 +7,11 @@
     "changeLanguage": "Change language",
     "menuSections": {
       "knowUs": {
-        "title": "KNOW US",
+        "title": "About Us",
+        "description": "A technology & innovation studio. We don't just create products, we build solutions with purpose, engineered to make a difference.",
         "links": {
           "about": "About Us",
-          "mission": "Mission",
-          "values": "Values",
+          "projects": "Projects",
           "contact": "Contact"
         }
       },
@@ -106,16 +106,17 @@
     "description": "We build decentralized systems with real-world impact. Technology that empowers people and organizations.",
     "links": {
       "title": "Links",
-      "features": "Features",
-      "solutions": "Solutions",
-      "advantages": "Advantages",
-      "faq": "FAQ"
+      "partners": "Partners",
+      "whoAreWe": "Who are we",
+      "products": "Products",
+      "team": "Team",
+      "socialMedia": "Social Media",
+      "faq": "FAQ",
+      "contact": "Contact"
     },
     "resources": {
       "title": "Resources",
-      "contact": "Contact",
-      "downloadGeko": "Download Geko",
-      "about": "About Us"
+      "downloadGeko": "Download Geko"
     },
     "projects": {
       "title": "Projects"

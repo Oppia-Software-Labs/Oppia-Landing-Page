@@ -19,6 +19,7 @@ interface NavLink {
 
 interface NavSectionProps {
   titleKey: string;
+  descriptionKey?: string;
   links: NavLink[];
   showSocialIcons?: boolean;
   onLinkClick?: (href: string) => void;
@@ -26,6 +27,7 @@ interface NavSectionProps {
 
 export function NavSection({
   titleKey,
+  descriptionKey,
   links,
   showSocialIcons = false,
   onLinkClick,
@@ -54,6 +56,11 @@ export function NavSection({
     <motion.div className="twostep-nav__bottom-col" variants={navbarVariants.menuSection}>
       <div className="twostep-nav__section">
         <h3 className="twostep-nav__section-title">{t(titleKey)}</h3>
+        {descriptionKey && (
+          <p className="twostep-nav__section-description text-sm text-gray-400 mt-1 mb-3 max-w-xs">
+            {t(descriptionKey)}
+          </p>
+        )}
         {showSocialIcons ? (
           <nav className="twostep-nav__section-nav">
             {links.map((link, index) => (

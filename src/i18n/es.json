@@ -7,11 +7,11 @@
     "changeLanguage": "Cambiar idioma",
     "menuSections": {
       "knowUs": {
-        "title": "CONOCERNOS",
+        "title": "Sobre nosotros",
+        "description": "Un estudio de tecnología e innovación. No solo creamos productos, construimos soluciones con propósito, diseñadas para marcar la diferencia.",
         "links": {
-          "about": "Sobre Nosotros",
-          "mission": "Misión",
-          "values": "Valores",
+          "about": "Sobre nosotros",
+          "projects": "Proyectos",
           "contact": "Contacto"
         }
       },
@@ -106,16 +106,17 @@
     "description": "Construimos sistemas descentralizados con impacto real. Tecnología que empodera a personas y organizaciones.",
     "links": {
       "title": "Enlaces",
-      "features": "Características",
-      "solutions": "Soluciones",
-      "advantages": "Ventajas",
-      "faq": "Preguntas Frecuentes"
+      "partners": "Partners",
+      "whoAreWe": "Quiénes somos",
+      "products": "Productos",
+      "team": "Equipo",
+      "socialMedia": "Redes Sociales",
+      "faq": "Preguntas Frecuentes",
+      "contact": "Contacto"
     },
     "resources": {
       "title": "Recursos",
-      "contact": "Contacto",
-      "downloadGeko": "Descargar Geko",
-      "about": "Sobre nosotros"
+      "downloadGeko": "Descargar Geko"
     },
     "projects": {
       "title": "Proyectos"

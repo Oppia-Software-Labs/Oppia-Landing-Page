@@ -22,11 +22,7 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
     },
     {
       href: '#products',
-      translationKey: 'navbar.menuSections.knowUs.links.mission',
-    },
-    {
-      href: '#who-are-we',
-      translationKey: 'navbar.menuSections.knowUs.links.values',
+      translationKey: 'navbar.menuSections.knowUs.links.projects',
     },
     {
       href: '#cta',

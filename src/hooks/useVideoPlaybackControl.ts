@@ -171,7 +171,11 @@ export function useVideoPlaybackControl(
         : false;
       const isSmallSectionVisible = checkSmallSectionVisibility(smallSectionRect, viewportHeight);
 
-      if ((isTargetVisible || isLargeSectionVisible || isSmallSectionVisible) && userInteracted) {
+      // Pausar si el video (target) no está visible, sobre todo al hacer scroll hacia arriba en responsive
+      const targetOutOfView = isElementOutOfView(targetRect, viewportHeight, viewportWidth, VIDEO_VISIBILITY_CONFIG.PAUSE_MARGIN);
+      if (targetOutOfView && !video.paused) {
+        video.pause();
+      } else if ((isTargetVisible || isLargeSectionVisible || isSmallSectionVisible) && userInteracted) {
         attemptPlay();
       } else if (!userInteracted && (isTargetVisible || isLargeSectionVisible || isSmallSectionVisible)) {
       } else {
