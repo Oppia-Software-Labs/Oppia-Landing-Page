@@ -177,6 +177,11 @@
     "discoverButton": "Discover",
     "productsButton": "Products"
   },
+  "projectPage": {
+    "discoverTitle": "Discover What {name} is",
+    "poweredBy": "Powered by",
+    "notFound": "Project not found"
+  },
   "projectCta": {
     "bottomDescription": {
       "neko": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets. Unlock the power of decentralized finance.",

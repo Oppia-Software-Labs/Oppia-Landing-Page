@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
+import type { Locale } from '@/i18n/i18n';
 import { StellarLogo } from '@/components/icons/partners/StellarLogo';
 import { CatalitecLogo } from '@/components/icons/partners/CatalitecLogo';
 import { Footer } from '@/modules/footer/Footer';
@@ -43,6 +44,14 @@ export default function ProjectPage() {
     return () => m.removeEventListener('change', fn);
   }, []);
 
+  // Sincronizar locale con localStorage al montar (p. ej. al abrir /projects/neko directamente)
+  useEffect(() => {
+    const saved = localStorage.getItem('oppia-locale') as Locale | null;
+    if (saved === 'es' || saved === 'en') {
+      useAppStore.getState().setLocale(saved);
+    }
+  }, []);
+
   // En responsive no hay efecto flip (el video no “baja”), solo tap para play
   useEffect(() => {
     if (typeof window === 'undefined' || isResponsive) {
@@ -70,7 +79,7 @@ export default function ProjectPage() {
   if (!VALID_SLUGS.includes(slug as ProjectSlug)) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-black">
-        <p className="text-white">Project not found</p>
+        <p className="text-white">{t('projectPage.notFound')}</p>
       </div>
     );
   }
@@ -147,7 +156,7 @@ export default function ProjectPage() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
           >
-            Discover What {projectName} is
+            {t('projectPage.discoverTitle').replace('{name}', projectName)}
           </motion.p>
           <div className="rounded-2xl w-[min(92vw,20em)] relative mx-auto overflow-hidden">
             <div className="pt-[56.25%]" />
@@ -176,7 +185,7 @@ export default function ProjectPage() {
               whileInView="show"
               viewport={{ once: false, amount: 0.3 }}
             >
-              Discover What {projectName} is
+              {t('projectPage.discoverTitle').replace('{name}', projectName)}
             </motion.p>
             <div className="rounded-2xl w-[22em] relative mx-auto">
               <div className="pt-[56.25%]" />
@@ -223,7 +232,7 @@ export default function ProjectPage() {
           className="text-white text-lg sm:text-xl lg:text-2xl font-semibold mb-4"
           variants={projectPageVariants.poweredByTitle}
         >
-          Powered by
+          {t('projectPage.poweredBy')}
         </motion.p>
         <motion.div
           className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8"

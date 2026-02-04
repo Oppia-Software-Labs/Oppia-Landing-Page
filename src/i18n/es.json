@@ -2,7 +2,7 @@
   "navbar": {
     "discover": "Discover",
     "products": "Products",
-    "menu": "Menu",
+    "menu": "Menú",
     "closeMenu": "Cerrar",
     "changeLanguage": "Cambiar idioma",
     "menuSections": {
@@ -74,7 +74,7 @@
     "neko": {
       "name": "Neko",
       "tags": "RWA,DEFI,Stocks",
-      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "description": "Neko Protocol permite préstamos y empréstitos DeFi utilizando activos del mundo real tokenizados.",
       "cta": "Ver proyecto",
       "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
       "discoverButton": "Descubrir →"
@@ -96,7 +96,7 @@
     "deko": {
       "name": "Deko",
       "tags": "Web3,Finanzas,Mobile",
-      "description": "Neko Protocol enables DeFi lending and borrowing using tokenized real-world assets.",
+      "description": "Deko Protocol permite préstamos y empréstitos DeFi utilizando activos del mundo real tokenizados.",
       "cta": "Ver proyecto",
       "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
       "discoverButton": "Descubrir →"
@@ -176,6 +176,11 @@
     "bottomCtaText": "Toma el control de tus finanzas ahora",
     "discoverButton": "Descubrir",
     "productsButton": "Productos"
+  },
+  "projectPage": {
+    "discoverTitle": "Descubre qué es {name}",
+    "poweredBy": "Impulsado por",
+    "notFound": "Proyecto no encontrado"
   },
   "projectCta": {
     "bottomDescription": {
