@@ -171,7 +171,7 @@ export function FAQ() {
                           delay: 0.15,
                           ease: [0.16, 1, 0.3, 1],
                         }}
-                        className="text-[16px] leading-relaxed text-white"
+                        className="text-sm leading-relaxed text-white"
                       >
                         {faq.answer}
                       </motion.p>

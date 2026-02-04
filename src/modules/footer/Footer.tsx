@@ -19,37 +19,37 @@ export function Footer() {
   return (
     <footer className="relative bg-black overflow-hidden">
       {/* Left Wave */}
-      <div className="absolute bottom-0 left-0 z-0 -translate-x-32 translate-y-12">
+      <div className="absolute bottom-0 left-0 z-0 -translate-x-32 translate-y-12 max-md:-translate-x-40 max-md:translate-y-16">
         <Image
           src="/visuals/footer/left-wave.svg"
           alt=""
           width={1100}
           height={500}
-          className="h-[500px] w-[1100px] opacity-80"
+          className="h-[500px] w-[1100px] max-md:h-[420px] max-md:w-[920px] opacity-80"
           aria-hidden="true"
         />
       </div>
 
       {/* Top Right Wave */}
-      <div className="absolute top-0 right-0 z-0 translate-x-24 -translate-y-4">
+      <div className="absolute top-0 right-0 z-0 translate-x-24 -translate-y-4 max-md:translate-x-32 max-md:-translate-y-8">
         <Image
           src="/visuals/footer/top-right-wave.svg"
           alt=""
           width={950}
           height={650}
-          className="h-[650px] w-[950px] opacity-80"
+          className="h-[650px] w-[950px] max-md:h-[560px] max-md:w-[820px] opacity-80"
           aria-hidden="true"
         />
       </div>
 
       {/* Down Right Wave */}
-      <div className="absolute bottom-0 right-0 z-0 translate-x-32 translate-y-12">
+      <div className="absolute bottom-0 right-0 z-0 translate-x-32 translate-y-12 max-md:translate-x-40 max-md:translate-y-16">
         <Image
           src="/visuals/footer/down-right-wave.svg"
           alt=""
           width={900}
           height={500}
-          className="h-[500px] w-[900px] opacity-80"
+          className="h-[500px] w-[900px] max-md:h-[420px] max-md:w-[760px] opacity-80"
           aria-hidden="true"
         />
       </div>
@@ -74,30 +74,35 @@ export function Footer() {
 
           {/* Links, Resources, Socials */}
           <div className="flex flex-col sm:flex-row flex-wrap gap-10 sm:gap-12 lg:gap-16">
-            {/* Links */}
+            {/* Links - cada sección de la landing */}
             <nav className="min-w-[140px]" aria-label={t('footer.links.title')}>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white/90">
                 {t('footer.links.title')}
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="#products" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('footer.links.features')}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#products" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('footer.links.solutions')}
+                  <Link href="#partners" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.partners')}
                   </Link>
                 </li>
                 <li>
                   <Link href="#who-are-we" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('footer.links.advantages')}
+                    {t('footer.links.whoAreWe')}
                   </Link>
                 </li>
                 <li>
-                  <Link href="#cta" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('footer.resources.contact')}
+                  <Link href="#products" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.products')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#team" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.team')}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#social-media" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.socialMedia')}
                   </Link>
                 </li>
                 <li>
@@ -106,8 +111,8 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#who-are-we" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('footer.resources.about')}
+                  <Link href="#cta" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                    {t('footer.links.contact')}
                   </Link>
                 </li>
               </ul>
@@ -158,14 +163,14 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/projects/geko" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('products.geko.name')}
-                  </Link>
+                  <span className="text-sm text-gray-500 cursor-default" aria-disabled>
+                    {t('products.geko.name')} — {t('products.comingSoonCta')}
+                  </span>
                 </li>
                 <li>
-                  <Link href="/projects/deko" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
-                    {t('products.deko.name')}
-                  </Link>
+                  <span className="text-sm text-gray-500 cursor-default" aria-disabled>
+                    {t('products.deko.name')} — {t('products.comingSoonCta')}
+                  </span>
                 </li>
               </ul>
             </nav>

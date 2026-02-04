@@ -87,7 +87,7 @@ export function WhoAreWe() {
             return (
               <motion.div
                 key={card.key}
-                className="flex flex-col w-full max-w-[340px] max-md:max-w-[280px] max-[414px]:max-w-[240px] mx-auto h-full"
+                className="flex flex-col w-full max-w-[340px] max-md:max-w-[280px] max-[389px]:max-w-[240px] mx-auto h-full"
                 variants={cardVariant}
               >
                 {card.hasGradient ? (

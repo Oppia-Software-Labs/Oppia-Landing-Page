@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -33,9 +33,21 @@ export default function ProjectPage() {
   const { t } = useTranslations(locale);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSectionRef = useRef<HTMLDivElement>(null);
+  const [isResponsive, setIsResponsive] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  );
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
+    const m = window.matchMedia('(max-width: 767px)');
+    setIsResponsive(m.matches);
+    const fn = () => setIsResponsive(m.matches);
+    m.addEventListener('change', fn);
+    return () => m.removeEventListener('change', fn);
+  }, []);
+
+  // En responsive no hay efecto flip (el video no “baja”), solo tap para play
+  useEffect(() => {
+    if (typeof window === 'undefined' || isResponsive) {
       return;
     }
 
@@ -53,9 +65,9 @@ export default function ProjectPage() {
         cleanupFn();
       }
     };
-  }, [slug]);
+  }, [slug, isResponsive]);
 
-  useVideoPlaybackControl(videoRef, [slug]);
+  useVideoPlaybackControl(videoRef, [slug], { enabled: !isResponsive });
 
   if (!VALID_SLUGS.includes(slug as ProjectSlug)) {
     return (
@@ -72,43 +84,45 @@ export default function ProjectPage() {
     <div className="relative overflow-hidden min-h-screen bg-black">
       <section className="animate__fadeInRight animate__animated flex flex-col justify-center items-center pt-[2vh] sm:pt-[4vh] lg:pt-[5vh] pb-[2vh] px-[2vw] relative">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#001D66] to-[#03A7FF] min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] w-[96vw] max-w-[96vw]">
-          <div className="absolute top-0 left-0 z-0 -translate-x-1/4">
+          {/* Left wave - más separada (un poco más a la izquierda) */}
+          <div className="absolute top-0 left-0 z-0 -translate-x-[32%] max-md:-translate-x-[38%]">
             <Image
               src="/oppia-projects/left-wave.svg"
               alt=""
               width={1100}
               height={500}
-              className="h-[500px] w-[1100px] opacity-100"
+              className="h-[500px] w-[1100px] max-md:h-[380px] max-md:w-[840px] opacity-100"
               aria-hidden="true"
             />
           </div>
 
-          <div className="absolute bottom-0 right-0 z-0 translate-x-1/4">
+          {/* Right wave - más separada (un poco más a la derecha) */}
+          <div className="absolute bottom-0 right-0 z-0 translate-x-[32%] max-md:translate-x-[38%]">
             <Image
               src="/oppia-projects/right-wave.svg"
               alt=""
               width={950}
               height={650}
-              className="h-[650px] w-[950px] opacity-100"
+              className="h-[650px] w-[950px] max-md:h-[480px] max-md:w-[700px] opacity-100"
               aria-hidden="true"
             />
           </div>
 
-          <div className="relative z-10 min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] px-5 py-6 sm:p-12 lg:p-16 flex flex-col items-center justify-center gap-4 sm:gap-12">
-            <div className="flex justify-center items-center w-full">
+          <div className="relative z-10 min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] px-4 py-6 sm:px-8 sm:py-8 lg:p-16 flex flex-col items-center justify-center gap-4 sm:gap-10 max-lg:-translate-y-6 sm:max-lg:-translate-y-8 lg:translate-y-0">
+            <div className="flex justify-center items-center w-full flex-1 min-h-0">
               <Image
                 src={getProjectLogoPath(slug)}
                 alt={`${projectName} Logo`}
                 width={400}
                 height={400}
-                className="h-32 w-auto sm:h-60 md:h-72 lg:h-80 brightness-0 invert mx-auto block"
+                className="h-28 w-auto sm:h-52 md:h-72 lg:h-80 brightness-0 invert mx-auto block max-w-[85%]"
                 priority
               />
             </div>
           </div>
 
-          {/* Bottom CTA Section */}
-          <div className="absolute z-10 bottom-8 left-8 right-8 lg:left-12 lg:right-12 lg:bottom-12">
+          {/* Bottom CTA Section - texto "Neko enables..." y botón Discover más arriba */}
+          <div className="absolute z-10 bottom-8 left-5 right-5 sm:bottom-10 sm:left-6 sm:right-6 lg:left-12 lg:right-12 lg:bottom-12">
             <BottomCTASection
               description={t(`projectCta.bottomDescription.${slug}`)}
               ctaText={t(`projectCta.bottomCtaText.${slug}`)}
@@ -123,61 +137,79 @@ export default function ProjectPage() {
         </div>
       </section>
 
-      <section
-        ref={videoSectionRef}
-        className="flex flex-col justify-center items-center min-h-0 sm:min-h-screen pt-[3vh] pb-[6vh] sm:pb-[10vh] lg:pb-[15vh] px-[5vw] relative gap-4 sm:gap-[1.5em]"
-      >
-        <motion.p
-          className="text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center uppercase"
-          variants={projectPageVariants.discoverTitle}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.3 }}
+      {isResponsive ? (
+        <section
+          ref={videoSectionRef}
+          className="flex flex-col justify-center items-center pt-[12vh] pb-[6vh] px-[5vw] relative gap-4"
         >
-          Discover What {projectName} is
-        </motion.p>
-
-        <div className="rounded-2xl w-[20em] sm:w-[15em] relative">
-          <div className="pt-[56.25%]"></div>
-          <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0">
-            <div
-              data-flip-element="target"
-              className="will-change-transform bg-[#d2800f] rounded-2xl justify-center items-center w-full h-full flex absolute top-0 left-0 overflow-hidden isolation-isolate"
-              style={{ transform: 'translateX(0) rotate(0.001deg)' }}
+          <motion.p
+            className="text-white text-xl font-semibold text-center uppercase"
+            variants={projectPageVariants.discoverTitle}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            Discover What {projectName} is
+          </motion.p>
+          <div className="rounded-2xl w-[min(92vw,20em)] relative mx-auto bg-[#d2800f] overflow-hidden">
+            <div className="pt-[56.25%]" />
+            <video
+              ref={videoRef}
+              playsInline
+              loop
+              muted={false}
+              controls
+              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
             >
-              <video
-                ref={videoRef}
-                playsInline
-                loop
-                muted={false}
-                controls={false}
-                className="object-cover w-full h-full absolute rounded-inherit"
-              >
-                <source src="/pitch/pitch.mp4" type="video/mp4" />
-              </video>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                viewBox="0 0 138 138"
-                fill="none"
-                className="text-white mix-blend-overlay w-[6.25em] sm:w-[5em] absolute"
-              >
-                <path
-                  d="M81.7432 46.534C79.5777 48.6995 75.875 47.1659 75.875 44.1034V0.25H62.125V51.8124C62.125 57.5079 57.5079 62.1249 51.8125 62.1249H0.25V75.8749H44.1034C47.1659 75.8749 48.6996 79.5776 46.5341 81.7431L16.0136 112.263L25.7364 121.986L56.2569 91.466C58.416 89.3069 62.1031 90.825 62.125 93.8693V137.75H75.8751L75.875 86.1874C75.875 80.492 80.4921 75.8749 86.1875 75.8749H137.75V62.1249H93.8692C90.8339 62.1031 89.3157 58.4375 91.4469 56.2759L91.4659 56.2569L121.986 25.7363L112.264 16.0137L81.7432 46.534Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
-            </div>
+              <source src="/pitch/pitch.mp4" type="video/mp4" />
+            </video>
           </div>
-        </div>
-      </section>
-
-      <section className="flex flex-col justify-center items-center min-h-screen pb-[15vh] px-[5vw] relative gap-[15vh] pt-[15vh]">
-        <div className="rounded-2xl w-full relative">
-          <div className="pt-[56.25%]"></div>
-          <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0"></div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <>
+          <section
+            ref={videoSectionRef}
+            className="flex flex-col justify-center items-center min-h-screen pt-[3vh] pb-[10vh] lg:pb-[15vh] px-[5vw] relative gap-4 sm:gap-[1.5em]"
+          >
+            <motion.p
+              className="text-white text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-center uppercase"
+              variants={projectPageVariants.discoverTitle}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              Discover What {projectName} is
+            </motion.p>
+            <div className="rounded-2xl w-[22em] relative mx-auto">
+              <div className="pt-[56.25%]" />
+              <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0">
+                <div
+                  data-flip-element="target"
+                  className="will-change-transform bg-[#d2800f] rounded-2xl justify-center items-center w-full h-full flex absolute top-0 left-0 overflow-hidden isolation-isolate"
+                  style={{ transform: 'translateX(0) rotate(0.001deg)' }}
+                >
+                  <video
+                    ref={videoRef}
+                    playsInline
+                    loop
+                    muted={false}
+                    controls={false}
+                    className="object-cover w-full h-full absolute rounded-inherit"
+                  >
+                    <source src="/pitch/pitch.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="flex flex-col justify-center items-center min-h-screen pb-[15vh] px-[5vw] relative gap-[15vh] pt-[15vh]">
+            <div className="rounded-2xl w-full relative">
+              <div className="pt-[56.25%]" />
+              <div data-flip-element="wrapper" className="w-full h-full absolute top-0 left-0" />
+            </div>
+          </section>
+        </>
+      )}
 
       <motion.section
         className="flex flex-col justify-center items-center pb-[3vh] px-[5vw] relative"

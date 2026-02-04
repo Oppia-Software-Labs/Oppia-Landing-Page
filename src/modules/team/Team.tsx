@@ -58,7 +58,7 @@ export function Team() {
         viewport={{ once: false, margin: '-100px' }}
       >
         {teamMembers.map((member) => (
-          <motion.div key={member.id} variants={teamVariants.item} className="w-full max-w-[250px] max-[414px]:max-w-[230px] md:max-w-none md:w-auto">
+          <motion.div key={member.id} variants={teamVariants.item} className="w-full max-w-[250px] max-[389px]:max-w-[230px] md:max-w-none md:w-auto">
             <TeamCard member={member} />
           </motion.div>
         ))}

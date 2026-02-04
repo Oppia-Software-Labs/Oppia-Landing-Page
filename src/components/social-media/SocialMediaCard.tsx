@@ -18,22 +18,22 @@ function SocialMediaCardComponent({ post, isCenter = false }: SocialMediaCardPro
 
   const cardContent = (
     <>
-      <header className="mb-1.5 flex items-center gap-3 pt-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#121212]">
-          <OppiaIsotypeIcon width={24} height={24} className="h-6 w-6" />
+      <header className="mb-1 flex items-center gap-2 pt-3 sm:mb-1.5 sm:gap-3 sm:pt-4">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#121212] sm:h-10 sm:w-10">
+          <OppiaIsotypeIcon width={24} height={24} className="h-5 w-5 sm:h-6 sm:w-6" />
         </div>
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-          <h3 className="text-sm font-semibold text-white leading-tight">
+          <h3 className="text-xs font-semibold text-white leading-tight sm:text-sm">
             {post.author.name}
           </h3>
-          <p className="text-xs text-gray-400 leading-tight">
+          <p className="text-[11px] text-gray-400 leading-tight sm:text-xs">
             @{post.author.username}
           </p>
         </div>
       </header>
 
-      <div className="mb-4 flex flex-1 items-center overflow-hidden">
-        <p className="text-sm leading-relaxed text-white line-clamp-5 whitespace-pre-line">
+      <div className="mb-3 flex flex-1 items-center overflow-hidden sm:mb-4">
+        <p className="text-xs leading-relaxed text-white line-clamp-4 whitespace-pre-line sm:text-sm sm:line-clamp-5">
           {textSegments.map((segment, index) => {
             if (segment.isHashtag) {
               return (
@@ -50,29 +50,29 @@ function SocialMediaCardComponent({ post, isCenter = false }: SocialMediaCardPro
         </p>
       </div>
 
-      <footer className="flex w-full items-center justify-between">
-        <div className="flex items-center gap-1.5 text-gray-400 transition-colors hover:text-yellow-500">
-          <CommentIcon width={18} height={18} />
-          <span className="text-xs">{post.interactions.comments}</span>
+      <footer className="flex w-full items-center justify-between gap-1">
+        <div className="flex items-center gap-1 text-gray-400 transition-colors hover:text-yellow-500 sm:gap-1.5">
+          <CommentIcon width={16} height={16} className="sm:w-[18px] sm:h-[18px]" />
+          <span className="text-[10px] sm:text-xs">{post.interactions.comments}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-gray-400 transition-colors hover:text-green-400">
-          <RetweetIcon width={18} height={18} />
-          <span className="text-xs">{post.interactions.retweets}</span>
+        <div className="flex items-center gap-1 text-gray-400 transition-colors hover:text-green-400 sm:gap-1.5">
+          <RetweetIcon width={16} height={16} className="sm:w-[18px] sm:h-[18px]" />
+          <span className="text-[10px] sm:text-xs">{post.interactions.retweets}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-gray-400 transition-colors hover:text-red-400">
-          <LikeIcon width={18} height={18} />
-          <span className="text-xs">{post.interactions.likes}</span>
+        <div className="flex items-center gap-1 text-gray-400 transition-colors hover:text-red-400 sm:gap-1.5">
+          <LikeIcon width={16} height={16} className="sm:w-[18px] sm:h-[18px]" />
+          <span className="text-[10px] sm:text-xs">{post.interactions.likes}</span>
         </div>
-        <div className="flex items-center gap-1.5 text-gray-400 transition-colors hover:text-cyan-400">
-          <ShareIcon width={18} height={18} />
-          <span className="text-xs">{post.interactions.shares}</span>
+        <div className="flex items-center gap-1 text-gray-400 transition-colors hover:text-cyan-400 sm:gap-1.5">
+          <ShareIcon width={16} height={16} className="sm:w-[18px] sm:h-[18px]" />
+          <span className="text-[10px] sm:text-xs">{post.interactions.shares}</span>
         </div>
       </footer>
     </>
   );
 
   const cardClassName = cn(
-    'flex h-[265px] flex-col rounded-lg p-5',
+    'flex h-[220px] sm:h-[240px] lg:h-[265px] flex-col rounded-lg p-4 sm:p-5',
     'bg-gradient-to-b from-[#111111] to-[#242424]',
     'border border-[#313030]',
     'transition-all duration-300 ease-out',

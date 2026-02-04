@@ -45,8 +45,8 @@ export function CTA() {
             background: 'linear-gradient(to bottom, #03A7FF, #00398F)',
           }}
         >
-          {/* Left Wave */}
-          <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4">
+          {/* Left Wave - oculto en responsive */}
+          <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4 hidden lg:block">
             <Image
               src="/visuals/cta/left-wave.svg"
               alt=""
@@ -57,8 +57,8 @@ export function CTA() {
             />
           </div>
 
-          {/* Right Wave */}
-          <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+          {/* Right Wave - oculto en responsive */}
+          <div className="absolute top-0 right-0 z-0 translate-x-1/4 hidden lg:block">
             <Image
               src="/visuals/cta/right-wave.svg"
               alt=""

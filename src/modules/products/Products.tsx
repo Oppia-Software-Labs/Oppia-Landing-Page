@@ -175,7 +175,7 @@ export function Products() {
                 onClick={() => {
                   handleProductButtonClick(idx);
                 }}
-                className={`btn-slanted btn-slanted-product rounded-full px-5 py-2 text-sm font-medium max-md:px-4 max-md:py-1.5 max-md:text-xs max-[414px]:px-3 max-[414px]:py-1 max-[414px]:text-[11px] ${
+                className={`btn-slanted btn-slanted-product rounded-full px-5 py-2 text-sm font-medium max-md:px-4 max-md:py-1.5 max-md:text-xs max-[389px]:px-3 max-[389px]:py-1 max-[389px]:text-[11px] ${
                   isActive
                     ? 'btn-slanted-product--active'
                     : 'btn-slanted-product--inactive'
@@ -203,11 +203,11 @@ export function Products() {
         <motion.div
           ref={sliderRef}
           data-flick-cards-init=""
-          className="relative w-full min-h-[640px] max-md:min-h-[400px] max-[414px]:min-h-[360px]"
+          className="relative w-full min-h-[640px] max-md:min-h-[400px] max-[389px]:min-h-[360px]"
           variants={productsVariants.cards}
         >
           <div
-            className="opacity-0 pointer-events-none relative w-[42em] max-md:w-[17rem] max-[414px]:w-[15rem] mx-auto"
+            className="opacity-0 pointer-events-none relative w-[42em] max-md:w-[17rem] max-[389px]:w-[15rem] mx-auto"
           >
             <div style={{ paddingTop: '75%' }}></div>
           </div>

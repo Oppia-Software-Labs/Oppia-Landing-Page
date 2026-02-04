@@ -1,13 +1,20 @@
 import { useEffect, RefObject } from 'react';
 import { ANIMATION_TIMING, VIDEO_VISIBILITY_CONFIG } from '@/constants/projects';
 
+export type UseVideoPlaybackControlOptions = {
+  /** Si false, el hook no hace nada (p. ej. en responsive: solo tap para play) */
+  enabled?: boolean;
+};
 
 export function useVideoPlaybackControl(
   videoRef: RefObject<HTMLVideoElement | null>,
-  dependencies: unknown[] = []
+  dependencies: unknown[] = [],
+  options: UseVideoPlaybackControlOptions = {}
 ): void {
+  const { enabled = true } = options;
+
   useEffect(() => {
-    if (typeof window === 'undefined' || !videoRef.current) {
+    if (!enabled || typeof window === 'undefined' || !videoRef.current) {
       return;
     }
 

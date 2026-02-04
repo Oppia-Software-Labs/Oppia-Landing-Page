@@ -17,7 +17,7 @@ export function TeamCard({ member }: TeamCardProps) {
 
     return (
       <div
-      className="team-card-item relative shrink-0 w-full max-w-[250px] max-[414px]:max-w-[230px] md:w-[280px] md:min-w-[280px] md:max-w-[280px]"
+      className="team-card-item relative shrink-0 w-full max-w-[250px] max-[389px]:max-w-[230px] md:w-[280px] md:min-w-[280px] md:max-w-[280px]"
       >
       <div 
         data-momentum-hover-element="" 

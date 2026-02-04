@@ -51,8 +51,8 @@ export function ProjectCTA({ slug, locale }: ProjectCTAProps) {
             background: `linear-gradient(to bottom, ${config.gradient.from}, ${config.gradient.to})`,
           }}
         >
-          {/* Left Wave */}
-          <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4">
+          {/* Left Wave - oculto en responsive */}
+          <div className="absolute bottom-0 left-0 z-0 -translate-x-1/4 hidden lg:block">
             <Image
               src="/visuals/cta/left-wave.svg"
               alt=""
@@ -63,8 +63,8 @@ export function ProjectCTA({ slug, locale }: ProjectCTAProps) {
             />
           </div>
 
-          {/* Right Wave */}
-          <div className="absolute top-0 right-0 z-0 translate-x-1/4">
+          {/* Right Wave - oculto en responsive */}
+          <div className="absolute top-0 right-0 z-0 translate-x-1/4 hidden lg:block">
             <Image
               src="/visuals/cta/right-wave.svg"
               alt=""

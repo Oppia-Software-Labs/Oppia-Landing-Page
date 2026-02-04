@@ -14,7 +14,7 @@ export function WaveLeft({ className = '' }: WaveLeftProps) {
         alt=""
         width={400}
         height={480}
-        className="h-[500px] w-[420px] opacity-80"
+        className="h-[500px] w-[420px] max-md:h-[400px] max-md:w-[340px] max-sm:h-[350px] max-sm:w-[295px] max-[389px]:h-[300px] max-[389px]:w-[252px] opacity-80"
         aria-hidden="true"
         priority={false}
       />

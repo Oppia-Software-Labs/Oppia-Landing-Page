@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { LeftWave } from '@/components/visuals/LeftWave';
@@ -16,6 +17,32 @@ export function Hero() {
     <section className="relative min-h-screen overflow-hidden bg-black pt-24">
       <LeftWave />
       <RightWave />
+
+      {/* Waves responsive: assets de visuals/hero (más pequeños) */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden md:hidden">
+        <div className="absolute bottom-0 left-0 w-[118%] h-[50%] -translate-x-[6%]">
+          <Image
+            src="/visuals/hero/wave-responsive-down.svg"
+            alt=""
+            width={800}
+            height={600}
+            className="h-full w-full object-cover object-bottom opacity-90"
+            aria-hidden="true"
+            priority={false}
+          />
+        </div>
+        <div className="absolute -top-[4%] right-0 w-[88%] h-[42%] translate-x-[58%] origin-bottom-right -rotate-[4deg]">
+          <Image
+            src="/visuals/hero/wave-responsive-top-right.svg"
+            alt=""
+            width={800}
+            height={600}
+            className="h-full w-full object-cover object-top object-right opacity-90"
+            aria-hidden="true"
+            priority={false}
+          />
+        </div>
+      </div>
 
       <motion.div
         className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center sm:px-6 sm:pt-52 lg:px-8"

@@ -22,11 +22,7 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
     },
     {
       href: '#products',
-      translationKey: 'navbar.menuSections.knowUs.links.mission',
-    },
-    {
-      href: '#who-are-we',
-      translationKey: 'navbar.menuSections.knowUs.links.values',
+      translationKey: 'navbar.menuSections.knowUs.links.projects',
     },
     {
       href: '#cta',
@@ -90,11 +86,13 @@ export function NavMenuContent({ onLinkClick }: NavMenuContentProps) {
               links={knowUsLinks}
               onLinkClick={onLinkClick}
             />
-            <NavSection
-              titleKey="navbar.menuSections.social.title"
-              links={socialLinks}
-              showSocialIcons={true}
-            />
+            <div className="twostep-nav__social-section hidden lg:block">
+              <NavSection
+                titleKey="navbar.menuSections.social.title"
+                links={socialLinks}
+                showSocialIcons={true}
+              />
+            </div>
             <NavSection
               titleKey="navbar.menuSections.team.title"
               links={teamLinks}
