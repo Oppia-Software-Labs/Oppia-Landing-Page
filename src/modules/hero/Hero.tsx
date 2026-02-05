@@ -14,7 +14,7 @@ export function Hero() {
   const { t } = useTranslations(locale);
 
   return (
-    <section className="hero-min-h relative overflow-hidden bg-black pt-24" id="hero">
+    <section className="hero-min-h relative overflow-hidden bg-black pt-24 max-md:pt-0" id="hero">
       <LeftWave />
       <RightWave />
 
@@ -45,7 +45,7 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="hero-inner-min-h relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center sm:px-6 sm:pt-52 lg:px-8"
+        className="hero-inner-min-h relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center max-md:pt-6 sm:px-6 sm:pt-52 lg:px-8"
         variants={heroVariants.container}
         initial="hidden"
         animate="show"
