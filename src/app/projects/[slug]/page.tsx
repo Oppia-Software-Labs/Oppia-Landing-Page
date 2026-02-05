@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import type { Locale } from '@/i18n/i18n';
@@ -87,23 +87,8 @@ export default function ProjectPage() {
   const translationKey = getProductTranslationKey(slug);
   const projectName = t(`products.${translationKey}.name`);
 
-  const localeTransition = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] as const },
-  };
-
   return (
     <div className="relative overflow-hidden min-h-screen bg-black">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={locale}
-          initial={localeTransition.initial}
-          animate={localeTransition.animate}
-          exit={localeTransition.exit}
-          transition={localeTransition.transition}
-        >
       <section className="animate__fadeInRight animate__animated flex flex-col justify-center items-center pt-[2vh] sm:pt-[4vh] lg:pt-[5vh] pb-[2vh] px-[2vw] relative">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#001D66] to-[#03A7FF] min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] w-[96vw] max-w-[96vw]">
           {/* Left wave - más separada (un poco más a la izquierda) */}
@@ -267,8 +252,6 @@ export default function ProjectPage() {
       )}
 
       <Footer />
-        </motion.div>
-      </AnimatePresence>
     </div>
   );
 }

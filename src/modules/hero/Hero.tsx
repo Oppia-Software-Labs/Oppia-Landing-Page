@@ -14,13 +14,13 @@ export function Hero() {
   const { t } = useTranslations(locale);
 
   return (
-    <section className="hero-min-h relative overflow-hidden bg-black pt-24" id="hero">
+    <section className="relative min-h-screen overflow-hidden bg-black pt-24" id="hero">
       <LeftWave />
       <RightWave />
 
-      {/* Waves responsive: assets de visuals/hero (más pequeños); en móvil la de abajo fija para que no se mueva */}
+      {/* Waves responsive: assets de visuals/hero (más pequeños) */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden md:hidden">
-        <div className="hero-wave-bottom absolute bottom-0 left-0 w-[118%] h-[50%] -translate-x-[6%]">
+        <div className="absolute bottom-0 left-0 w-[118%] h-[50%] -translate-x-[6%]">
           <Image
             src="/visuals/hero/wave-responsive-down.svg"
             alt=""
@@ -45,7 +45,7 @@ export function Hero() {
       </div>
 
       <motion.div
-        className="hero-inner-min-h relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center sm:px-6 sm:pt-52 lg:px-8"
+        className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col items-center justify-start px-4 pt-48 text-center sm:px-6 sm:pt-52 lg:px-8"
         variants={heroVariants.container}
         initial="hidden"
         animate="show"
