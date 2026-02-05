@@ -390,6 +390,16 @@ body {
   .hero-inner-min-h {
     min-height: calc(100dvh - 4rem);
   }
+  /* Onda inferior fija: no se mueve al hacer scroll ni cuando cambia la barra del navegador */
+  .hero-wave-bottom {
+    position: fixed !important;
+    bottom: 0;
+    left: -6%;
+    width: 118%;
+    height: 50vh;
+    height: 50dvh;
+    transform: none;
+  }
 }
 
 .dark {

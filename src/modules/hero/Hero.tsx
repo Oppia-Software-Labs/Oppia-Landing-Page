@@ -18,9 +18,9 @@ export function Hero() {
       <LeftWave />
       <RightWave />
 
-      {/* Waves responsive: assets de visuals/hero (más pequeños) */}
+      {/* Waves responsive: assets de visuals/hero (más pequeños); en móvil la de abajo fija para que no se mueva */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden md:hidden">
-        <div className="absolute bottom-0 left-0 w-[118%] h-[50%] -translate-x-[6%]">
+        <div className="hero-wave-bottom absolute bottom-0 left-0 w-[118%] h-[50%] -translate-x-[6%]">
           <Image
             src="/visuals/hero/wave-responsive-down.svg"
             alt=""
