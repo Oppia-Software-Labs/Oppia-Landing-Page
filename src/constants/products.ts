@@ -86,13 +86,13 @@ export const PRODUCT_CONFIGS: Record<ProductSlug, ProductConfig> = {
     comingSoon: true,
     logo: {
       active: {
-        src: '/oppia-projects/Neko.svg',
-        width: 380,
-        height: 380,
-        className: 'h-[380px] w-[380px] max-md:h-[260px] max-md:w-[260px] max-[389px]:h-[180px] max-[389px]:w-[180px] brightness-0 invert',
+        src: '/oppia-projects/Deko-temporal.svg',
+        width: 450,
+        height: 450,
+        className: 'h-[450px] w-[450px] max-md:h-[260px] max-md:w-[260px] max-[414px]:h-[180px] max-[414px]:w-[180px] brightness-0 invert',
       },
       inactive: {
-        src: '/oppia-projects/Neko-Project.svg',
+        src: '/oppia-projects/Deko-temporal.svg',
         width: 280,
         height: 280,
         className: 'h-[280px] w-[280px] max-md:h-[180px] max-md:w-[180px] max-[389px]:h-[130px] max-[389px]:w-[130px]',
@@ -107,7 +107,7 @@ export const LOGO_POSITIONS = {
   ACTIVE: {
     neko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
     geko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
-    deko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
+    deko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20%] max-md:-translate-y-[10%]',
   },
   INACTIVE: {
     neko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',

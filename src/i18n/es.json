@@ -74,7 +74,7 @@
     "neko": {
       "name": "Neko",
       "tags": "RWA,DEFI,Stocks",
-      "description": "Neko Protocol permite préstamos y empréstitos DeFi utilizando activos del mundo real tokenizados.",
+      "description": "Marketplace de activos del mundo real enfocado en el consumidor en Stellar.",
       "cta": "Ver proyecto",
       "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
       "discoverButton": "Descubrir →"
@@ -90,15 +90,15 @@
     "comingSoon": {
       "name": "Deko",
       "tag": "Coming Soon",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      "cta": "Mantente al día"
+      "description": "Wallet privada que se basa en la blockchain Stellar.",
+      "cta": "Mantente actualizado"
     },
     "deko": {
       "name": "Deko",
-      "tags": "Web3,Finanzas,Mobile",
-      "description": "Deko Protocol permite préstamos y empréstitos DeFi utilizando activos del mundo real tokenizados.",
+      "tags": "Web3, Privacidad, Mobile",
+      "description": "Wallet privada que se basa en la blockchain Stellar, utiliza Zero Knowledge Proofs para encriptar tus datos.",
       "cta": "Ver proyecto",
-      "ctaSubtitle": "Desbloquea el poder de los activos del mundo real tokenizados",
+      "ctaSubtitle": "Mantente privado (opt-in) en una red compliant.",
       "discoverButton": "Descubrir →"
     }
   },
