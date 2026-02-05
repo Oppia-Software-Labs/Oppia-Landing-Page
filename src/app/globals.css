@@ -376,7 +376,7 @@ body {
   background-color: var(--white-opacity-8);
 }
 
-/* Hero: desktop uses 100vh; mobile uses 100svh (visible area with bar) so it doesn’t desconfigurar */
+/* Hero: desktop uses 100vh; mobile uses 100dvh so it adapts to browser address bar */
 .hero-min-h {
   min-height: 100vh;
 }
@@ -385,12 +385,10 @@ body {
 }
 @media screen and (max-width: 767px) {
   .hero-min-h {
-    min-height: 100svh;
-    padding-top: 3.5rem; /* espacio para navbar sin empujar el contenido */
+    min-height: 100dvh;
   }
   .hero-inner-min-h {
-    min-height: calc(100svh - 4rem);
-    padding-top: 1.5rem; /* contenido más arriba cuando la barra del navegador es grande */
+    min-height: calc(100dvh - 4rem);
   }
 }
 
