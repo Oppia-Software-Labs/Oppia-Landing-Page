@@ -107,7 +107,7 @@ export const LOGO_POSITIONS = {
   ACTIVE: {
     neko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
     geko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/8',
-    deko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20%]',
+    deko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20%] max-md:-translate-y-[10%]',
   },
   INACTIVE: {
     neko: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
