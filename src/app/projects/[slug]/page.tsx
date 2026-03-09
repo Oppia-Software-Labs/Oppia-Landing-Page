@@ -13,6 +13,7 @@ import { Footer } from '@/modules/footer/Footer';
 import { ProjectCTA } from '@/modules/projects/ProjectCTA';
 import { initFlipOnScroll } from '@/utils/flipAnimation';
 import { ANIMATION_TIMING, getProjectLogoPath } from '@/constants/projects';
+import { PROJECT_CTA_CONFIGS } from '@/constants/projectCta';
 import { ProductSlug } from '@/constants/products';
 import { BottomCTASection } from '@/components/cta/BottomCTASection';
 import { useVideoPlaybackControl } from '@/hooks/useVideoPlaybackControl';
@@ -152,6 +153,7 @@ export default function ProjectPage() {
                 {
                   text: t('cta.discoverButton'),
                   variant: 'primary',
+                  href: PROJECT_CTA_CONFIGS[slug as ProductSlug]?.links.website,
                 },
               ]}
             />

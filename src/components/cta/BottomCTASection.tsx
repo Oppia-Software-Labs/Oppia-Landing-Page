@@ -36,6 +36,8 @@ export function BottomCTASection({
       if (button.href.startsWith('#')) {
         const element = document.querySelector(button.href);
         element?.scrollIntoView({ behavior: 'smooth' });
+      } else if (button.href.startsWith('http://') || button.href.startsWith('https://')) {
+        window.open(button.href, '_blank', 'noopener,noreferrer');
       } else {
         router.push(button.href);
       }

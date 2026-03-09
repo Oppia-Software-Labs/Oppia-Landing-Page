@@ -27,7 +27,7 @@ export const PROJECT_CTA_CONFIGS: Record<ProductSlug, ProjectCtaConfig> = {
     logoPath: '/oppia-projects/Nekotwo.svg',
     logotypePath: '/oppia-projects/Logotypes/neko-logotype.svg',
     links: {
-      website: 'https://www.nekoprotocol.xyz/',
+      website: 'https://nekoprotocol.xyz',
       twitter: 'https://x.com/NekoProto',
     },
     gradient: {

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { StellarLogo } from '@/components/icons/partners/StellarLogo';
+import { GrantFoxLogo } from '@/components/icons/partners/GrantFoxLogo';
 import { CatalitecLogo } from '@/components/icons/partners/CatalitecLogo';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
@@ -33,10 +34,19 @@ export function Partners() {
           variants={partnersVariants.logos}
         >
           <motion.div variants={partnersVariants.logo}>
-            <StellarLogo width={160} height={32} className="h-6 w-auto opacity-80 transition-opacity hover:opacity-100" />
+            <a href="https://stellar.org/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+              <StellarLogo width={160} height={32} className="h-6 w-auto opacity-80 transition-opacity hover:opacity-100" />
+            </a>
           </motion.div>
           <motion.div variants={partnersVariants.logo}>
-            <CatalitecLogo width={160} height={32} className="h-6 w-auto opacity-80 transition-opacity hover:opacity-100" />
+            <a href="https://www.tec.ac.cr/proceso-incubacion-tec-emprende-lab" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+              <CatalitecLogo width={160} height={32} className="h-6 w-auto opacity-80 transition-opacity hover:opacity-100" />
+            </a>
+          </motion.div>
+          <motion.div variants={partnersVariants.logo}>
+            <a href="https://www.grantfox.xyz/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+              <GrantFoxLogo width={160} height={32} className="h-14 w-auto opacity-80 transition-opacity hover:opacity-100" />
+            </a>
           </motion.div>
         </motion.div>
       </motion.div>
