@@ -3,12 +3,12 @@
 import type { TeamMember } from '@/types/team';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { BadgeCheck } from 'lucide-react';
 import { XformerlyTwitter } from '@/components/icons/social-media/X';
 import { LinkedIn } from '@/components/icons/social-media/Linkedin';
 import { GitHub } from '@/components/icons/social-media/Github';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
 import { TelegramIcon } from '@/components/icons/social-media/TelegramIcon';
-import { VerifiedCheckIcon } from '@/components/icons/social-media/VerifiedCheckIcon';
 
 interface TeamCardProps {
   /** Team member data to display */
@@ -53,9 +53,9 @@ export function TeamCard({ member }: TeamCardProps) {
             />
           </div>
           <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-end gap-1 md:gap-1.5 z-10 pointer-events-none px-2.5 pb-2 md:px-3.5 md:pb-3.5">
-            <div className="flex items-center justify-start gap-1">
+            <div className="flex items-center justify-start gap-1.5">
               <h3 className="m-0 mb-0.5 text-[15px] md:text-lg font-medium leading-none">{member.name}</h3>
-              <VerifiedCheckIcon className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" />
+              <BadgeCheck className="h-4 w-4 md:h-5 md:w-5 shrink-0 text-lime-300" />
             </div>
             <p className="opacity-67 m-0 text-[11px] md:text-xs font-normal leading-none">{member.role}</p>
             <div className="mt-1.5 md:mt-2.5 flex flex-col gap-1.5 pointer-events-auto">

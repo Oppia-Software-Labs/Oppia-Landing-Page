@@ -67,13 +67,13 @@ export default function TeamMemberPage() {
   ].filter((s) => s.href);
 
   return (
-    <div className={`${CONTAINER_PADDING.HORIZONTAL} pb-20 pt-20 sm:pt-28 md:pt-32`}>
+    <div className={`${CONTAINER_PADDING.HORIZONTAL} pb-20 pt-12 sm:pt-16 md:pt-20`}>
       <div className="mx-auto max-w-5xl">
         {/* Back to previous page */}
         <button
           type="button"
           onClick={() => router.back()}
-          className="mb-6 inline-flex items-center gap-2.5 text-base text-white/70 transition-colors hover:text-white"
+          className="mb-4 inline-flex items-center gap-2.5 text-base text-white/70 transition-colors hover:text-white"
           aria-label={t('team.profile.goBack')}
         >
           <ChevronLeft className="h-6 w-6" />
@@ -191,7 +191,6 @@ export default function TeamMemberPage() {
             </div>
           </motion.section>
         )}
-        {/* Projects - single card with tabs and arrows (between Work Experience and Education) */}
         {hasProjectsSection && (
           <motion.section
             className="mt-12"
@@ -287,7 +286,7 @@ export default function TeamMemberPage() {
                     <p className="text-base text-white/60">{projectsTab === 'projects' ? 'No projects yet.' : 'No hackathon awards yet.'}</p>
                   )}
                 </div>
-                <div className="relative h-full min-h-0 overflow-hidden">
+                <div className="relative hidden h-full min-h-0 overflow-hidden sm:block">
                   <img
                     src={WAVE_TOP_RIGHT}
                     alt=""

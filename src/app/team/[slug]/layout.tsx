@@ -14,7 +14,7 @@ export default function TeamMemberLayout({
     <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Top-right decorative wave - fixed to viewport, flush with top-right edge (breaks out of any container) */}
       <div
-        className="pointer-events-none fixed top-0 right-0 z-0 h-[min(80vh,900px)] w-[650px] max-w-[90vw]"
+        className="pointer-events-none fixed top-0 right-0 z-0 h-[min(55vh,520px)] w-[420px] max-w-[80vw] sm:h-[min(65vh,700px)] sm:w-[520px] md:h-[min(80vh,900px)] md:w-[650px]"
         aria-hidden
       >
         <Image
@@ -28,7 +28,7 @@ export default function TeamMemberLayout({
       </div>
       {/* Bottom-left decorative wave - fixed to viewport, aligned to bottom-left */}
       <div
-        className="pointer-events-none fixed bottom-0 left-0 z-0 h-[min(80vh,1174px)] w-[582px] max-w-[80vw]"
+        className="pointer-events-none fixed bottom-0 left-0 z-0 h-[min(55vh,520px)] w-[380px] max-w-[75vw] sm:h-[min(65vh,800px)] sm:w-[460px] md:h-[min(80vh,1174px)] md:w-[582px]"
         aria-hidden
       >
         <Image
