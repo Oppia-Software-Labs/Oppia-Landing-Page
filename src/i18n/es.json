@@ -196,6 +196,25 @@
   },
   "team": {
     "title": "Conoce Nuestro Equipo",
-    "description": "Los talentosos individuos que construyen el futuro de los sistemas descentralizados."
+    "description": "Los talentosos individuos que construyen el futuro de los sistemas descentralizados.",
+    "profile": {
+      "workExperience": "Experiencia laboral",
+      "education": "Educación",
+      "projects": "Proyectos",
+      "hackathonAwards": "Premios Hackathon",
+      "code": "Código",
+      "seeProject": "Ver proyecto",
+      "issuedBy": "Expedida por",
+      "objective": "Objetivo:",
+      "keyAchievements": "Logros clave:",
+      "project": "Proyecto:",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "Twitter (X)",
+      "telegram": "Telegram",
+      "notFound": "Miembro no encontrado.",
+      "backToTeam": "Volver al equipo",
+      "goBack": "Volver atrás"
+    }
   }
 }

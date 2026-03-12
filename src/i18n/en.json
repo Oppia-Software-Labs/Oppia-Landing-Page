@@ -196,6 +196,25 @@
   },
   "team": {
     "title": "Meet Our Team",
-    "description": "The talented individuals building the future of decentralized systems."
+    "description": "The talented individuals building the future of decentralized systems.",
+    "profile": {
+      "workExperience": "Work Experience",
+      "education": "Education",
+      "projects": "Projects",
+      "hackathonAwards": "Hackathon Awards",
+      "code": "Code",
+      "seeProject": "See project",
+      "issuedBy": "Issued by",
+      "objective": "Objective:",
+      "keyAchievements": "Key Achievements:",
+      "project": "Project:",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "twitter": "Twitter (X)",
+      "telegram": "Telegram",
+      "notFound": "Member not found.",
+      "backToTeam": "Back to team",
+      "goBack": "Go back"
+    }
   }
 }
