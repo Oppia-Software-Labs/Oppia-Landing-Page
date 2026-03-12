@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { useTranslations } from '@/i18n/i18n';
 import { useAppStore } from '@/store/store';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
-import { XIcon } from '@/components/icons/social-media/XIcon';
-import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
+import { XformerlyTwitter } from '@/components/icons/social-media/X';
+import { LinkedIn } from '@/components/icons/social-media/Linkedin';
+import { GitHub } from '@/components/icons/social-media/Github';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
-import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
 import type { NavbarVariants } from '@/animations/navbar';
 import { navbarVariants } from '@/animations/navbar';
@@ -49,10 +49,10 @@ export function NavSection({
   };
 
   const socialIcons = [
-    { href: SOCIAL_LINKS.TWITTER, icon: XIcon, label: 'Twitter' },
-    { href: SOCIAL_LINKS.LINKEDIN, icon: LinkedInIcon, label: 'LinkedIn' },
+    { href: SOCIAL_LINKS.TWITTER, icon: XformerlyTwitter, label: 'Twitter' },
+    { href: SOCIAL_LINKS.LINKEDIN, icon: LinkedIn, label: 'LinkedIn' },
     { href: SOCIAL_LINKS.INSTAGRAM, icon: InstagramIcon, label: 'Instagram' },
-    { href: SOCIAL_LINKS.GITHUB, icon: GitHubIcon, label: 'GitHub' },
+    { href: SOCIAL_LINKS.GITHUB, icon: GitHub, label: 'GitHub' },
     { href: SOCIAL_LINKS.DISCORD, icon: DiscordIcon, label: 'Discord' },
   ] as const;
 

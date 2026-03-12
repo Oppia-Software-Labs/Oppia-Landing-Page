@@ -10,10 +10,11 @@ import { PROJECT_CTA_CONFIGS } from '@/constants/projectCta';
 import { ProductSlug } from '@/constants/products';
 import { Locale } from '@/i18n/i18n';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
+import { XformerlyTwitter } from '@/components/icons/social-media/X';
+import { LinkedIn } from '@/components/icons/social-media/Linkedin';
+import { GitHub } from '@/components/icons/social-media/Github';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
-import { XIcon } from '@/components/icons/social-media/XIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
-import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ctaVariants } from '@/animations/cta';
 
@@ -159,7 +160,7 @@ export function ProjectCTA({ slug, locale }: ProjectCTAProps) {
                   aria-label="Visit our X (Twitter)"
                   variants={ctaVariants.socialIcon}
                 >
-                  <XIcon className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
+                  <XformerlyTwitter className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
                 </motion.a>
 
                 {/* Discord */}
@@ -183,7 +184,7 @@ export function ProjectCTA({ slug, locale }: ProjectCTAProps) {
                   aria-label="Visit our LinkedIn"
                   variants={ctaVariants.socialIcon}
                 >
-                  <LinkedInIcon className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
+                  <LinkedIn className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
                 </motion.a>
               </motion.div>
             </motion.div>

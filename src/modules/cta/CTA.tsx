@@ -8,11 +8,11 @@ import { OppiaLogo } from '@/components/icons/oppia/OppiaLogo';
 import { SOCIAL_LINKS, CTA_SOCIAL_LINKS } from '@/constants/socialLinks';
 import { CTA_CONFIG } from '@/constants/cta';
 import { SocialCard } from './SocialCard';
+import { XformerlyTwitter } from '@/components/icons/social-media/X';
+import { LinkedIn } from '@/components/icons/social-media/Linkedin';
+import { GitHub } from '@/components/icons/social-media/Github';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
-import { XIcon } from '@/components/icons/social-media/XIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
-import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
-import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { SECTION_SPACING, CONTAINER_PADDING } from '@/constants/layout';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ctaVariants } from '@/animations/cta';
@@ -128,7 +128,7 @@ export function CTA() {
                   aria-label="Visit our X (Twitter)"
                   variants={ctaVariants.socialIcon}
                 >
-                  <XIcon className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
+                  <XformerlyTwitter className={`${CTA_CONFIG.LARGE_ICONS.TWITTER.iconSize} text-white`} />
                 </motion.a>
 
                 {/* Discord */}
@@ -152,7 +152,7 @@ export function CTA() {
                   aria-label="Visit our LinkedIn"
                   variants={ctaVariants.socialIcon}
                 >
-                  <LinkedInIcon className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
+                  <LinkedIn className={`${CTA_CONFIG.LARGE_ICONS.LINKEDIN.iconSize} text-white`} />
                 </motion.a>
 
               </motion.div>

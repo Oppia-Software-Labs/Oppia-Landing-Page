@@ -1,18 +1,9 @@
-import { MessageCircle } from 'lucide-react';
-import type { IconProps } from '@/types/icons';
-import { cn } from '@/utils/cn';
+import type { SVGProps } from 'react';
 
-export function CommentIcon({ 
-  className = '', 
-  width = 18,
-  height = 18,
-}: IconProps) {
-  return (
-    <MessageCircle
-      width={width}
-      height={height}
-      className={cn('stroke-current', className)}
-      aria-hidden="true"
-    />
-  );
-}
+const CommentIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg {...props} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+  </svg>
+);
+
+export { CommentIcon };

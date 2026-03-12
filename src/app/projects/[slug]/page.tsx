@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
@@ -30,6 +31,7 @@ function getProductTranslationKey(slug: string): string {
 
 export default function ProjectPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params?.slug as string;
   const locale = useAppStore((state) => state.locale);
   const { t } = useTranslations(locale);
@@ -105,7 +107,19 @@ export default function ProjectPage() {
           exit={localeTransition.exit}
           transition={localeTransition.transition}
         >
-      <section className="animate__fadeInRight animate__animated flex flex-col justify-center items-center pt-[2vh] sm:pt-[4vh] lg:pt-[5vh] pb-[2vh] px-[2vw] relative">
+      {/* Go back - top left */}
+      <div className="absolute left-0 right-0 top-0 z-20 px-[3vw] pt-[3vh] sm:px-8 sm:pt-8 lg:px-10 lg:pt-10">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          className="inline-flex cursor-pointer items-center gap-2.5 text-base text-white/80 transition-colors hover:text-white"
+          aria-label={t('team.profile.goBack')}
+        >
+          <ChevronLeft className="h-6 w-6" />
+          {t('team.profile.goBack')}
+        </button>
+      </div>
+      <section className="animate__fadeInRight animate__animated flex flex-col justify-center items-center pt-[8vh] sm:pt-[10vh] lg:pt-[12vh] pb-[2vh] px-[2vw] relative">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#001D66] to-[#03A7FF] min-h-[60vh] sm:min-h-[80vh] lg:min-h-[90vh] w-[96vw] max-w-[96vw]">
           {/* Left wave - más separada (un poco más a la izquierda) */}
           <div className="absolute top-0 left-0 z-0 -translate-x-[32%] max-md:-translate-x-[38%]">

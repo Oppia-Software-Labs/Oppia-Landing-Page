@@ -3,10 +3,10 @@
 import { useAppStore } from '@/store/store';
 import { useTranslations } from '@/i18n/i18n';
 import { SOCIAL_LINKS } from '@/constants/socialLinks';
-import { XIcon } from '@/components/icons/social-media/XIcon';
-import { LinkedInIcon } from '@/components/icons/social-media/LinkedInIcon';
+import { XformerlyTwitter } from '@/components/icons/social-media/X';
+import { LinkedIn } from '@/components/icons/social-media/Linkedin';
+import { GitHub } from '@/components/icons/social-media/Github';
 import { InstagramIcon } from '@/components/icons/social-media/InstagramIcon';
-import { GitHubIcon } from '@/components/icons/social-media/GitHubIcon';
 import { DiscordIcon } from '@/components/icons/social-media/DiscordIcon';
 
 interface MenuContentProps {
@@ -127,7 +127,7 @@ export function MenuContent({ closeMenu }: MenuContentProps) {
               className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/4 text-white transition-colors hover:bg-white/8"
               aria-label="Twitter"
             >
-              <XIcon className="h-5 w-5" />
+              <XformerlyTwitter className="h-5 w-5" />
             </a>
             <a
               href={SOCIAL_LINKS.LINKEDIN}
@@ -137,7 +137,7 @@ export function MenuContent({ closeMenu }: MenuContentProps) {
               className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/4 text-white transition-colors hover:bg-white/8"
               aria-label="LinkedIn"
             >
-              <LinkedInIcon className="h-5 w-5" />
+              <LinkedIn className="h-5 w-5" />
             </a>
             <a
               href={SOCIAL_LINKS.INSTAGRAM}
@@ -157,7 +157,7 @@ export function MenuContent({ closeMenu }: MenuContentProps) {
               className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/4 text-white transition-colors hover:bg-white/8"
               aria-label="GitHub"
             >
-              <GitHubIcon className="h-5 w-5" />
+              <GitHub className="h-5 w-5" />
             </a>
             <a
               href={SOCIAL_LINKS.DISCORD}
