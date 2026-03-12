@@ -39,7 +39,70 @@ export default function TeamMemberPage() {
     );
   }
 
-  const displayRole = member.profileRole ?? member.role;
+  const isKevin = member.slug === 'kevin-latino';
+
+  const displayRole = isKevin
+    ? t('team.members.kevinLatino.profileRole')
+    : member.profileRole ?? member.role;
+
+  const description = isKevin
+    ? t('team.members.kevinLatino.description')
+    : member.description;
+
+  const focusTag = isKevin
+    ? t('team.members.kevinLatino.focusTag')
+    : member.focusTag;
+
+  const workExperience = isKevin && member.workExperience
+    ? member.workExperience.map((exp) => {
+        if (exp.project === 'Heart Beam') {
+          return {
+            ...exp,
+            objective: t('team.members.kevinLatino.workExperience.heartBeam.objective'),
+            keyAchievements: t('team.members.kevinLatino.workExperience.heartBeam.keyAchievements') as unknown as string[],
+          };
+        }
+        if (exp.project === 'Sagicor') {
+          return {
+            ...exp,
+            objective: t('team.members.kevinLatino.workExperience.sagicor.objective'),
+            keyAchievements: t('team.members.kevinLatino.workExperience.sagicor.keyAchievements') as unknown as string[],
+          };
+        }
+        return exp;
+      })
+    : member.workExperience;
+
+  const projects = isKevin && member.projects
+    ? member.projects.map((project) => {
+        if (project.title === 'Neko Protocol') {
+          return {
+            ...project,
+            role: t('team.members.kevinLatino.projects.neko.role'),
+            description: t('team.members.kevinLatino.projects.neko.description'),
+          };
+        }
+        return project;
+      })
+    : member.projects;
+
+  const education = isKevin && member.education
+    ? member.education.map((edu) => {
+        if (edu.degree === "Bachelor's Degree in Computer Engineering") {
+          return {
+            ...edu,
+            description: t('team.members.kevinLatino.education.bachelors.description'),
+          };
+        }
+        if (edu.degree === 'Technical High School in Web Development') {
+          return {
+            ...edu,
+            description: t('team.members.kevinLatino.education.highSchool.description'),
+          };
+        }
+        return edu;
+      })
+    : member.education;
   const socialLinks = [
     { key: 'linkedin', href: member.socialLinks.linkedin, Icon: LinkedIn, labelKey: 'team.profile.linkedin' },
     { key: 'github', href: member.socialLinks.github, Icon: GitHub, labelKey: 'team.profile.github' },
@@ -50,11 +113,10 @@ export default function TeamMemberPage() {
   return (
     <div className={`${CONTAINER_PADDING.HORIZONTAL} pb-20 pt-12 sm:pt-16 md:pt-20`}>
       <div className="mx-auto max-w-5xl">
-        {/* Back to previous page */}
         <button
           type="button"
           onClick={() => router.back()}
-          className="mb-4 inline-flex items-center gap-2.5 text-base text-white/70 transition-colors hover:text-white"
+          className="mb-4 inline-flex cursor-pointer items-center gap-2.5 text-base text-white/70 transition-colors hover:text-white"
           aria-label={t('team.profile.goBack')}
         >
           <ChevronLeft className="h-6 w-6" />
@@ -64,19 +126,21 @@ export default function TeamMemberPage() {
         <ProfileHeader
           member={member}
           displayRole={displayRole}
+           description={description}
+           focusTag={focusTag}
           socialLinks={socialLinks}
           t={t}
         />
 
-        <WorkExperienceSection workExperience={member.workExperience} t={t} />
+        <WorkExperienceSection workExperience={workExperience} t={t} />
 
         <ProjectsSection
-          projects={member.projects}
+          projects={projects}
           hackathonAwards={member.hackathonAwards}
           t={t}
         />
 
-        <EducationSection education={member.education} t={t} />
+        <EducationSection education={education} t={t} />
 
       </div>
     </div>

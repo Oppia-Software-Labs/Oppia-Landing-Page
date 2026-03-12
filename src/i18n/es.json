@@ -215,6 +215,48 @@
       "notFound": "Miembro no encontrado.",
       "backToTeam": "Volver al equipo",
       "goBack": "Volver atrás"
+    },
+    "members": {
+      "kevinLatino": {
+        "profileRole": "Ingeniero de software y desarrollador Web3 de Costa Rica",
+        "description": "Construyo plataformas web y descentralizadas escalables, trabajando en frontend, integraciones backend e infraestructura blockchain, con un fuerte enfoque en desarrollo orientado a producto. Actualmente lidero producto e ingeniería en Neko Protocol, una plataforma de RWAs en Stellar que unifica descubrimiento de activos, trading e integraciones DeFi en un solo ecosistema.",
+        "focusTag": "Plataformas de software • Infraestructura financiera",
+        "workExperience": {
+          "heartBeam": {
+            "objective": "Plataforma empresarial de monitoreo de pacientes enfocada en visualización de datos médicos en tiempo real y de alta frecuencia, con interfaces altamente optimizadas.",
+            "keyAchievements": [
+              "Lideré un rediseño de la arquitectura de frontend para un sistema de monitoreo de pacientes en tiempo real, reduciendo los tiempos de renderizado en un 45% y mejorando significativamente la respuesta de la UI bajo alto volumen de datos.",
+              "Diseñé patrones escalables de manejo de estado y componentes para soportar flujos continuos de datos en tiempo real manteniendo un comportamiento de renderizado predecible.",
+              "Implementé estrategias avanzadas de optimización de rendimiento, incluyendo code-splitting, carga diferida (lazy loading) y renderizado del lado del servidor, mejorando el desempeño general y los tiempos de carga de la aplicación.",
+              "Colaboré con los equipos de backend e infraestructura para asegurar una entrega y sincronización eficiente de datos para los flujos de monitoreo en tiempo real."
+            ]
+          },
+          "sagicor": {
+            "objective": "Plataforma empresarial interna para automatizar análisis de datos, generación de reportes y flujos operativos.",
+            "keyAchievements": [
+              "Diseñé e implementé una arquitectura de frontend escalable para una plataforma empresarial basada en datos, mejorando la eficiencia operativa interna en un 70%.",
+              "Desarrollé un sistema de componentes reutilizables y una arquitectura de UI modular usando TypeScript, permitiendo un desarrollo de funcionalidades más rápido y consistente.",
+              "Implementé pipelines de CI/CD automatizados con GitHub Actions, habilitando builds confiables, pruebas automatizadas y flujos de despliegue más ágiles.",
+              "Refactoricé patrones de UI heredados para crear una experiencia de usuario más estructurada e intuitiva, reduciendo significativamente errores de entrada y mejorando la claridad de los flujos.",
+              "Trabajé junto a producto y backend para traducir requerimientos operativos complejos en sistemas de frontend performantes y mantenibles."
+            ]
+          }
+        },
+        "projects": {
+          "neko": {
+            "role": "PM y Frontend Lead · Diciembre 2025 – Presente",
+            "description": "Neko es una plataforma DeFi que conecta activos del mundo real (RWAs) con infraestructura financiera on-chain. Permite a los usuarios acceder a activos tokenizados como bonos y utilizarlos dentro de DeFi para liquidez, rendimiento y colateral. El objetivo de Neko es ser una capa de acceso y liquidez para RWAs, haciendo que los activos financieros tradicionales sean utilizables on-chain."
+          }
+        },
+        "education": {
+          "bachelors": {
+            "description": "Enfoque en ingeniería de software, algoritmos y diseño de sistemas. Desarrollé bases sólidas en ciencias de la computación y participé en clubes de tecnología y hackathons."
+          },
+          "highSchool": {
+            "description": "Especialización en desarrollo web, aprendiendo HTML, CSS, JavaScript y fundamentos de backend. Construí varios proyectos web y colaboré en entornos de trabajo en equipo."
+          }
+        }
+      }
     }
   }
 }

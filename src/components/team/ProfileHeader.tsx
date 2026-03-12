@@ -17,11 +17,20 @@ interface SocialLinkConfig {
 interface ProfileHeaderProps {
   member: TeamMember;
   displayRole: string;
+  description: string;
+  focusTag?: string;
   socialLinks: SocialLinkConfig[];
   t: TranslateFn;
 }
 
-export function ProfileHeader({ member, displayRole, socialLinks, t }: ProfileHeaderProps) {
+export function ProfileHeader({
+  member,
+  displayRole,
+  description,
+  focusTag,
+  socialLinks,
+  t,
+}: ProfileHeaderProps) {
   return (
     <motion.article
       className="rounded-2xl border border-white/10 p-6 sm:p-8"
@@ -41,10 +50,10 @@ export function ProfileHeader({ member, displayRole, socialLinks, t }: ProfileHe
           />
         </div>
         <div className="flex min-w-0 flex-col">
-          {member.focusTag && (
+          {focusTag && (
             <span className="mb-3 inline-flex items-center gap-1.5 text-xs sm:text-sm text-emerald-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              {member.focusTag}
+              {focusTag}
             </span>
           )}
           <h1 className="text-2xl font-bold text-white sm:text-3xl">
@@ -54,7 +63,7 @@ export function ProfileHeader({ member, displayRole, socialLinks, t }: ProfileHe
             {displayRole}
           </p>
           <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
-            {member.description}
+            {description}
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             {socialLinks.map(({ key, href, Icon, labelKey }) => (

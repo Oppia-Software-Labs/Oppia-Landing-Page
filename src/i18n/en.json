@@ -215,6 +215,48 @@
       "notFound": "Member not found.",
       "backToTeam": "Back to team",
       "goBack": "Go back"
+    },
+    "members": {
+      "kevinLatino": {
+        "profileRole": "Software Engineer & Web3 Developer from Costa Rica",
+        "description": "I build scalable web and decentralized platforms, working across frontend, backend integrations, and blockchain infrastructure, with a strong focus on product-driven development. Currently leading product and engineering development at Neko Protocol, an RWA platform on Stellar that unifies asset discovery, trading, and DeFi integrations into a single ecosystem.",
+        "focusTag": "Software Platforms • Financial Infrastructure",
+        "workExperience": {
+          "heartBeam": {
+            "objective": "Enterprise-grade patient monitoring platform focused on high-frequency real-time medical data visualization and performance-critical UI systems.",
+            "keyAchievements": [
+              "Led a frontend architecture redesign for a real-time patient monitoring system, reducing render times by 45% and significantly improving UI responsiveness under high data throughput.",
+              "Architected scalable state management and component patterns to support continuous real-time data streams while maintaining predictable rendering behavior.",
+              "Implemented advanced performance optimization strategies, including code-splitting, lazy loading, and server-side rendering, improving overall application performance and load times.",
+              "Collaborated with backend and infrastructure teams to ensure efficient data delivery and synchronization for real-time monitoring workflows."
+            ]
+          },
+          "sagicor": {
+            "objective": "Internal enterprise platform for automated data analysis, reporting, and operational workflows.",
+            "keyAchievements": [
+              "Designed and implemented a scalable frontend architecture for a data-driven enterprise platform, improving internal operational efficiency by 70%.",
+              "Developed a reusable component system and modular UI architecture using TypeScript, enabling faster feature development and improved consistency across the platform.",
+              "Implemented automated CI/CD pipelines with GitHub Actions, enabling reliable builds, automated testing, and streamlined deployment workflows.",
+              "Refactored legacy UI patterns to create a more structured and intuitive user experience, significantly reducing user input errors and improving workflow clarity.",
+              "Partnered with product and backend teams to translate complex operational requirements into performant, maintainable frontend systems."
+            ]
+          }
+        },
+        "projects": {
+          "neko": {
+            "role": "PM and Frontend Lead · December 2025 – Present",
+            "description": "Neko is a DeFi platform that connects real-world assets (RWAs) with on-chain financial infrastructure. It allows users to access tokenized assets like bonds and use them within DeFi for liquidity, yield, and collateral. The goal of Neko is to serve as an access and liquidity layer for RWAs, making traditional financial assets usable on-chain."
+          }
+        },
+        "education": {
+          "bachelors": {
+            "description": "Focus on software engineering, algorithms, and systems design. Developed strong foundations in computer science and participated in tech clubs and hackathons."
+          },
+          "highSchool": {
+            "description": "Specialized in web development, learning HTML, CSS, JavaScript, and backend basics. Built several web projects and collaborated in team environments."
+          }
+        }
+      }
     }
   }
 }
