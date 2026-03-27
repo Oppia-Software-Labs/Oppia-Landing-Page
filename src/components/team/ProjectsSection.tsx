@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -14,22 +14,41 @@ const WAVE_DOWN_LEFT = '/portfolio/waves/project-down-left.svg';
 type TranslateFn = (key: string) => string;
 
 interface ProjectsSectionProps {
+  /** Remount / reset tab when navigating between team profiles */
+  profileKey?: string;
   projects?: ProjectItem[];
   hackathonAwards?: ProjectItem[];
   t: TranslateFn;
 }
 
-export function ProjectsSection({ projects, hackathonAwards, t }: ProjectsSectionProps) {
-  const [projectsTab, setProjectsTab] = useState<'projects' | 'hackathonAwards'>('projects');
+export function ProjectsSection({ profileKey, projects, hackathonAwards, t }: ProjectsSectionProps) {
+  const hasProjects = (projects?.length ?? 0) > 0;
+  const hasHackathons = (hackathonAwards?.length ?? 0) > 0;
+
+  const [projectsTab, setProjectsTab] = useState<'projects' | 'hackathonAwards'>(() =>
+    hasProjects ? 'projects' : 'hackathonAwards'
+  );
   const [projectIndex, setProjectIndex] = useState(0);
 
-  const hasProjectsSection =
-    (projects && projects.length > 0) || (hackathonAwards && hackathonAwards.length > 0);
+  useEffect(() => {
+    setProjectIndex(0);
+    setProjectsTab(hasProjects ? 'projects' : 'hackathonAwards');
+  }, [profileKey, hasProjects, hasHackathons]);
+
+  const hasProjectsSection = hasProjects || hasHackathons;
 
   const projectsList = useMemo(
     () => (projectsTab === 'projects' ? projects ?? [] : hackathonAwards ?? []),
     [projects, hackathonAwards, projectsTab]
   );
+
+  const showTabToggle = hasProjects && hasHackathons;
+  const sectionHeading =
+    hasProjects && !hasHackathons
+      ? t('team.profile.projects')
+      : !hasProjects && hasHackathons
+        ? t('team.profile.hackathonAwards')
+        : t('team.profile.projects');
 
   const currentProject =
     projectsList.length > 0 ? projectsList[projectIndex % projectsList.length] : null;
@@ -55,38 +74,40 @@ export function ProjectsSection({ projects, hackathonAwards, t }: ProjectsSectio
     >
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="flex items-center gap-2 text-xl font-semibold text-white sm:text-2xl">
-          <span className="text-white/70">&lt;/&gt;</span> {t('team.profile.projects')}
+          <span className="text-white/70">&lt;/&gt;</span> {sectionHeading}
         </h2>
-        <div className="flex rounded-full border border-white/15 bg-white/5 p-1.5">
-          <button
-            type="button"
-            onClick={() => {
-              setProjectsTab('projects');
-              setProjectIndex(0);
-            }}
-            className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors sm:text-base ${
-              projectsTab === 'projects'
-                ? 'bg-white/15 text-white'
-                : 'text-white/70 hover:text-white'
-            }`}
-          >
-            {t('team.profile.projects')}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setProjectsTab('hackathonAwards');
-              setProjectIndex(0);
-            }}
-            className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors sm:text-base ${
-              projectsTab === 'hackathonAwards'
-                ? 'bg-white/15 text-white'
-                : 'text-white/70 hover:text-white'
-            }`}
-          >
-            {t('team.profile.hackathonAwards')}
-          </button>
-        </div>
+        {showTabToggle ? (
+          <div className="flex rounded-full border border-white/15 bg-white/5 p-1.5">
+            <button
+              type="button"
+              onClick={() => {
+                setProjectsTab('projects');
+                setProjectIndex(0);
+              }}
+              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors sm:text-base ${
+                projectsTab === 'projects'
+                  ? 'bg-white/15 text-white'
+                  : 'text-white/70 hover:text-white'
+              }`}
+            >
+              {t('team.profile.projects')}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setProjectsTab('hackathonAwards');
+                setProjectIndex(0);
+              }}
+              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors sm:text-base ${
+                projectsTab === 'hackathonAwards'
+                  ? 'bg-white/15 text-white'
+                  : 'text-white/70 hover:text-white'
+              }`}
+            >
+              {t('team.profile.hackathonAwards')}
+            </button>
+          </div>
+        ) : null}
       </div>
 
       <div

@@ -15,6 +15,151 @@ import { ProfileHeader } from '@/components/team/ProfileHeader';
 import { WorkExperienceSection } from '@/components/team/WorkExperienceSection';
 import { ProjectsSection } from '@/components/team/ProjectsSection';
 import { EducationSection } from '@/components/team/EducationSection';
+import type { WorkExperienceItem, EducationItem, ProjectItem } from '@/types/team';
+
+type TranslateFn = (key: string) => string;
+
+const MEMBER_PROFILE_I18N_PREFIX: Record<string, string> = {
+  'kevin-latino': 'kevinLatino',
+  'santiago-villarreal': 'santiagoVillarreal',
+};
+
+function localizedWorkExperience(
+  slug: string,
+  workExperience: WorkExperienceItem[] | undefined,
+  t: TranslateFn
+): WorkExperienceItem[] | undefined {
+  if (!workExperience) return undefined;
+  if (slug === 'kevin-latino') {
+    return workExperience.map((exp) => {
+      if (exp.project === 'Heart Beam') {
+        return {
+          ...exp,
+          objective: t('team.members.kevinLatino.workExperience.heartBeam.objective'),
+          keyAchievements: t('team.members.kevinLatino.workExperience.heartBeam.keyAchievements') as unknown as string[],
+        };
+      }
+      if (exp.project === 'Sagicor') {
+        return {
+          ...exp,
+          objective: t('team.members.kevinLatino.workExperience.sagicor.objective'),
+          keyAchievements: t('team.members.kevinLatino.workExperience.sagicor.keyAchievements') as unknown as string[],
+        };
+      }
+      return exp;
+    });
+  }
+  if (slug === 'santiago-villarreal') {
+    return workExperience.map((exp) => {
+      if (exp.project === 'KYC, analytics & Stellar payouts') {
+        return {
+          ...exp,
+          objective: t('team.members.santiagoVillarreal.workExperience.grantFox.objective'),
+          keyAchievements: t('team.members.santiagoVillarreal.workExperience.grantFox.keyAchievements') as unknown as string[],
+        };
+      }
+      if (exp.project === 'Studio & open-source financial infrastructure') {
+        return {
+          ...exp,
+          objective: t('team.members.santiagoVillarreal.workExperience.oppiaLabs.objective'),
+          keyAchievements: t('team.members.santiagoVillarreal.workExperience.oppiaLabs.keyAchievements') as unknown as string[],
+        };
+      }
+      if (exp.project === 'Emerson.com & digital CX') {
+        return {
+          ...exp,
+          objective: t('team.members.santiagoVillarreal.workExperience.emerson.objective'),
+          keyAchievements: t('team.members.santiagoVillarreal.workExperience.emerson.keyAchievements') as unknown as string[],
+        };
+      }
+      return exp;
+    });
+  }
+  return workExperience;
+}
+
+function localizedProjects(
+  slug: string,
+  projects: ProjectItem[] | undefined,
+  t: TranslateFn
+): ProjectItem[] | undefined {
+  if (!projects) return undefined;
+  if (slug === 'kevin-latino') {
+    return projects.map((project) => {
+      if (project.title === 'Neko Protocol') {
+        return {
+          ...project,
+          role: t('team.members.kevinLatino.projects.neko.role'),
+          description: t('team.members.kevinLatino.projects.neko.description'),
+        };
+      }
+      return project;
+    });
+  }
+  if (slug === 'santiago-villarreal') {
+    return projects.map((project) => {
+      if (project.title === 'Neko Protocol') {
+        return {
+          ...project,
+          role: t('team.members.santiagoVillarreal.projects.neko.role'),
+          description: t('team.members.santiagoVillarreal.projects.neko.description'),
+        };
+      }
+      if (project.title === 'Geko') {
+        return {
+          ...project,
+          role: t('team.members.santiagoVillarreal.projects.geko.role'),
+          description: t('team.members.santiagoVillarreal.projects.geko.description'),
+        };
+      }
+      return project;
+    });
+  }
+  return projects;
+}
+
+function localizedEducation(
+  slug: string,
+  education: EducationItem[] | undefined,
+  t: TranslateFn
+): EducationItem[] | undefined {
+  if (!education) return undefined;
+  if (slug === 'kevin-latino') {
+    return education.map((edu) => {
+      if (edu.degree === "Bachelor's Degree in Computer Engineering") {
+        return {
+          ...edu,
+          description: t('team.members.kevinLatino.education.bachelors.description'),
+        };
+      }
+      if (edu.degree === 'Technical High School in Web Development') {
+        return {
+          ...edu,
+          description: t('team.members.kevinLatino.education.highSchool.description'),
+        };
+      }
+      return edu;
+    });
+  }
+  if (slug === 'santiago-villarreal') {
+    return education.map((edu) => {
+      if (edu.degree === 'Bachelor, Computer Engineering') {
+        return {
+          ...edu,
+          description: t('team.members.santiagoVillarreal.education.tecComputer.description'),
+        };
+      }
+      if (edu.degree === 'Bachelor, Data Science') {
+        return {
+          ...edu,
+          description: t('team.members.santiagoVillarreal.education.leadDataScience.description'),
+        };
+      }
+      return edu;
+    });
+  }
+  return education;
+}
 
 export default function TeamMemberPage() {
   const params = useParams();
@@ -39,70 +184,25 @@ export default function TeamMemberPage() {
     );
   }
 
-  const isKevin = member.slug === 'kevin-latino';
+  const profileI18nPrefix = MEMBER_PROFILE_I18N_PREFIX[member.slug];
 
-  const displayRole = isKevin
-    ? t('team.members.kevinLatino.profileRole')
+  const displayRole = profileI18nPrefix
+    ? t(`team.members.${profileI18nPrefix}.profileRole`)
     : member.profileRole ?? member.role;
 
-  const description = isKevin
-    ? t('team.members.kevinLatino.description')
+  const description = profileI18nPrefix
+    ? t(`team.members.${profileI18nPrefix}.description`)
     : member.description;
 
-  const focusTag = isKevin
-    ? t('team.members.kevinLatino.focusTag')
+  const focusTag = profileI18nPrefix
+    ? t(`team.members.${profileI18nPrefix}.focusTag`)
     : member.focusTag;
 
-  const workExperience = isKevin && member.workExperience
-    ? member.workExperience.map((exp) => {
-        if (exp.project === 'Heart Beam') {
-          return {
-            ...exp,
-            objective: t('team.members.kevinLatino.workExperience.heartBeam.objective'),
-            keyAchievements: t('team.members.kevinLatino.workExperience.heartBeam.keyAchievements') as unknown as string[],
-          };
-        }
-        if (exp.project === 'Sagicor') {
-          return {
-            ...exp,
-            objective: t('team.members.kevinLatino.workExperience.sagicor.objective'),
-            keyAchievements: t('team.members.kevinLatino.workExperience.sagicor.keyAchievements') as unknown as string[],
-          };
-        }
-        return exp;
-      })
-    : member.workExperience;
+  const workExperience = localizedWorkExperience(member.slug, member.workExperience, t);
 
-  const projects = isKevin && member.projects
-    ? member.projects.map((project) => {
-        if (project.title === 'Neko Protocol') {
-          return {
-            ...project,
-            role: t('team.members.kevinLatino.projects.neko.role'),
-            description: t('team.members.kevinLatino.projects.neko.description'),
-          };
-        }
-        return project;
-      })
-    : member.projects;
+  const projects = localizedProjects(member.slug, member.projects, t);
 
-  const education = isKevin && member.education
-    ? member.education.map((edu) => {
-        if (edu.degree === "Bachelor's Degree in Computer Engineering") {
-          return {
-            ...edu,
-            description: t('team.members.kevinLatino.education.bachelors.description'),
-          };
-        }
-        if (edu.degree === 'Technical High School in Web Development') {
-          return {
-            ...edu,
-            description: t('team.members.kevinLatino.education.highSchool.description'),
-          };
-        }
-        return edu;
-      })
-    : member.education;
+  const education = localizedEducation(member.slug, member.education, t);
   const socialLinks = [
     { key: 'linkedin', href: member.socialLinks.linkedin, Icon: LinkedIn, labelKey: 'team.profile.linkedin' },
     { key: 'github', href: member.socialLinks.github, Icon: GitHub, labelKey: 'team.profile.github' },
@@ -132,9 +232,15 @@ export default function TeamMemberPage() {
           t={t}
         />
 
-        <WorkExperienceSection workExperience={workExperience} t={t} />
+        <WorkExperienceSection
+          profileKey={member.slug}
+          workExperience={workExperience}
+          t={t}
+        />
 
         <ProjectsSection
+          key={member.slug}
+          profileKey={member.slug}
           projects={projects}
           hackathonAwards={member.hackathonAwards}
           t={t}
