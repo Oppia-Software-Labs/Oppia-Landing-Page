@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { FileDown } from 'lucide-react';
 import type { TeamMember } from '@/types/team';
 
 const CARD_BG = '#0F0F0F';
@@ -66,6 +67,18 @@ export function ProfileHeader({
             {description}
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
+            {member.cvPdfPath && (
+              <a
+                href={member.cvPdfPath}
+                {...(member.cvDownloadName != null && member.cvDownloadName !== ''
+                  ? { download: member.cvDownloadName }
+                  : {})}
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-300 transition-colors hover:border-emerald-400/60 hover:bg-emerald-400/15"
+              >
+                <FileDown className="h-4 w-4 shrink-0" />
+                {t('team.profile.downloadCv')}
+              </a>
+            )}
             {socialLinks.map(({ key, href, Icon, labelKey }) => (
               <a
                 key={key}

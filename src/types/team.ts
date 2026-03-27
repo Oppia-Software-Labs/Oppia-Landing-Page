@@ -1,5 +1,7 @@
 export interface WorkExperienceItem {
   company: string;
+  /** Optional company homepage (opens in new tab) */
+  companyUrl?: string;
   role: string;
   project: string;
   dates: string;
@@ -55,4 +57,8 @@ export interface TeamMember {
   projects?: ProjectItem[];
   /** Optional hackathon awards for member profile page (Hackathon Awards tab) */
   hackathonAwards?: ProjectItem[];
+  /** Optional public URL to a CV PDF under /public (e.g. /cv/name.pdf) */
+  cvPdfPath?: string;
+  /** Suggested filename when downloading (optional; avoids generic names) */
+  cvDownloadName?: string;
 }

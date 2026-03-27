@@ -214,7 +214,10 @@
       "telegram": "Telegram",
       "notFound": "Miembro no encontrado.",
       "backToTeam": "Volver al equipo",
-      "goBack": "Volver atrás"
+      "goBack": "Volver atrás",
+      "downloadCv": "Descargar CV",
+      "previousExperience": "Experiencia anterior",
+      "nextExperience": "Experiencia siguiente"
     },
     "members": {
       "kevinLatino": {
@@ -254,6 +257,60 @@
           },
           "highSchool": {
             "description": "Especialización en desarrollo web, aprendiendo HTML, CSS, JavaScript y fundamentos de backend. Construí varios proyectos web y colaboré en entornos de trabajo en equipo."
+          }
+        }
+      },
+      "santiagoVillarreal": {
+        "profileRole": "Ingeniero de software y desarrollador Web3 de Costa Rica",
+        "description": "Construyo productos fintech y blockchain en Latinoamérica como emprendedor y desarrollador. Empecé resolviendo problemas de dinero concretos para personas reales y eso escaló a plataformas de las que equipos dependen día a día: desde KYC y analítica hasta pagos nativos Stellar e infraestructura financiera open source en Oppia Labs.",
+        "focusTag": "Fintech • Web3 • Stellar • Entusiasta de IA",
+        "workExperience": {
+          "grantFox": {
+            "objective": "Fintech en etapa temprana: onboarding verificado, analítica operativa y pagos transfronterizos en stablecoin sobre Stellar para una base de usuarios en crecimiento.",
+            "keyAchievements": [
+              "Lideré KYC de punta a punta en ambas aplicaciones de la plataforma en ~2 semanas, con ~98% de verificaciones exitosas y mejor UX de onboarding.",
+              "Construí el sistema central de analítica del admin console para métricas en tiempo casi real; analicé datos de producción para producto y crecimiento.",
+              "Escalé la adquisición a ~600 usuarios onboarded en menos de dos semanas.",
+              "Lideré desarrollo de negocios con Stellar Development Foundation, asegurando 60k USD para producto y pasos contractuales hacia un acuerdo de continuación.",
+              "Fui responsable de la infraestructura de pagos Trustless Work (USDC en Stellar)—~12k USD distribuidos en 3 días en más de 10 países."
+            ]
+          },
+          "oppiaLabs": {
+            "objective": "Estudio de innovación enfocado en infraestructura financiera descentralizada y open source con impacto real en Latinoamérica.",
+            "keyAchievements": [
+              "Fundé el estudio y definí la dirección hacia aplicaciones blockchain composables y colaboración OSS.",
+              "Arquitecturé sistemas full stack escalables con Next.js, NestJS y contratos estilo Soroban/Substrate.",
+              "Construí y organicé monorepos open source, estructura de contribuciones y flujos de desarrollo.",
+              "Desarrollé tokenomics, modelos financieros (TAM/SAM/SOM) y estrategia go-to-market para DeFi en LATAM."
+            ]
+          },
+          "emerson": {
+            "objective": "Mejorar la experiencia digital del cliente, herramientas de comercio y entrega ágil en torno a Emerson.com.",
+            "keyAchievements": [
+              "Mejoré Emerson.com en rendimiento y flujos de usuario junto a equipos técnicos.",
+              "Colaboré con MuleSoft, Salesforce y HCL Commerce.",
+              "Lideré análisis de requerimientos y refinamiento de backlog para equipos web.",
+              "Apoyé operaciones ágiles bajo Scaled Agile Framework (SAFe).",
+              "Entregué reportes de métricas y recomendaciones estratégicas."
+            ]
+          }
+        },
+        "projects": {
+          "neko": {
+            "role": "Cofundador e ingeniero backend · septiembre 2024 – presente",
+            "description": "Neko es una plataforma DeFi que conecta activos del mundo real (RWAs) con infraestructura financiera on-chain. Los usuarios acceden a activos tokenizados como bonos dentro de DeFi nativo en Stellar para liquidez, rendimiento y colateral—con foco en backends confiables, integraciones y features cara al protocolo."
+          },
+          "geko": {
+            "role": "Cofundador e ingeniero · Oppia Labs",
+            "description": "Geko es una plataforma blockchain con IA para educación financiera: ayuda a entender el dinero, formar mejores hábitos y actuar con herramientas pensadas para claridad y el día a día."
+          }
+        },
+        "education": {
+          "tecComputer": {
+            "description": "Ingeniería en computadores; presidente de Zeek Blockchain; bases sólidas en cuantitativos y sistemas."
+          },
+          "leadDataScience": {
+            "description": "Pregrado en ciencia de datos con énfasis en métodos analíticos, modelado y aplicación de datos a producto y negocio."
           }
         }
       }
