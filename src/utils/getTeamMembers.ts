@@ -300,16 +300,137 @@ export const teamMembers: TeamMember[] = [
     slug: "fabian-sanchez",
     name: "Fabian Sanchez",
     role: "Full Stack Engineer & Co-Founder",
+    profileRole: "Software Engineer & Web3 Developer from Costa Rica",
     description:
-      "Designing and developing end-to-end solutions for the decentralized web.",
+      "I build full-stack web and blockchain products that solve real-world impact across Latin America. I focus on building reliable, end-to-end systems from smart contracts, backend integrations to frontends with a growing focus on full-stack engineering.",
     image: "/team/Fabian-Sanchez.svg",
-    focusTag: "Focused on web3",
+    focusTag: "Web3 - Stellar - DeFi",
+    cvPdfPath: "/cv/fabian-sanchez.pdf",
+    cvDownloadName: "fabian-sanchez-cv.pdf",
     socialLinks: {
       twitter: "https://x.com/fabiansanchd",
       linkedin: "https://www.linkedin.com/in/fabian-sanchez-d",
       github: "https://github.com/FabianSanchezD",
-      telegram: "https://t.me/fabiansanchezd",
+      telegram: "https://t.me/fabiansanchd",
     },
+    workExperience: [
+      {
+        company: "GrantFox",
+        companyUrl: "https://grantfox.xyz",
+        role: "QA Engineer",
+        project: "Quality assurance & full-stack developer",
+        dates: "January 2026 – Present",
+        techStack: ["TypeScript", "Next.js", "NestJS", "PostgreSQL"],
+        objective:
+          "Validated the entire user flow and functionality of the platform, ensuring a seamless and reliable experience for the users. Now diving deeper into full-stack development.",
+        keyAchievements: [
+          "Parted QA across the full platform, owning test strategy, coverage, and release confidence end-to-end.",
+          "Tested and validated a fully fleshed-out website that distributed $12,000 across 10+ countries in 2 weeks during its first beta campaign.",
+          "Expanding into full-stack contributions, bridging QA insights directly into frontend and backend improvements.",
+        ],
+      },
+      {
+        company: "Oppia Labs",
+        companyUrl: "https://oppialabs.com",
+        role: "Co-Founder & Full Stack Engineer",
+        project: "Web3 studio & open-source financial infrastructure",
+        dates: "September 2024 – Present",
+        techStack: ["TypeScript", "Next.js", "NestJS", "Soroban"],
+        objective:
+          "Innovation studio building decentralized, open-source financial infrastructure with real-world impact across Latin America—spanning DeFi protocols, tokenized RWAs, and on-chain lending systems.",
+        keyAchievements: [
+          "Co-founded the studio and contributed to full-stack systems across multiple Web3 projects including Neko and Geko.",
+          "Contributed to Stellar-based DeFi products, working across Next.js frontends, backend integrations and smart contract integrations in Soroban/ink!.",
+          "Won multiple international hackathons with the Oppia team on Stellar.",
+        ],
+      },
+    ],
+    education: [
+      {
+        degree: "Bachelor of Computer Science",
+        school: "Technological Institute of Costa Rica (TEC), Cartago",
+        dates: "In progress · expected 2028",
+        description:
+          "Computer science foundations covering algorithms, data structures, systems design, mathematics, and introductory systems engineering. Active in blockchain and technology clubs.",
+      },
+      {
+        degree: "High School Diploma",
+        school: "Colegio Científico de Costa Rica, Sede Cartago",
+        dates: "Graduated",
+        description:
+          "One of Costa Rica's most rigorous and selective STEM-focused high schools, with intensive coursework in mathematics, sciences, and technology.",
+      },
+      {
+        degree: "GitHub Foundations Certification",
+        school: "GitHub",
+        dates: "Issued June 2025 · Expires June 2028",
+        description:
+          "Certification covering GitHub fundamentals: repositories, collaboration workflows, version control, pull requests, and GitHub Actions.",
+      },
+    ],
+    projects: [
+      {
+        title: "Neko Protocol",
+        description:
+          "Neko is an all-in-one platform for real-world assets (RWAs) on Stellar. Users access tokenized assets and have one place to buy, sell, swap, earn yield, collateralize and on/off-ramp their RWAs.",
+        techStack: ["Next.js", "Tailwind"],
+        image: "/portfolio/santiago-villarreal/projects/Neko.png",
+        role: "Co-Founder & Full Stack Engineer · September 2024 – Present",
+        codeUrl: "https://github.com/Neko-Protocol",
+        projectUrl: "https://nekoprotocol.xyz",
+      },
+      {
+        title: "Geko",
+        description:
+          "Geko is an AI-powered blockchain platform for financial literacy: it helps people understand money, build better habits, and take action with tools designed for clarity and everyday use.",
+        techStack: ["TypeScript", "Next.js", "Tailwind"],
+        image: "/oppia-projects/Gekotwo.svg",
+        role: "Co-Founder & Engineer · Oppia Labs",
+        projectUrl: "https://www.geko.app/",
+      }
+    ],
+    hackathonAwards: [
+      {
+        title: "Kleo Protocol - Polkadot sub0 Main Track Winner",
+        issuer: "Polkadot sub0 flagship · Buenos Aires · Main track",
+        description:
+          "Won the Polkadot main track at sub0, the flagship Polkadot developer conference in Buenos Aires, pitching Kleo Protocol live on stage. Kleo is undercollateralized DeFi lending protocol built on Polkadot Asset Hub with Ink smart contracts in Rust.",
+        techStack: ["Polkadot", "Ink", "Rust"],
+        image: "/portfolio/fabian-sanchez/projects/Kleo.png",
+        codeUrl: "https://github.com/Kleo-Protocol",
+        projectUrl: "https://kleo.finance",
+      },
+      {
+        title: "Stellar Hack+ Buenos Aires - Innovation Award",
+        issuer: "Stellar Hack+ · Buenos Aires",
+        description:
+          "Innovation award + 3rd place at Stellar Hack+ in Buenos Aires for Neko Protocol. Recognized for product vision and Stellar-native execution.",
+        techStack: ["Next.js", "Stellar", "TypeScript", "Soroban"],
+        image: "/portfolio/fabian-sanchez/projects/Neko.png",
+        codeUrl: "https://github.com/Neko-Protocol",
+        projectUrl: "https://nekoprotocol.xyz",
+      },
+      {
+        title: "Oppia ZkArcade",
+        issuer: "ZkGaming Hackathon · Jan 2026",
+        description:
+          "The Oppia team shipped a full Zero-Knowledge Arcade on Stellar for the ZKGaming Hackathon with two playable ZK games: Battleship (private boards + verifiable hit/miss) and Wordle (hidden word + provable feedback).",
+        techStack: ["Next.js", "Tailwind"],
+        image: "/portfolio/santiago-villarreal/projects/ZkArcade.png",
+        codeUrl: "https://github.com/Oppia-Software-Labs/zkArcade",
+        projectUrl: "https://dorahacks.io/buidl/39906/",
+      },
+      {
+        title: "Aleph Hackathon - 2nd Place, Filecoin Track",
+        issuer: "Aleph Hackathon · Latin America · Filecoin track",
+        description:
+          "Won second place at Aleph Hackathon, Latin America's biggest hackathon, in the Filecoin track. Built Althara Pacta, a dapp that adds transparency to government tenders and public bidding using Ethereum smart contracts and Filecoin for decentralized storage.",
+        techStack: ["Solidity", "Ethereum", "Filecoin", "TypeScript"],
+        image: "/portfolio/fabian-sanchez/projects/AltharaPacta.png",
+        codeUrl: "https://github.com/Althara-Pacta",
+        projectUrl: "https://dorahacks.io/buidl/32201",
+      },
+    ],
   },
 ];
 
