@@ -283,17 +283,145 @@ export const teamMembers: TeamMember[] = [
     id: "3",
     slug: "matias-aguilar",
     name: "Matias Aguilar",
-    role: "SC Engineer & Co-Founder",
+    role: "Full Stack & SC Engineer · Co-Founder",
+    profileRole: "Software Engineer & Web3 Builder from Costa Rica",
     description:
-      "Building secure and efficient smart contracts for decentralized applications.",
+    "I build end-to-end software and decentralized systems focused on real-world impact. I’ve led teams across Latin America, built solutions in high-pressure environments, and worked on financial and blockchain infrastructure—from smart contracts to full-stack products—always with a strong focus on execution, scalability, and product thinking.",
     image: "/team/Matias-Aguilar.svg",
-    focusTag: "Focused on web3",
+    focusTag: "Financial Infrastructure • Blockchain • DeFi • AI enthusiast ",
     socialLinks: {
       twitter: "https://x.com/aguilar1x1",
       linkedin: "https://www.linkedin.com/in/aguilar1x/",
       github: "https://github.com/aguilar1x",
       telegram: "https://t.me/aguilar1x",
     },
+  
+    workExperience: [
+      {
+        company: "Oppia Labs",
+        companyUrl: "https://oppialabs.com",
+        role: "Founder & Web3 Engineer",
+        project: "Studio & open-source financial infrastructure",
+        dates: "November 2025 – Present",
+        techStack: ["TypeScript", "Next.js", "NestJS", "Soroban"],
+        objective:
+          "Innovation studio focused on decentralized, open-source financial infrastructure with real-world impact across Latin America.",
+        keyAchievements: [
+          "Founded the studio and set direction around composable blockchain applications and OSS collaboration.",
+          "Architected scalable full-stack systems using Next.js, NestJS, and Soroban/Substrate-style smart contracts.",
+          "Built and managed open-source monorepos, contribution structure, and developer workflows.",
+          "Developed tokenomics, financial models (TAM/SAM/SOM), and go-to-market strategy for DeFi products in LATAM.",
+        ],
+      },
+    ],
+  
+    education: [
+      {
+        degree: "Bachelor, Software Development Engineering",
+        school: "Fidelitas University, San José, Costa Rica",
+        dates: "In progress · expected 2027",
+        description:
+          "Focused on software engineering fundamentals, systems design, and backend development. Active in blockchain communities and student-led tech initiatives.",
+      },
+    ],
+  
+    cvPdfPath: "/cv/matias-aguilar.pdf",
+    cvDownloadName: "Matias-Aguilar-CV.pdf",
+  
+    projects: [
+      {
+        title: "Neko Protocol",
+        description:
+          "All-in-one platform for Real World Assets (RWAs) on Stellar. Enables users to access, trade, collateralize, and earn yield on tokenized assets through a unified and user-friendly interface.",
+        techStack: ["Next.js", "Tailwind", "Soroban"],
+        image: "/portfolio/matias-aguilar/projects/Neko.png",
+        role: "Co-Founder & Full Stack Engineer · September 2024 – Present",
+        codeUrl: "https://github.com/Neko-Protocol",
+        projectUrl: "https://nekoprotocol.xyz",
+      },
+      {
+        title: "Numo",
+        description:
+          "Modular Bitcoin DeFi platform on Starknet enabling users to put BTC to work through automated strategies, vaults and yield optimization without complexity.",
+        techStack: ["TypeScript", "Next.js", "Starknet"],
+        image: "/portfolio/matias-aguilar/projects/numo-landing-page.png",
+        role: "Founder & Full Stack Engineer",
+        codeUrl: "https://github.com/NumoLabs/Numo",
+        projectUrl: "https://numolabs.xyz",
+      },
+      {
+        title: "Geko",
+        description:
+          "AI-powered financial education platform designed to help users understand money, build habits and take action through simple and intuitive tools.",
+        techStack: ["TypeScript", "Next.js", "Tailwind"],
+        image: "/oppia-projects/Gekotwo.svg",
+        role: "Co-Founder & Engineer · Oppia Labs",
+        projectUrl: "https://www.geko.app/",
+      },
+      {
+        title: "Pacto",
+        description:
+          "Pacto is a decentralized P2P platform for stablecoin trading using local fiat (CRCX), the first Costa Rican colón-backed stablecoin on Stellar.",
+        techStack: ["TypeScript", "Next.js", "Stellar"],
+        image: "/portfolio/matias-aguilar/projects/pacto-landing-page.png",
+        role: "Founder & Full Stack Engineer",
+        codeUrl: "https://github.com/PACTO-LAT/pacto-p2p",
+        projectUrl: "https://pacto-p2p-web.vercel.app/",
+      },
+    ],
+
+    hackathonAwards: [
+      {
+        title: "Oppia ZkArcade",
+        issuer: "ZkGaming Hackathon · Jan 2026",
+        description:
+          "The Oppia team shipped a full Zero-Knowledge Arcade on Stellar for the ZKGaming Hackathon with two playable ZK games: Battleship (private boards + verifiable hit/miss) and Wordle (hidden word + provable feedback).",
+        techStack: ["Next.js", "Tailwind"],
+        image: "/portfolio/matias-aguilar/projects/ZkArcade.png",
+        codeUrl: "https://github.com/Oppia-Software-Labs/zkArcade",
+        projectUrl: "https://dorahacks.io/buidl/39906/",
+      },
+      {
+        title: "Stellar Hack+ Buenos Aires - Innovation Award",
+        issuer: "Stellar Hack+ Buenos Aires · Nov 2025",
+        description:
+          "Innovation Award & + 3rd place for Neko Protocol, highlighting its product vision, execution excellence, and role in shaping the future of real-world asset infrastructure on Stellar ecosystem.",
+        techStack: ["Next.js", "Stellar", "TypeScript", "Soroban"],
+        image: "/portfolio/matias-aguilar/projects/Neko.png",
+        codeUrl: "https://github.com/Neko-Protocol",
+        projectUrl: "https://dorahacks.io/buidl/36794",
+      },
+      {
+        title: "Stellar Builder House CDMX 2025 - Winner",
+        issuer: "Stellar Development Foundation · Jul 2025",
+        description:
+          "1st Place Winner of the Money Without Borders track with Pacto, a decentralized P2P platform for stablecoin trading using local fiat (CRCX), the first Costa Rican colón-backed stablecoin on Stellar.",
+        techStack: ["Stellar", "Soroban", "Next.js"],
+        image: "/portfolio/matias-aguilar/projects/pacto-logo.png",
+        codeUrl: "https://github.com/PACTO-LAT/pacto-p2p",
+        projectUrl: "https://dorahacks.io/buidl/28397/milestones",
+      },
+      {
+        title: "Starknet Re{ignite} Hackathon - Multi Award Winner",
+        issuer: "Starknet · May 2025",
+        description:
+          "Won 3 awards including Best App and Pragma Award with Numo, a modular Bitcoin DeFi platform integrated with Vesu and on-chain strategies.",
+        techStack: ["Starknet", "TypeScript", "Next.js"],
+        image: "/portfolio/matias-aguilar/projects/numo-logo-blanco.png",
+        codeUrl: "https://github.com/NumoLabs/Numo",
+        projectUrl: "https://www.hackquest.io/projects/Starknet-Hackathon-Re%7Bignite%7D-Numo",
+      },
+      {
+        title: "Ethereum Pura Vida Costa Rica - 1st Place",
+        issuer: "Ethereum Costa Rica · Oct 2024",
+        description:
+          "Built a decentralized financial tool for farmers enabling access to trusts using blockchain technology, improving financial inclusion in Costa Rica.",
+        techStack: ["Ethereum", "Solidity"],
+        image: "/portfolio/matias-aguilar/projects/eth-cr-2024.png",
+        codeUrl: "https://github.com/Crypto-Jaguars",
+        projectUrl: "https://dorahacks.io/buidl/28397/milestones",
+      }
+    ],
   },
   {
     id: "4",
