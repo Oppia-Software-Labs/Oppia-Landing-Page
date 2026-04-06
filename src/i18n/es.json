@@ -313,6 +313,41 @@
             "description": "Pregrado en ciencia de datos con énfasis en métodos analíticos, modelado y aplicación de datos a producto y negocio."
           }
         }
+      },
+      "matiasAguilar": {
+        "profileRole": "Ingeniero de Software y Builder Web3 de Costa Rica",
+        "description": "Construyo software y sistemas descentralizados enfocados en impacto real. He liderado equipos en Latinoamérica, construido soluciones en entornos de alta presión y trabajado en infraestructura financiera y blockchain desde smart contracts hasta productos full-stack, siempre con un enfoque en ejecución, escalabilidad y pensamiento de producto.",
+        "focusTag": "Infraestructura financiera • Blockchain • DeFi • Entusiasta de IA",
+        "workExperience": {
+          "oppiaLabs": {
+            "objective": "Estudio de innovación enfocado en infraestructura financiera descentralizada y open source con impacto real en Latinoamérica.",
+            "keyAchievements": [
+              "Cofundé el estudio y definí la dirección hacia aplicaciones blockchain composables y colaboración OSS.",
+              "Arquitecturé sistemas full stack escalables con Next.js, NestJS y contratos estilo Soroban/Substrate.",
+              "Construí y organicé monorepos open source, estructura de contribuciones y flujos de desarrollo.",
+              "Desarrollé tokenomics, modelos financieros (TAM/SAM/SOM) y estrategia go-to-market para productos DeFi en LATAM."
+            ]
+          }
+        },
+        "projects": {
+          "neko": {
+            "role": "Cofundador e ingeniero full stack · septiembre 2024 – presente",
+            "description": "Plataforma todo en uno para activos del mundo real (RWAs) en Stellar. Permite a los usuarios acceder, operar, colateralizar y generar rendimiento sobre activos tokenizados a través de una interfaz unificada."
+          },
+          "geko": {
+            "role": "Cofundador e ingeniero · Oppia Labs",
+            "description": "Plataforma de educación financiera con IA diseñada para ayudar a los usuarios a entender el dinero, formar hábitos y actuar a través de herramientas simples e intuitivas."
+          },
+          "pacto": {
+            "role": "Fundador e ingeniero full stack",
+            "description": "Pacto es una plataforma P2P descentralizada para intercambio de stablecoins usando fiat local (CRCX), la primera stablecoin respaldada en colones costarricenses sobre Stellar."
+          }
+        },
+        "education": {
+          "bachelors": {
+            "description": "Enfocado en fundamentos de ingeniería de software, diseño de sistemas y desarrollo backend. Activo en comunidades blockchain e iniciativas tecnológicas estudiantiles."
+          }
+        }
       }
     }
   }

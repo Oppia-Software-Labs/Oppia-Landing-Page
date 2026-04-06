@@ -22,6 +22,7 @@ type TranslateFn = (key: string) => string;
 const MEMBER_PROFILE_I18N_PREFIX: Record<string, string> = {
   'kevin-latino': 'kevinLatino',
   'santiago-villarreal': 'santiagoVillarreal',
+  'matias-aguilar': 'matiasAguilar',
 };
 
 function localizedWorkExperience(
@@ -75,6 +76,18 @@ function localizedWorkExperience(
       return exp;
     });
   }
+  if (slug === 'matias-aguilar') {
+    return workExperience.map((exp) => {
+      if (exp.project === 'Studio & open-source financial infrastructure') {
+        return {
+          ...exp,
+          objective: t('team.members.matiasAguilar.workExperience.oppiaLabs.objective'),
+          keyAchievements: t('team.members.matiasAguilar.workExperience.oppiaLabs.keyAchievements') as unknown as string[],
+        };
+      }
+      return exp;
+    });
+  }
   return workExperience;
 }
 
@@ -110,6 +123,32 @@ function localizedProjects(
           ...project,
           role: t('team.members.santiagoVillarreal.projects.geko.role'),
           description: t('team.members.santiagoVillarreal.projects.geko.description'),
+        };
+      }
+      return project;
+    });
+  }
+  if (slug === 'matias-aguilar') {
+    return projects.map((project) => {
+      if (project.title === 'Neko Protocol') {
+        return {
+          ...project,
+          role: t('team.members.matiasAguilar.projects.neko.role'),
+          description: t('team.members.matiasAguilar.projects.neko.description'),
+        };
+      }
+      if (project.title === 'Geko') {
+        return {
+          ...project,
+          role: t('team.members.matiasAguilar.projects.geko.role'),
+          description: t('team.members.matiasAguilar.projects.geko.description'),
+        };
+      }
+      if (project.title === 'Pacto') {
+        return {
+          ...project,
+          role: t('team.members.matiasAguilar.projects.pacto.role'),
+          description: t('team.members.matiasAguilar.projects.pacto.description'),
         };
       }
       return project;
@@ -153,6 +192,17 @@ function localizedEducation(
         return {
           ...edu,
           description: t('team.members.santiagoVillarreal.education.leadDataScience.description'),
+        };
+      }
+      return edu;
+    });
+  }
+  if (slug === 'matias-aguilar') {
+    return education.map((edu) => {
+      if (edu.degree === 'Bachelor, Computer Science') {
+        return {
+          ...edu,
+          description: t('team.members.matiasAguilar.education.bachelors.description'),
         };
       }
       return edu;
@@ -232,6 +282,8 @@ export default function TeamMemberPage() {
           t={t}
         />
 
+        <EducationSection education={education} t={t} />
+
         <WorkExperienceSection
           profileKey={member.slug}
           workExperience={workExperience}
@@ -245,9 +297,6 @@ export default function TeamMemberPage() {
           hackathonAwards={member.hackathonAwards}
           t={t}
         />
-
-        <EducationSection education={education} t={t} />
-
       </div>
     </div>
   );
