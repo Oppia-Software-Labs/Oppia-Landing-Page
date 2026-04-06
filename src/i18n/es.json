@@ -260,6 +260,50 @@
           }
         }
       },
+      "fabianSanchez": {
+        "profileRole": "Ingeniero de software y desarrollador Web3 de Costa Rica",
+        "description": "Construyo productos web y blockchain full-stack que generan impacto real en Latinoamérica. Me enfoco en crear sistemas confiables de extremo a extremo: desde contratos inteligentes e integraciones de backend hasta frontends, con un enfoque creciente en ingeniería full-stack.",
+        "focusTag": "Web3 - Stellar - DeFi",
+        "workExperience": {
+          "grantFox": {
+            "objective": "Validé el flujo de usuario completo y la funcionalidad de la plataforma, asegurando una experiencia fluida y confiable para los usuarios. Ahora profundizando en desarrollo full-stack.",
+            "keyAchievements": [
+              "Lideré QA en toda la plataforma, siendo responsable de la estrategia de pruebas, cobertura y confianza en cada release.",
+              "Probé y validé una plataforma completa que distribuyó $12,000 en más de 10 países en 2 semanas durante su primera campaña beta.",
+              "Expandiéndome a contribuciones full-stack, conectando los aprendizajes de QA directamente en mejoras de frontend y backend."
+            ]
+          },
+          "oppiaLabs": {
+            "objective": "Estudio de innovación construyendo infraestructura financiera descentralizada y open source con impacto real en Latinoamérica—abarcando protocolos DeFi, RWAs tokenizados y sistemas de lending on-chain.",
+            "keyAchievements": [
+              "Cofundé el estudio y contribuí a sistemas full-stack en múltiples proyectos Web3 incluyendo Neko y Geko.",
+              "Contribuí a productos DeFi basados en Stellar, trabajando en frontends con Next.js, integraciones de backend e integraciones de smart contracts en Soroban/ink!.",
+              "Gané múltiples hackathons internacionales con el equipo de Oppia en Stellar."
+            ]
+          }
+        },
+        "projects": {
+          "neko": {
+            "role": "Cofundador e Ingeniero Full Stack · Septiembre 2024 – Presente",
+            "description": "Neko es una plataforma todo en uno para activos del mundo real (RWAs) en Stellar. Los usuarios acceden a activos tokenizados y tienen un solo lugar para comprar, vender, intercambiar, generar rendimiento, colateralizar y hacer on/off-ramp de sus RWAs."
+          },
+          "geko": {
+            "role": "Cofundador e Ingeniero · Oppia Labs",
+            "description": "Geko es una plataforma blockchain con IA para educación financiera: ayuda a entender el dinero, formar mejores hábitos y actuar con herramientas pensadas para la claridad y el uso cotidiano."
+          }
+        },
+        "education": {
+          "bachelors": {
+            "description": "Fundamentos de ciencias de la computación abarcando algoritmos, estructuras de datos, diseño de sistemas, matemáticas e ingeniería de sistemas introductoria. Activo en clubes de blockchain y tecnología."
+          },
+          "highSchool": {
+            "description": "Una de las instituciones de educación STEM más exigentes y selectivas de Costa Rica, con cursos intensivos en matemáticas, ciencias y tecnología."
+          },
+          "githubFoundations": {
+            "description": "Certificación sobre los fundamentos de GitHub: repositorios, flujos de colaboración, control de versiones, pull requests y GitHub Actions."
+          }
+        }
+      },
       "santiagoVillarreal": {
         "profileRole": "Ingeniero de software y desarrollador Web3 de Costa Rica",
         "description": "Construyo productos fintech y blockchain en Latinoamérica como emprendedor y desarrollador. Empecé resolviendo problemas de dinero concretos para personas reales y eso escaló a plataformas de las que equipos dependen día a día: desde KYC y analítica hasta pagos nativos Stellar e infraestructura financiera open source en Oppia Labs.",
