@@ -313,8 +313,39 @@ export const teamMembers: TeamMember[] = [
           "Developed tokenomics, financial models (TAM/SAM/SOM), and go-to-market strategy for DeFi products in LATAM.",
         ],
       },
+      {
+        company: "Acta",
+        companyUrl: "https://acta.build/",
+        role: "Full Stack & Smart Contract Engineer",
+        project: "Verifiable credentials infrastructure on Stellar",
+        dates: "February 2026 – Present",
+        techStack: ["Next.js", "Node.js", "TypeScript", "Soroban (Rust)"],
+        objective:
+          "Verifiable credentials infrastructure built on Stellar focused on trusted digital identity and interoperable real-world applications.",
+        keyAchievements: [
+          "Built and scaled frontend, backend, and smart contract infrastructure using Next.js, Node.js, TypeScript, and Soroban (Rust).",
+          "Designed scalable architecture integrating decentralized infrastructure with high-performance user experiences.",
+          "Collaborated on protocol design, developer tooling, and blockchain integrations focused on security and usability.",
+          "Contributed to the growth of Acta, which secured $75K in funding from the Stellar Development Foundation (SDF).",
+        ],
+      },
+      {
+        company: "Hackathons LATAM",
+        role: "Web3 Builder & SC Engineer",
+        project: "Multiple projects across LATAM",
+        dates: "November 2024 – Present",
+        techStack: ["TypeScript", "Next.js", "Soroban", "Cairo"],
+        objective:
+          "Led and collaborated with international teams across Latin America in high-pressure hackathon environments, delivering production-ready full-stack and smart contract solutions.",
+        keyAchievements: [
+          "Led and collaborated with international teams across Latin America in high-pressure hackathon environments.",
+          "Built production-ready applications integrating full-stack systems and smart contracts.",
+          "Delivered solutions in DeFi, RWAs, and financial infrastructure with real-world use cases.",
+          "Worked across product development, system architecture, and rapid prototyping.",
+        ],
+      },
     ],
-  
+
     education: [
       {
         degree: "Bachelor, Software Development Engineering",
@@ -322,6 +353,13 @@ export const teamMembers: TeamMember[] = [
         dates: "In progress · expected 2027",
         description:
           "Focused on software engineering fundamentals, systems design, and backend development. Active in blockchain communities and student-led tech initiatives.",
+      },
+      {
+        degree: "Intensive English",
+        school: "Centro Cultural Costarricense Norteamericano, Cartago, Costa Rica",
+        dates: "January 2025 – Present",
+        description:
+          "Intensive English program focused on professional and technical communication.",
       },
     ],
   
@@ -342,7 +380,7 @@ export const teamMembers: TeamMember[] = [
       {
         title: "Numo",
         description:
-          "Modular Bitcoin DeFi platform on Starknet enabling users to put BTC to work through automated strategies, vaults and yield optimization without complexity.",
+          "Modular Bitcoin DeFi platform on Starknet enabling users to put BTC to work through automated strategies, vaults and yield optimization without complexity. Secured $25,000 in funding from the Starknet Foundation, validating product vision and execution.",
         techStack: ["TypeScript", "Next.js", "Starknet"],
         image: "/portfolio/matias-aguilar/projects/numo-landing-page.png",
         role: "Founder & Full Stack Engineer",

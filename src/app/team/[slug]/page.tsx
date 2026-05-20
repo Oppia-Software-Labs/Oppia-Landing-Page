@@ -79,11 +79,25 @@ function localizedWorkExperience(
   }
   if (slug === 'matias-aguilar') {
     return workExperience.map((exp) => {
+      if (exp.project === 'Verifiable credentials infrastructure on Stellar') {
+        return {
+          ...exp,
+          objective: t('team.members.matiasAguilar.workExperience.acta.objective'),
+          keyAchievements: t('team.members.matiasAguilar.workExperience.acta.keyAchievements') as unknown as string[],
+        };
+      }
       if (exp.project === 'Studio & open-source financial infrastructure') {
         return {
           ...exp,
           objective: t('team.members.matiasAguilar.workExperience.oppiaLabs.objective'),
           keyAchievements: t('team.members.matiasAguilar.workExperience.oppiaLabs.keyAchievements') as unknown as string[],
+        };
+      }
+      if (exp.project === 'Multiple projects across LATAM') {
+        return {
+          ...exp,
+          objective: t('team.members.matiasAguilar.workExperience.web3Builder.objective'),
+          keyAchievements: t('team.members.matiasAguilar.workExperience.web3Builder.keyAchievements') as unknown as string[],
         };
       }
       return exp;
@@ -242,6 +256,12 @@ function localizedEducation(
         return {
           ...edu,
           description: t('team.members.matiasAguilar.education.bachelors.description'),
+        };
+      }
+      if (edu.degree === 'Intensive English') {
+        return {
+          ...edu,
+          description: t('team.members.matiasAguilar.education.intensiveEnglish.description'),
         };
       }
       return edu;
