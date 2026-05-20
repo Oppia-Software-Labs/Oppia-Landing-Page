@@ -363,6 +363,15 @@
         "description": "I build end-to-end software and decentralized systems focused on real-world impact. I’ve led teams across Latin America, built solutions in high-pressure environments, and worked on financial and blockchain infrastructure from smart contracts to full-stack products, always with a strong focus on execution, scalability and product thinking.",
         "focusTag": "Financial Infrastructure • Blockchain • DeFi • AI enthusiast ",
         "workExperience": {
+          "acta": {
+            "objective": "Verifiable credentials infrastructure built on Stellar focused on trusted digital identity and interoperable real-world applications.",
+            "keyAchievements": [
+              "Built and scaled frontend, backend, and smart contract infrastructure using Next.js, Node.js, TypeScript, and Soroban (Rust).",
+              "Designed scalable architecture integrating decentralized infrastructure with high-performance user experiences.",
+              "Collaborated on protocol design, developer tooling, and blockchain integrations focused on security and usability.",
+              "Contributed to the growth of Acta, which secured $75K in funding from the Stellar Development Foundation (SDF)."
+            ]
+          },
           "oppiaLabs": {
             "objective": "Innovation studio focused on decentralized, open-source financial infrastructure with real-world impact across Latin America.",
             "keyAchievements": [
@@ -370,6 +379,15 @@
               "Architected scalable full-stack systems using Next.js, NestJS, and Soroban/Substrate-style smart contracts.",
               "Built and managed open-source monorepos, contribution structure, and developer workflows.",
               "Developed tokenomics, financial models (TAM/SAM/SOM), and go-to-market strategy for DeFi products in LATAM."
+            ]
+          },
+          "web3Builder": {
+            "objective": "Led and collaborated with international teams across Latin America in high-pressure hackathon environments, delivering production-ready full-stack and smart contract solutions.",
+            "keyAchievements": [
+              "Led and collaborated with international teams across Latin America in high-pressure hackathon environments.",
+              "Built production-ready applications integrating full-stack systems and smart contracts.",
+              "Delivered solutions in DeFi, RWAs, and financial infrastructure with real-world use cases.",
+              "Worked across product development, system architecture, and rapid prototyping."
             ]
           }
         },
@@ -390,6 +408,9 @@
         "education": {
           "bachelors": {
             "description": "Focused on software engineering fundamentals, systems design, and backend development. Active in blockchain communities and student-led tech initiatives."
+          },
+          "intensiveEnglish": {
+            "description": "Intensive English program focused on professional and technical communication."
           }
         }
       }
